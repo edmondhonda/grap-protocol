@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
 
 import { useWallet } from 'use-wallet'
@@ -9,19 +9,26 @@ import { formatAddress } from '../../../utils'
 import Button from '../../Button'
 
 import AccountModal from './AccountModal'
+import WalletProviderModal from './WalletProviderModal'
 
 interface AccountButtonProps {}
 
 const AccountButton: React.FC<AccountButtonProps> = (props) => {
+
   const [onPresentAccountModal] = useModal(<AccountModal />)
+  const [onPresentWalletProviderModal] = useModal(<WalletProviderModal />)
   
-  const { account, connect } = useWallet()
+  const { account } = useWallet()
+
+  const handleUnlockClick = useCallback(() => {
+    onPresentWalletProviderModal()
+  }, [])
 
   return (
     <StyledAccountButton>
       {!account ? (
         <Button
-          onClick={() => connect('injected')}
+          onClick={handleUnlockClick}
           size="sm"
           text="Unlock Wallet"
         />

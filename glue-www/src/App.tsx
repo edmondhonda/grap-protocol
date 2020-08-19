@@ -45,7 +45,12 @@ const App: React.FC = () => {
 const Providers: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <UseWalletProvider chainId={42}>
+      <UseWalletProvider
+        chainId={42}
+        connectors={{
+          walletconnect: { rpcUrl: 'https://kovan.eth.aragon.network/' },
+        }}
+      >
         <GlueProvider>
           <TransactionProvider>
             <ModalsProvider>
