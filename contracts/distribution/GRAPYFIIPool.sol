@@ -598,7 +598,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public yfii = IERC20(0xa1d0E215a23d7030842FC67cE582a6aFa3CCaB83);
+    IERC20 public yfii = IERC20(0xFF55A8FbDb0fDdbeA8E5196e693562f19FCEbFbD);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -625,7 +625,7 @@ contract LPTokenWrapper {
 }
 
 contract GRAPYFIIPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public grap = IERC20(0xC8D2AB2a6FdEbC25432E54941cb85b55b9f152dB);
+    IERC20 public grap = IERC20(0xe8a977e81726CADE777Deb766456C46B1e0A1687);
     uint256 public constant DURATION = 625000; // ~7 1/4 days
 
     uint256 public starttime = 1597881600; // 2020-08-20 00:00:00 (UTC +00:00)
