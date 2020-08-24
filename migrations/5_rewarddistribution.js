@@ -17,7 +17,6 @@ const Timelock = artifacts.require("Timelock");
 
 // deployed fourth
 const GLUE_ETHPool = artifacts.require("GLUEETHPool");
-const GLUE_uAMPLPool = artifacts.require("GLUEAMPLPool");
 const GLUE_YFIPool = artifacts.require("GLUEYFIPool");
 const GLUE_LINKPool = artifacts.require("GLUELINKPool");
 const GLUE_MKRPool = artifacts.require("GLUEMKRPool");

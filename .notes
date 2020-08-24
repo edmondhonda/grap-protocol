@@ -1,0 +1,8 @@
+!!!! Attention update the starttime = in all the artifacts before deploying
+
+
+
+Contracts must be deployed one by one once the first contract has been deployed make 
+sure to copy the Delegator address that address is the token address that needs to be 
+changed before deploying the other contracts and pools
+ truffle deploy --network kovan --f 4 --to 4

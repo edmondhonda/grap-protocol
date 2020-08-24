@@ -21,8 +21,8 @@ module.exports = migration;
 async function deployToken(deployer, network) {
   await deployer.deploy(GLUEImplementation);
   await deployer.deploy(GLUEProxy,
-    "GLUE",
-    "GLUE",
+    "GLUEV2",
+    "GLUEV2",
     18,
     "2000000000000000000000000",
     GLUEImplementation.address,

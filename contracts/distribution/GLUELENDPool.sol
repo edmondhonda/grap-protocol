@@ -598,7 +598,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public lend = IERC20(0xFF55A8FbDb0fDdbeA8E5196e693562f19FCEbFbD);
+    IERC20 public lend = IERC20(0xa36085F69e2889c224210F603D836748e7dC0088);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -625,10 +625,10 @@ contract LPTokenWrapper {
 }
 
 contract GLUELENDPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public glue = IERC20(0xe8a977e81726CADE777Deb766456C46B1e0A1687);
+    IERC20 public glue = IERC20(0x65Da9E755a458D9b763b2fA0b950e0E6EC805F64);
     uint256 public constant DURATION = 625000; // ~7 1/4 days
 
-    uint256 public starttime = 1597881600; // 2020-08-20 00:00:00 (UTC +00:00)
+    uint256 public starttime = 1598297400; // 2020-08-20 00:00:00 (UTC +00:00)
     uint256 public periodFinish = 0;
     uint256 public rewardRate = 0;
     uint256 public lastUpdateTime;
