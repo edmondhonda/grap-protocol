@@ -1,10 +1,10 @@
 pragma solidity 0.5.17;
 pragma experimental ABIEncoderV2;
 
-import "./GRAPGovernanceStorage.sol";
-import "./GRAPTokenInterface.sol";
+import "./GLUEGovernanceStorage.sol";
+import "./GLUETokenInterface.sol";
 
-contract GRAPGovernanceToken is GRAPTokenInterface {
+contract GLUEGovernanceToken is GLUETokenInterface {
 
       /// @notice An event thats emitted when an account changes its delegate
     event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate);
@@ -78,9 +78,9 @@ contract GRAPGovernanceToken is GRAPTokenInterface {
         );
 
         address signatory = ecrecover(digest, v, r, s);
-        require(signatory != address(0), "GRAP::delegateBySig: invalid signature");
-        require(nonce == nonces[signatory]++, "GRAP::delegateBySig: invalid nonce");
-        require(now <= expiry, "GRAP::delegateBySig: signature expired");
+        require(signatory != address(0), "GLUE::delegateBySig: invalid signature");
+        require(nonce == nonces[signatory]++, "GLUE::delegateBySig: invalid nonce");
+        require(now <= expiry, "GLUE::delegateBySig: signature expired");
         return _delegate(signatory, delegatee);
     }
 
@@ -110,7 +110,7 @@ contract GRAPGovernanceToken is GRAPTokenInterface {
         view
         returns (uint256)
     {
-        require(blockNumber < block.number, "GRAP::getPriorVotes: not yet determined");
+        require(blockNumber < block.number, "GLUE::getPriorVotes: not yet determined");
 
         uint32 nCheckpoints = numCheckpoints[account];
         if (nCheckpoints == 0) {
@@ -147,7 +147,7 @@ contract GRAPGovernanceToken is GRAPTokenInterface {
         internal
     {
         address currentDelegate = _delegates[delegator];
-        uint256 delegatorBalance = _grapBalances[delegator]; // balance of underlying GRAPs (not scaled);
+        uint256 delegatorBalance = _glueBalances[delegator]; // balance of underlying GLUEs (not scaled);
         _delegates[delegator] = delegatee;
 
         emit DelegateChanged(delegator, currentDelegate, delegatee);
@@ -183,7 +183,7 @@ contract GRAPGovernanceToken is GRAPTokenInterface {
     )
         internal
     {
-        uint32 blockNumber = safe32(block.number, "GRAP::_writeCheckpoint: block number exceeds 32 bits");
+        uint32 blockNumber = safe32(block.number, "GLUE::_writeCheckpoint: block number exceeds 32 bits");
 
         if (nCheckpoints > 0 && checkpoints[delegatee][nCheckpoints - 1].fromBlock == blockNumber) {
             checkpoints[delegatee][nCheckpoints - 1].votes = newVotes;

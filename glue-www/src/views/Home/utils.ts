@@ -1,4 +1,4 @@
-import { Grap } from '../../grap'
+import { Glue } from '../../glue'
 
 import {
   getCurrentPrice as gCP,
@@ -6,40 +6,40 @@ import {
   getCirculatingSupply as gCS,
   getNextRebaseTimestamp as gNRT,
   getTotalSupply as gTS,
-} from '../../grapUtils'
+} from '../../glueUtils'
 
-const getCurrentPrice = async (grap: typeof Grap): Promise<number> => {
-  // FORBROCK: get current GRAP price
-  return gCP(grap)
+const getCurrentPrice = async (glue: typeof Glue): Promise<number> => {
+  // FORBROCK: get current GLUE price
+  return gCP(glue)
 }
 
-const getTargetPrice = async (grap: typeof Grap): Promise<number> => {
-  // FORBROCK: get target GRAP price
-  return gTP(grap)
+const getTargetPrice = async (glue: typeof Glue): Promise<number> => {
+  // FORBROCK: get target GLUE price
+  return gTP(glue)
 }
 
-const getCirculatingSupply = async (grap: typeof Grap): Promise<string> => {
+const getCirculatingSupply = async (glue: typeof Glue): Promise<string> => {
   // FORBROCK: get circulating supply
-  return gCS(grap)
+  return gCS(glue)
 }
 
-const getNextRebaseTimestamp = async (grap: typeof Grap): Promise<number> => {
+const getNextRebaseTimestamp = async (glue: typeof Glue): Promise<number> => {
   // FORBROCK: get next rebase timestamp
-  const nextRebase = await gNRT(grap) as number
+  const nextRebase = await gNRT(glue) as number
   return nextRebase * 1000
 }
 
-const getTotalSupply = async (grap: typeof Grap): Promise<string> => {
+const getTotalSupply = async (glue: typeof Glue): Promise<string> => {
   // FORBROCK: get total supply
-  return gTS(grap)
+  return gTS(glue)
 }
 
-export const getStats = async (grap: typeof Grap) => {
-  const curPrice = await getCurrentPrice(grap)
-  const circSupply = await getCirculatingSupply(grap)
-  const nextRebase = await getNextRebaseTimestamp(grap)
-  const targetPrice = await getTargetPrice(grap)
-  const totalSupply = await getTotalSupply(grap)
+export const getStats = async (glue: typeof Glue) => {
+  const curPrice = await getCurrentPrice(glue)
+  const circSupply = await getCirculatingSupply(glue)
+  const nextRebase = await getNextRebaseTimestamp(glue)
+  const targetPrice = await getTargetPrice(glue)
+  const totalSupply = await getTotalSupply(glue)
   return {
     circSupply,
     curPrice,

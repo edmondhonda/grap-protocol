@@ -1,7 +1,7 @@
 {
-  "name": "grap",
+  "name": "glue",
   "version": "1.0.0",
-  "description": "GRAP protocol repo",
+  "description": "GLUE protocol repo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

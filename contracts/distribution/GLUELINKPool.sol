@@ -5,7 +5,7 @@
 /___/ \_, //_//_/\__//_//_/\__/ \__//_/ /_\_\
      /___/
 
-* Synthetix: GRAPRewards.sol
+* Synthetix: GLUERewards.sol
 *
 * Docs: https://docs.synthetix.io/
 *
@@ -588,8 +588,8 @@ contract IRewardDistributionRecipient is Ownable {
 pragma solidity ^0.5.0;
 
 
-interface GRAP {
-    function grapsScalingFactor() external returns (uint256);
+interface GLUE {
+    function gluesScalingFactor() external returns (uint256);
 }
 
 
@@ -624,8 +624,8 @@ contract LPTokenWrapper {
     }
 }
 
-contract GRAPLINKPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public grap = IERC20(0xe8a977e81726CADE777Deb766456C46B1e0A1687);
+contract GLUELINKPool is LPTokenWrapper, IRewardDistributionRecipient {
+    IERC20 public glue = IERC20(0xe8a977e81726CADE777Deb766456C46B1e0A1687);
     uint256 public constant DURATION = 625000; // ~7 1/4 days
 
     uint256 public starttime = 1597881600; // 2020-08-20 00:00:00 (UTC +00:00)
@@ -704,9 +704,9 @@ contract GRAPLINKPool is LPTokenWrapper, IRewardDistributionRecipient {
         uint256 reward = earned(msg.sender);
         if (reward > 0) {
             rewards[msg.sender] = 0;
-            uint256 scalingFactor = GRAP(address(grap)).grapsScalingFactor();
+            uint256 scalingFactor = GLUE(address(glue)).gluesScalingFactor();
             uint256 trueReward = reward.mul(scalingFactor).div(10**18);
-            grap.safeTransfer(msg.sender, trueReward);
+            glue.safeTransfer(msg.sender, trueReward);
             emit RewardPaid(msg.sender, trueReward);
         }
     }

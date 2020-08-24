@@ -5,10 +5,10 @@ import "../lib/SafeERC20.sol";
 import "../lib/SafeMath.sol";
 import '../lib/IUniswapV2Pair.sol';
 import "../lib/UniswapV2OracleLibrary.sol";
-import "../token/GRAPTokenInterface.sol";
+import "../token/GLUETokenInterface.sol";
 
 
-contract GRAPRebaser {
+contract GLUERebaser {
 
     using SafeMath for uint256;
 
@@ -24,7 +24,7 @@ contract GRAPRebaser {
     }
 
     struct UniVars {
-      uint256 grapsToUni;
+      uint256 gluesToUni;
       uint256 amountFromReserves;
       uint256 mintToReserves;
     }
@@ -52,7 +52,7 @@ contract GRAPRebaser {
     /**
      * @notice Sets the reserve contract
      */
-    event TreasuryIncreased(uint256 reservesAdded, uint256 grapsSold, uint256 grapsFromReserves, uint256 grapsToReserves);
+    event TreasuryIncreased(uint256 reservesAdded, uint256 gluesSold, uint256 gluesFromReserves, uint256 gluesToReserves);
 
 
     /**
@@ -116,8 +116,8 @@ contract GRAPRebaser {
     /// @notice Time of TWAP initialization
     uint256 public timeOfTWAPInit;
 
-    /// @notice GRAP token address
-    address public grapAddress;
+    /// @notice GLUE token address
+    address public glueAddress;
 
     /// @notice reserve token
     address public reserveToken;
@@ -125,7 +125,7 @@ contract GRAPRebaser {
     /// @notice Reserves vault contract
     address public reservesContract;
 
-    /// @notice pair for reserveToken <> GRAP
+    /// @notice pair for reserveToken <> GLUE
     address public uniswap_pair;
 
     /// @notice last TWAP update time
@@ -141,11 +141,11 @@ contract GRAPRebaser {
     /// @notice the maximum slippage factor when buying reserve token
     uint256 public maxSlippageFactor;
 
-    /// @notice Whether or not this token is first in uniswap GRAP<>Reserve pair
+    /// @notice Whether or not this token is first in uniswap GLUE<>Reserve pair
     bool public isToken0;
 
     constructor(
-        address grapAddress_,
+        address glueAddress_,
         address reserveToken_,
         address uniswap_factory,
         address reservesContract_
@@ -155,15 +155,15 @@ contract GRAPRebaser {
           minRebaseTimeIntervalSec = 1 minutes;
           rebaseWindowOffsetSec = 0; // 4PM-5PM UTC+0 rebases
           reservesContract = reservesContract_;
-          (address token0, address token1) = sortTokens(grapAddress_, reserveToken_);
+          (address token0, address token1) = sortTokens(glueAddress_, reserveToken_);
 
           // used for interacting with uniswap
-          if (token0 == grapAddress_) {
+          if (token0 == glueAddress_) {
               isToken0 = true;
           } else {
               isToken0 = false;
           }
-          // uniswap GRAP<>Reserve pair
+          // uniswap GLUE<>Reserve pair
           uniswap_pair = pairFor(uniswap_factory, token0, token1);
 
           // Reserves contract is mutable
@@ -172,7 +172,7 @@ contract GRAPRebaser {
           // Reserve token is not mutable. Must deploy a new rebaser to update it
           reserveToken = reserveToken_;
 
-          grapAddress = grapAddress_;
+          glueAddress = glueAddress_;
 
           // target 10% slippage
           // 5.4%
@@ -330,14 +330,14 @@ contract GRAPRebaser {
         // Apply the Dampening factor.
         indexDelta = indexDelta.div(rebaseLag);
 
-        GRAPTokenInterface grap = GRAPTokenInterface(grapAddress);
+        GLUETokenInterface glue = GLUETokenInterface(glueAddress);
 
         if (positive) {
-            require(grap.grapsScalingFactor().mul(uint256(10**18).add(indexDelta)).div(10**18) < grap.maxScalingFactor(), "new scaling factor will be too big");
+            require(glue.gluesScalingFactor().mul(uint256(10**18).add(indexDelta)).div(10**18) < glue.maxScalingFactor(), "new scaling factor will be too big");
         }
 
 
-        uint256 currSupply = grap.totalSupply();
+        uint256 currSupply = glue.totalSupply();
 
         uint256 mintAmount;
         // reduce indexDelta to account for minting
@@ -348,8 +348,8 @@ contract GRAPRebaser {
         }
 
         // rebase
-        uint256 supplyAfterRebase = grap.rebase(epoch, indexDelta, positive);
-        assert(grap.grapsScalingFactor() <= grap.maxScalingFactor());
+        uint256 supplyAfterRebase = glue.rebase(epoch, indexDelta, positive);
+        assert(glue.gluesScalingFactor() <= glue.maxScalingFactor());
 
         // perform actions after rebase
         afterRebase(mintAmount, offPegPerc);
@@ -370,33 +370,33 @@ contract GRAPRebaser {
         require(sender == address(this), "bad origin");
         (UniVars memory uniVars) = abi.decode(data, (UniVars));
 
-        GRAPTokenInterface grap = GRAPTokenInterface(grapAddress);
+        GLUETokenInterface glue = GLUETokenInterface(glueAddress);
 
         if (uniVars.amountFromReserves > 0) {
             // transfer from reserves and mint to uniswap
-            grap.transferFrom(reservesContract, uniswap_pair, uniVars.amountFromReserves);
-            if (uniVars.amountFromReserves < uniVars.grapsToUni) {
-                // if the amount from reserves > grapsToUni, we have fully paid for the yCRV tokens
+            glue.transferFrom(reservesContract, uniswap_pair, uniVars.amountFromReserves);
+            if (uniVars.amountFromReserves < uniVars.gluesToUni) {
+                // if the amount from reserves > gluesToUni, we have fully paid for the yCRV tokens
                 // thus this number would be 0 so no need to mint
-                grap.mint(uniswap_pair, uniVars.grapsToUni.sub(uniVars.amountFromReserves));
+                glue.mint(uniswap_pair, uniVars.gluesToUni.sub(uniVars.amountFromReserves));
             }
         } else {
             // mint to uniswap
-            grap.mint(uniswap_pair, uniVars.grapsToUni);
+            glue.mint(uniswap_pair, uniVars.gluesToUni);
         }
 
         // mint unsold to mintAmount
         if (uniVars.mintToReserves > 0) {
-            grap.mint(reservesContract, uniVars.mintToReserves);
+            glue.mint(reservesContract, uniVars.mintToReserves);
         }
 
         // transfer reserve token to reserves
         if (isToken0) {
             SafeERC20.safeTransfer(IERC20(reserveToken), reservesContract, amount1);
-            emit TreasuryIncreased(amount1, uniVars.grapsToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
+            emit TreasuryIncreased(amount1, uniVars.gluesToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
         } else {
             SafeERC20.safeTransfer(IERC20(reserveToken), reservesContract, amount0);
-            emit TreasuryIncreased(amount0, uniVars.grapsToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
+            emit TreasuryIncreased(amount0, uniVars.gluesToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
         }
     }
 
@@ -408,21 +408,21 @@ contract GRAPRebaser {
     {
         UniswapPair pair = UniswapPair(uniswap_pair);
 
-        GRAPTokenInterface grap = GRAPTokenInterface(grapAddress);
+        GLUETokenInterface glue = GLUETokenInterface(glueAddress);
 
         // get reserves
         (uint256 token0Reserves, uint256 token1Reserves, ) = pair.getReserves();
 
-        // check if protocol has excess grap in the reserve
-        uint256 excess = grap.balanceOf(reservesContract);
+        // check if protocol has excess glue in the reserve
+        uint256 excess = glue.balanceOf(reservesContract);
 
 
         uint256 tokens_to_max_slippage = uniswapMaxSlippage(token0Reserves, token1Reserves, offPegPerc);
 
         UniVars memory uniVars = UniVars({
-          grapsToUni: tokens_to_max_slippage, // how many graps uniswap needs
-          amountFromReserves: excess, // how much of grapsToUni comes from reserves
-          mintToReserves: 0 // how much graps protocol mints to reserves
+          gluesToUni: tokens_to_max_slippage, // how many glues uniswap needs
+          amountFromReserves: excess, // how much of gluesToUni comes from reserves
+          mintToReserves: 0 // how much glues protocol mints to reserves
         });
 
         // tries to sell all mint + excess
@@ -436,7 +436,7 @@ contract GRAPRebaser {
 
                 // can handle selling all of reserves and mint
                 uint256 buyTokens = getAmountOut(mintAmount + excess, token0Reserves, token1Reserves);
-                uniVars.grapsToUni = mintAmount + excess;
+                uniVars.gluesToUni = mintAmount + excess;
                 uniVars.amountFromReserves = excess;
                 // call swap using entire mint amount and excess; mint 0 to reserves
                 pair.swap(0, buyTokens, address(this), abi.encode(uniVars));
@@ -445,7 +445,7 @@ contract GRAPRebaser {
                     // uniswap can handle entire reserves
                     uint256 buyTokens = getAmountOut(tokens_to_max_slippage, token0Reserves, token1Reserves);
 
-                    // swap up to slippage limit, taking entire grap reserves, and minting part of total
+                    // swap up to slippage limit, taking entire glue reserves, and minting part of total
                     uniVars.mintToReserves = mintAmount.sub((tokens_to_max_slippage - excess));
                     pair.swap(0, buyTokens, address(this), abi.encode(uniVars));
                 } else {
@@ -462,7 +462,7 @@ contract GRAPRebaser {
             if (tokens_to_max_slippage > mintAmount.add(excess)) {
                 // can handle all of reserves and mint
                 uint256 buyTokens = getAmountOut(mintAmount + excess, token1Reserves, token0Reserves);
-                uniVars.grapsToUni = mintAmount + excess;
+                uniVars.gluesToUni = mintAmount + excess;
                 uniVars.amountFromReserves = excess;
                 // call swap using entire mint amount and excess; mint 0 to reserves
                 pair.swap(buyTokens, 0, address(this), abi.encode(uniVars));
@@ -471,9 +471,9 @@ contract GRAPRebaser {
                     // uniswap can handle entire reserves
                     uint256 buyTokens = getAmountOut(tokens_to_max_slippage, token1Reserves, token0Reserves);
 
-                    // swap up to slippage limit, taking entire grap reserves, and minting part of total
+                    // swap up to slippage limit, taking entire glue reserves, and minting part of total
                     uniVars.mintToReserves = mintAmount.sub( (tokens_to_max_slippage - excess));
-                    // swap up to slippage limit, taking entire grap reserves, and minting part of total
+                    // swap up to slippage limit, taking entire glue reserves, and minting part of total
                     pair.swap(buyTokens, 0, address(this), abi.encode(uniVars));
                 } else {
                     // uniswap cant handle all of excess

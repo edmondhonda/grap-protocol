@@ -10,7 +10,7 @@ import { UseWalletProvider } from 'use-wallet'
 import ProposalsProvider from './contexts/Proposals'
 import FarmsProvider from './contexts/Farms'
 import ModalsProvider from './contexts/Modals'
-import GrapProvider from './contexts/GrapProvider'
+import GlueProvider from './contexts/GlueProvider'
 import TransactionProvider from './contexts/Transactions'
 
 import Farms from './views/Farms'
@@ -46,7 +46,7 @@ const Providers: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <UseWalletProvider chainId={42}>
-        <GrapProvider>
+        <GlueProvider>
           <TransactionProvider>
             <ModalsProvider>
               <FarmsProvider>
@@ -56,7 +56,7 @@ const Providers: React.FC = ({ children }) => {
               </FarmsProvider>
             </ModalsProvider>
           </TransactionProvider>
-        </GrapProvider>
+        </GlueProvider>
       </UseWalletProvider>
     </ThemeProvider>
   )

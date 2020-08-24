@@ -2,15 +2,15 @@ import { useCallback } from 'react'
 
 import { useWallet } from 'use-wallet'
 
-import { delegate } from '../grapUtils'
-import useGrap from './useGrap'
+import { delegate } from '../glueUtils'
+import useGlue from './useGlue'
 
 const useDelegate = (address?: string) => {
   const { account } = useWallet()
-  const grap = useGrap()
+  const glue = useGlue()
 
   const handleDelegate = useCallback(async () => {
-    const txHash = await delegate(grap ,address || account, account)
+    const txHash = await delegate(glue ,address || account, account)
     console.log(txHash)
   }, [account, address])
 

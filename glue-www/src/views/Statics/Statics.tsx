@@ -25,7 +25,7 @@ const Statics: React.FC = () => {
           <Route exact path={path}>
             <PageHeader
               icon={<img src={farmer} height="96" />}
-              subtitle="Earn GRAP tokens by providing liquidity."
+              subtitle="Earn GLUE tokens by providing liquidity."
               title="Statistics"
             />
             <StaticsCards />

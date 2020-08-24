@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import { Context } from '../contexts/GrapProvider'
+import { Context } from '../contexts/GlueProvider'
 
-const useGrap = () => {
-  const { grap } = useContext(Context)
-  return grap
+const useGlue = () => {
+  const { glue } = useContext(Context)
+  return glue
 }
 
-export default useGrap
+export default useGlue

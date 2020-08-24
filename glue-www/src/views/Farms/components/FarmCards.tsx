@@ -12,7 +12,7 @@ import useFarms from '../../../hooks/useFarms'
 
 import { Farm } from '../../../contexts/Farms'
 
-import { getPoolStartTime } from '../../../grapUtils'
+import { getPoolStartTime } from '../../../glueUtils'
 
 const FarmCards: React.FC = () => {
   const [farms] = useFarms()

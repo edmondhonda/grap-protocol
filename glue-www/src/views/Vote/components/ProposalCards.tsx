@@ -7,7 +7,7 @@ import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
 import Loader from '../../../components/Loader'
 
-import {PROPOSALSTATUSCODE} from '../../../grap/lib/constants'
+import {PROPOSALSTATUSCODE} from '../../../glue/lib/constants'
 import useProposals from '../../../hooks/useProposals'
 
 import { Proposal } from '../../../contexts/Proposals'

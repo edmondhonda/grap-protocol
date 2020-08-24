@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { useWallet } from 'use-wallet'
 import { Contract } from "web3-eth-contract"
 
-import { harvest } from '../grapUtils'
+import { harvest } from '../glueUtils'
 
 const useReward = (poolContract: Contract) => {
   const { account } = useWallet()

@@ -1,9 +1,9 @@
 pragma solidity 0.5.17;
 
-import "./GRAPTokenStorage.sol";
-import "./GRAPGovernanceStorage.sol";
+import "./GLUETokenStorage.sol";
+import "./GLUEGovernanceStorage.sol";
 
-contract GRAPTokenInterface is GRAPTokenStorage, GRAPGovernanceStorage {
+contract GLUETokenInterface is GLUETokenStorage, GLUEGovernanceStorage {
 
     /// @notice An event thats emitted when an account changes its delegate
     event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate);
@@ -14,7 +14,7 @@ contract GRAPTokenInterface is GRAPTokenStorage, GRAPGovernanceStorage {
     /**
      * @notice Event emitted when tokens are rebased
      */
-    event Rebase(uint256 epoch, uint256 prevGrapsScalingFactor, uint256 newGrapsScalingFactor);
+    event Rebase(uint256 epoch, uint256 prevGluesScalingFactor, uint256 newGluesScalingFactor);
 
     /*** Gov Events ***/
 

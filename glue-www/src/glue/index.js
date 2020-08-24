@@ -6,7 +6,7 @@ BigNumber.config({
   DECIMAL_PLACES: 80,
 });
 
-export { Grap } from './Grap.js';
+export { Glue } from './Glue.js';
 export {
   Web3,
   BigNumber,

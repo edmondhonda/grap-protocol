@@ -2,8 +2,8 @@
 
 // Token
 // deployed first
-const GRAPImplementation = artifacts.require("GRAPDelegate");
-const GRAPProxy = artifacts.require("GRAPDelegator");
+const GLUEImplementation = artifacts.require("GLUEDelegate");
+const GLUEProxy = artifacts.require("GLUEDelegator");
 
 // ============ Main Migration ============
 
@@ -19,13 +19,13 @@ module.exports = migration;
 
 
 async function deployToken(deployer, network) {
-  await deployer.deploy(GRAPImplementation);
-  await deployer.deploy(GRAPProxy,
-    "GRAP",
-    "GRAP",
+  await deployer.deploy(GLUEImplementation);
+  await deployer.deploy(GLUEProxy,
+    "GLUE",
+    "GLUE",
     18,
     "2000000000000000000000000",
-    GRAPImplementation.address,
+    GLUEImplementation.address,
     "0x"
   );
 }

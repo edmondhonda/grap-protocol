@@ -2,29 +2,29 @@ import React, { createContext, useEffect, useState } from 'react'
 
 import { useWallet } from 'use-wallet'
 
-import { Grap } from '../../grap'
+import { Glue } from '../../glue'
 
-export interface GrapContext {
-  grap?: typeof Grap
+export interface GlueContext {
+  glue?: typeof Glue
 }
 
-export const Context = createContext<GrapContext>({
-  grap: undefined,
+export const Context = createContext<GlueContext>({
+  glue: undefined,
 })
 
 declare global {
   interface Window {
-    grapsauce: any
+    gluesauce: any
   }
 }
 
-const GrapProvider: React.FC = ({ children }) => {
+const GlueProvider: React.FC = ({ children }) => {
   const { ethereum } = useWallet()
-  const [grap, setGrap] = useState<any>()
+  const [glue, setGlue] = useState<any>()
 
   useEffect(() => {
     if (ethereum) {
-      const grapLib = new Grap(
+      const glueLib = new Glue(
         ethereum,
         "42",
         false, {
@@ -38,16 +38,16 @@ const GrapProvider: React.FC = ({ children }) => {
           ethereumNodeTimeout: 10000
         }
       )
-      setGrap(grapLib)
-      window.grapsauce = grapLib
+      setGlue(glueLib)
+      window.gluesauce = glueLib
     }
   }, [ethereum])
 
   return (
-    <Context.Provider value={{ grap }}>
+    <Context.Provider value={{ glue }}>
       {children}
     </Context.Provider>
   )
 }
 
-export default GrapProvider
+export default GlueProvider

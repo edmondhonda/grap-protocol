@@ -6,7 +6,7 @@ import Countdown from 'react-countdown';
 import Page from '../../components/Page'
 import PageHeader from '../../components/PageHeader'
 
-import useGrap from '../../hooks/useGrap'
+import useGlue from '../../hooks/useGlue'
 
 import Rebase from './components/Rebase'
 import Stats from './components/Stats'
@@ -16,7 +16,7 @@ import { getStats } from './utils'
 
 const Home: React.FC = () => {
 
-  const grap = useGrap()
+  const glue = useGlue()
   const [{
     circSupply,
     curPrice,
@@ -26,15 +26,15 @@ const Home: React.FC = () => {
   }, setStats] = useState<OverviewData>({})
 
   const fetchStats = useCallback(async () => {
-    const statsData = await getStats(grap)
+    const statsData = await getStats(glue)
     setStats(statsData)
-  }, [grap, setStats])
+  }, [glue, setStats])
 
   useEffect(() => {
-    if (grap) {
+    if (glue) {
       fetchStats()
     }
-  }, [grap])
+  }, [glue])
 
   const countdownBlock = () => {
     const date = Date.parse("2020-08-20T00:00:00+0000");
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
     <Page>
       {countdownBlock()}
 
-      <PageHeader icon="🍇" subtitle="It's a great day to farm GRAPs. (without wrong rebase)" title="Welcome" />
+      <PageHeader icon="🍇" subtitle="It's a great day to farm GLUEs. (without wrong rebase)" title="Welcome" />
 
       <StyledOverview>
         <Rebase nextRebase={nextRebase} />

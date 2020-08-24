@@ -3,13 +3,13 @@
 
 // Token
 // deployed first
-const GRAPImplementation = artifacts.require("GRAPDelegate");
-const GRAPProxy = artifacts.require("GRAPDelegator");
+const GLUEImplementation = artifacts.require("GLUEDelegate");
+const GLUEProxy = artifacts.require("GLUEDelegator");
 
 // Rs
 // deployed second
-const GRAPReserves = artifacts.require("GRAPReserves");
-const GRAPRebaser = artifacts.require("GRAPRebaser");
+const GLUEReserves = artifacts.require("GLUEReserves");
+const GLUERebaser = artifacts.require("GLUERebaser");
 
 // Governance
 // deployed third
@@ -39,6 +39,6 @@ async function deployGovernance(deployer, network) {
   await deployer.deploy(Timelock);
   await deployer.deploy(Gov,
       Timelock.address,
-      GRAPProxy.address
+      GLUEProxy.address
   );
 }

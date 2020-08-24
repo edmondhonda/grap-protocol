@@ -5,31 +5,31 @@ var fs = require('fs')
 
 // Protocol
 // deployed second
-const GRAPImplementation = artifacts.require("GRAPDelegate");
-const GRAPProxy = artifacts.require("GRAPDelegator");
+const GLUEImplementation = artifacts.require("GLUEDelegate");
+const GLUEProxy = artifacts.require("GLUEDelegator");
 
 // deployed third
-const GRAPReserves = artifacts.require("GRAPReserves");
-const GRAPRebaser = artifacts.require("GRAPRebaser");
+const GLUEReserves = artifacts.require("GLUEReserves");
+const GLUERebaser = artifacts.require("GLUERebaser");
 
 const Gov = artifacts.require("GovernorAlpha");
 const Timelock = artifacts.require("Timelock");
 
 // deployed fourth
-const GRAP_ETHPool = artifacts.require("GRAPETHPool");
-const GRAP_uAMPLPool = artifacts.require("GRAPAMPLPool");
-const GRAP_YFIPool = artifacts.require("GRAPYFIPool");
-const GRAP_LINKPool = artifacts.require("GRAPLINKPool");
-const GRAP_MKRPool = artifacts.require("GRAPMKRPool");
-const GRAP_LENDPool = artifacts.require("GRAPLENDPool");
-const GRAP_COMPPool = artifacts.require("GRAPCOMPPool");
-const GRAP_SNXPool = artifacts.require("GRAPSNXPool");
-const GRAP_YFIIPool = artifacts.require("GRAPYFIIPool");
-const GRAP_KNCPool = artifacts.require("GRAPKNCPool");
+const GLUE_ETHPool = artifacts.require("GLUEETHPool");
+const GLUE_uAMPLPool = artifacts.require("GLUEAMPLPool");
+const GLUE_YFIPool = artifacts.require("GLUEYFIPool");
+const GLUE_LINKPool = artifacts.require("GLUELINKPool");
+const GLUE_MKRPool = artifacts.require("GLUEMKRPool");
+const GLUE_LENDPool = artifacts.require("GLUELENDPool");
+const GLUE_COMPPool = artifacts.require("GLUECOMPPool");
+const GLUE_SNXPool = artifacts.require("GLUESNXPool");
+const GLUE_YFIIPool = artifacts.require("GLUEYFIIPool");
+const GLUE_KNCPool = artifacts.require("GLUEKNCPool");
 
 
 // deployed fifth
-const GRAPIncentivizer = artifacts.require("GRAPIncentivizer");
+const GLUEIncentivizer = artifacts.require("GLUEIncentivizer");
 
 // ============ Main Migration ============
 
@@ -48,24 +48,24 @@ module.exports = migration;
 
 async function deployDistribution(deployer, network, accounts) {
   console.log(network)
-  let grap = await GRAPProxy.deployed();
-  let yReserves = await GRAPReserves.deployed()
-  let yRebaser = await GRAPRebaser.deployed()
+  let glue = await GLUEProxy.deployed();
+  let yReserves = await GLUEReserves.deployed()
+  let yRebaser = await GLUERebaser.deployed()
   let tl = await Timelock.deployed();
   let gov = await Gov.deployed();
   if (network != "test") {
 
-    let eth_pool = new web3.eth.Contract(GRAP_ETHPool.abi, GRAP_ETHPool.address);
-    let ampl_pool = new web3.eth.Contract(GRAP_uAMPLPool.abi, GRAP_uAMPLPool.address);
-    let yfi_pool = new web3.eth.Contract(GRAP_YFIPool.abi, GRAP_YFIPool.address);
-    let lend_pool = new web3.eth.Contract(GRAP_LENDPool.abi, GRAP_LENDPool.address);
-    let mkr_pool = new web3.eth.Contract(GRAP_MKRPool.abi, GRAP_MKRPool.address);
-    let snx_pool = new web3.eth.Contract(GRAP_SNXPool.abi, GRAP_SNXPool.address);
-    let comp_pool = new web3.eth.Contract(GRAP_COMPPool.abi, GRAP_COMPPool.address);
-    let link_pool = new web3.eth.Contract(GRAP_LINKPool.abi, GRAP_LINKPool.address);
-    let yfii_pool = new web3.eth.Contract(GRAP_YFIIPool.abi, GRAP_YFIIPool.address);
-    let knc_pool = new web3.eth.Contract(GRAP_KNCPool.abi, GRAP_KNCPool.address);
-    let ycrv_pool = new web3.eth.Contract(GRAPIncentivizer.abi, GRAPIncentivizer.address);
+    let eth_pool = new web3.eth.Contract(GLUE_ETHPool.abi, GLUE_ETHPool.address);
+    let ampl_pool = new web3.eth.Contract(GLUE_uAMPLPool.abi, GLUE_uAMPLPool.address);
+    let yfi_pool = new web3.eth.Contract(GLUE_YFIPool.abi, GLUE_YFIPool.address);
+    let lend_pool = new web3.eth.Contract(GLUE_LENDPool.abi, GLUE_LENDPool.address);
+    let mkr_pool = new web3.eth.Contract(GLUE_MKRPool.abi, GLUE_MKRPool.address);
+    let snx_pool = new web3.eth.Contract(GLUE_SNXPool.abi, GLUE_SNXPool.address);
+    let comp_pool = new web3.eth.Contract(GLUE_COMPPool.abi, GLUE_COMPPool.address);
+    let link_pool = new web3.eth.Contract(GLUE_LINKPool.abi, GLUE_LINKPool.address);
+    let yfii_pool = new web3.eth.Contract(GLUE_YFIIPool.abi, GLUE_YFIIPool.address);
+    let knc_pool = new web3.eth.Contract(GLUE_KNCPool.abi, GLUE_KNCPool.address);
+    let ycrv_pool = new web3.eth.Contract(GLUEIncentivizer.abi, GLUEIncentivizer.address);
 
     console.log("setting distributor");
     await Promise.all([
@@ -89,17 +89,17 @@ async function deployDistribution(deployer, network, accounts) {
     console.log("transfering and notifying");
     console.log("eth");
     await Promise.all([
-      grap.transfer(GRAP_ETHPool.address, twenty.toString()),
-      grap.transfer(GRAP_uAMPLPool.address, twenty.toString()),
-      grap.transfer(GRAP_YFIPool.address, twenty.toString()),
-      grap.transfer(GRAP_LENDPool.address, twenty.toString()),
-      grap.transfer(GRAP_MKRPool.address, twenty.toString()),
-      grap.transfer(GRAP_SNXPool.address, twenty.toString()),
-      grap.transfer(GRAP_COMPPool.address, twenty.toString()),
-      grap.transfer(GRAP_LINKPool.address, twenty.toString()),
-      grap.transfer(GRAP_YFIIPool.address, twenty.toString()),
-      grap.transfer(GRAP_KNCPool.address, twenty.toString()),
-      grap._setIncentivizer(GRAPIncentivizer.address),
+      glue.transfer(GLUE_ETHPool.address, twenty.toString()),
+      glue.transfer(GLUE_uAMPLPool.address, twenty.toString()),
+      glue.transfer(GLUE_YFIPool.address, twenty.toString()),
+      glue.transfer(GLUE_LENDPool.address, twenty.toString()),
+      glue.transfer(GLUE_MKRPool.address, twenty.toString()),
+      glue.transfer(GLUE_SNXPool.address, twenty.toString()),
+      glue.transfer(GLUE_COMPPool.address, twenty.toString()),
+      glue.transfer(GLUE_LINKPool.address, twenty.toString()),
+      glue.transfer(GLUE_YFIIPool.address, twenty.toString()),
+      glue.transfer(GLUE_KNCPool.address, twenty.toString()),
+      glue._setIncentivizer(GLUEIncentivizer.address),
     ]);
 
     await Promise.all([
@@ -147,14 +147,14 @@ async function deployDistribution(deployer, network, accounts) {
   }
 
   await Promise.all([
-    grap._setPendingGov(Timelock.address),
+    glue._setPendingGov(Timelock.address),
     yReserves._setPendingGov(Timelock.address),
     yRebaser._setPendingGov(Timelock.address),
   ]);
 
   await Promise.all([
       tl.executeTransaction(
-        GRAPProxy.address,
+        GLUEProxy.address,
         0,
         "_acceptGov()",
         "0x",
@@ -162,7 +162,7 @@ async function deployDistribution(deployer, network, accounts) {
       ),
 
       tl.executeTransaction(
-        GRAPReserves.address,
+        GLUEReserves.address,
         0,
         "_acceptGov()",
         "0x",
@@ -170,7 +170,7 @@ async function deployDistribution(deployer, network, accounts) {
       ),
 
       tl.executeTransaction(
-        GRAPRebaser.address,
+        GLUERebaser.address,
         0,
         "_acceptGov()",
         "0x",
