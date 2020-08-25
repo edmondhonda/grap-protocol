@@ -634,7 +634,7 @@ contract GLUEIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
     uint256 public constant DURATION = 625000;
 
     uint256 public initreward = 15 * 10**5 * 10**18; // 1.5m
-    uint256 public starttime = 1598297400 + 1 hours; // 2020-08-20 12:00:00 (UTC +00:00)
+    uint256 public starttime = 1598328000 + 1 hours; // 2020-08-20 12:00:00 (UTC +00:00)
     uint256 public periodFinish = 0;
     uint256 public rewardRate = 0;
     uint256 public lastUpdateTime;

@@ -628,7 +628,7 @@ contract GLUELENDPool is LPTokenWrapper, IRewardDistributionRecipient {
     IERC20 public glue = IERC20(0x65Da9E755a458D9b763b2fA0b950e0E6EC805F64);
     uint256 public constant DURATION = 625000; // ~7 1/4 days
 
-    uint256 public starttime = 1598297400; // 2020-08-20 00:00:00 (UTC +00:00)
+    uint256 public starttime = 1598328000; // 2020-08-20 00:00:00 (UTC +00:00)
     uint256 public periodFinish = 0;
     uint256 public rewardRate = 0;
     uint256 public lastUpdateTime;
