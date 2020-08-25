@@ -2,21 +2,20 @@ export const white = '#FFF'
 export const black = '#000'
 
 export const green = {
-  500: '#00D110',
+  500: '#DFDFDF',
 }
 
 export const red = {
-  100: '#FFFDFE',
-  200: '#FFA8C7',
-  500: '#d100c9',
+  100: '#DFDFDF',
+  200: '#DFDFDF',
+  500: '#DFDFDF',
 }
 
 export const grey = {
-  100: '#e7d7ea',
-  200: '#f0e2fb',
-  300: '#efc6ed',
+  100: '#343434',
+  200: '#2F3061',
   400: '#AA8592',
-  500: '#80495D',
-  600: '#5B2639',
-  800: '#2D121B',
+  500: '#DFDFDF',
+  600: '#DFDFDF',
+  800: '#DFDFDF',
 }
