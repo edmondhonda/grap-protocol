@@ -92,8 +92,8 @@ async function deployDistribution(deployer, network, accounts) {
         ycrv_pool.methods.setRewardDistribution("0xFc00C14b89C475B0237924D0FA99ECc492F7f9D6").send({from: "0xFc00C14b89C475B0237924D0FA99ECc492F7f9D6", gas: 100000}),
       ]);
 
-    let twenty = web3.utils.toBN(10**3).mul(web3.utils.toBN(10**18)).mul(web3.utils.toBN(1));
-    let one_five = web3.utils.toBN(10**3).mul(web3.utils.toBN(10**18)).mul(web3.utils.toBN(1500));
+    let twenty = web3.utils.toBN(10**3).mul(web3.utils.toBN(10**18)).mul(web3.utils.toBN(20));
+    let one_five = web3.utils.toBN(10**3).mul(web3.utils.toBN(10**18)).mul(web3.utils.toBN(100));
 
     console.log("transfering and notifying");
     console.log("eth");
