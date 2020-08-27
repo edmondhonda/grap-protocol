@@ -12431,7 +12431,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22404,
+                                "referencedDeclaration": 22184,
                                 "src": "13354:4:10",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_GovernorAlpha_$14495",
@@ -29539,7 +29539,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22404,
+                                "referencedDeclaration": 22184,
                                 "src": "13354:4:10",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_GovernorAlpha_$14495",
@@ -35086,12 +35086,12 @@
         }
       },
       "links": {},
-      "address": "0x285E1f1fE9E6dF76C36c69Ae91A0D0D2aB33A2D5",
-      "transactionHash": "0xa7e11167d1804ee67e63d8b4c555164810871a39ce12da51ec48c91eef4bc158"
+      "address": "0x553f6fDC0cb173EEf3C5f34bE2CAFB875DFA5cec",
+      "transactionHash": "0x378460f17c79d7628c892833d8eefa7040efd0c9df62c3c01312c35051cd6e2f"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-27T00:43:37.177Z",
+  "updatedAt": "2020-08-27T20:19:13.411Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

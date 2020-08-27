@@ -2466,7 +2466,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22456,
+                                  "referencedDeclaration": 22214,
                                   "src": "2423:4:22",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_GLUEReserves_$19832",
@@ -2950,7 +2950,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22456,
+                            "referencedDeclaration": 22214,
                             "src": "2726:4:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEReserves_$19832",
@@ -5377,7 +5377,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22456,
+                                  "referencedDeclaration": 22214,
                                   "src": "2423:4:22",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_GLUEReserves_$19832",
@@ -5861,7 +5861,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22456,
+                            "referencedDeclaration": 22214,
                             "src": "2726:4:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEReserves_$19832",
@@ -6120,12 +6120,12 @@
         }
       },
       "links": {},
-      "address": "0x77E333972db44aaBC019Ca91FC8bfd1324F3395B",
-      "transactionHash": "0x3f9856259b9c3ddb56f1b517cd61a08c1d69c3964545a77b27c6b78d09d70028"
+      "address": "0xc9D38c4e074E1bF0CC6D6Fe77a4e1Ca79Db2aC8A",
+      "transactionHash": "0x7b4dd8dc32c552843481b8719ec82c5112db5cf37e2ef51e23f1ed8516aa45c4"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-27T00:43:37.116Z",
+  "updatedAt": "2020-08-27T20:19:13.348Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {

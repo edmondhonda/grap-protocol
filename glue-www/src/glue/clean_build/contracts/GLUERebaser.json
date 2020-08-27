@@ -9006,7 +9006,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 22454,
+                              "referencedDeclaration": 22212,
                               "src": "11334:4:21",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -11943,7 +11943,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22454,
+                                              "referencedDeclaration": 22212,
                                               "src": "17397:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -12451,7 +12451,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22454,
+                                              "referencedDeclaration": 22212,
                                               "src": "16838:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -12987,7 +12987,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22454,
+                                        "referencedDeclaration": 22212,
                                         "src": "16205:4:21",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -13613,7 +13613,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22454,
+                                              "referencedDeclaration": 22212,
                                               "src": "15658:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -14121,7 +14121,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22454,
+                                              "referencedDeclaration": 22212,
                                               "src": "15099:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -14657,7 +14657,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22454,
+                                        "referencedDeclaration": 22212,
                                         "src": "14572:4:21",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -33270,7 +33270,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 22454,
+                              "referencedDeclaration": 22212,
                               "src": "11334:4:21",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -36207,7 +36207,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22454,
+                                              "referencedDeclaration": 22212,
                                               "src": "17397:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -36715,7 +36715,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22454,
+                                              "referencedDeclaration": 22212,
                                               "src": "16838:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -37251,7 +37251,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22454,
+                                        "referencedDeclaration": 22212,
                                         "src": "16205:4:21",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -37877,7 +37877,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22454,
+                                              "referencedDeclaration": 22212,
                                               "src": "15658:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -38385,7 +38385,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22454,
+                                              "referencedDeclaration": 22212,
                                               "src": "15099:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -38921,7 +38921,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22454,
+                                        "referencedDeclaration": 22212,
                                         "src": "14572:4:21",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_GLUERebaser_$19607",
@@ -49555,12 +49555,12 @@
         }
       },
       "links": {},
-      "address": "0xb55E7bfE877bb36f9Fed36c33e361358d3142579",
-      "transactionHash": "0x088df031bd14ad60f60225ebfc7d8e47f332e81d3cff4c193929f3338ea085c2"
+      "address": "0x213A34e1e13577BBff619A956659857c7f93cdf0",
+      "transactionHash": "0x0331661cb8b66b380d57781ed67b03cf5b83c34cdb023f7c7e04bfdffa99ac1f"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-27T00:43:37.136Z",
+  "updatedAt": "2020-08-27T20:19:13.370Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {

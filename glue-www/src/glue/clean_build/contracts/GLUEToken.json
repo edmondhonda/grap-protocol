@@ -1816,7 +1816,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 22460,
+                              "referencedDeclaration": 22218,
                               "src": "585:4:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_GLUEToken_$20586",
@@ -11227,7 +11227,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22463,
+                        "referencedDeclaration": 22221,
                         "src": "11392:5:23",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_GLUE_$20652",
@@ -12756,7 +12756,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 22460,
+                              "referencedDeclaration": 22218,
                               "src": "585:4:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_GLUEToken_$20586",
@@ -22167,7 +22167,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22463,
+                        "referencedDeclaration": 22221,
                         "src": "11392:5:23",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_GLUE_$20652",
@@ -22875,7 +22875,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-27T00:09:07.179Z",
+  "updatedAt": "2020-08-27T20:07:47.541Z",
   "devdoc": {
     "methods": {
       "_setIncentivizer(address)": {

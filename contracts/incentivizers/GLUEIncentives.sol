@@ -630,11 +630,11 @@ interface GLUE {
 }
 
 contract GLUEIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public glue = IERC20(0xe12a1E4DA04c8aBcDE6029592F7E3B9458f7d905);
-    uint256 public constant DURATION = 3600;
+    IERC20 public glue = IERC20(0xd872DFe1644b168d27B7d13a6f20055Db87c1D9a);
+    uint256 public constant DURATION = 625000;
 
     uint256 public initreward = 15 * 10**5 * 10**18; // 1.5m
-    uint256 public starttime = 1598487640 + 12 hours; // 2020-08-20 12:00:00 (UTC +00:00)
+    uint256 public starttime = 1598560200 + 12 hours; // 2020-08-20 12:00:00 (UTC +00:00)
     uint256 public periodFinish = 0;
     uint256 public rewardRate = 0;
     uint256 public lastUpdateTime;

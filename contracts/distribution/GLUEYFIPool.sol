@@ -624,10 +624,10 @@ contract LPTokenWrapper {
 }
 
 contract GLUEYFIPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public glue = IERC20(0xe12a1E4DA04c8aBcDE6029592F7E3B9458f7d905);
-    uint256 public constant DURATION = 3600; // ~7 1/4 days
+    IERC20 public glue = IERC20(0xd872DFe1644b168d27B7d13a6f20055Db87c1D9a);
+    uint256 public constant DURATION = 864000; // ~7 1/4 days
 
-    uint256 public starttime = 1598487640; // 2020-08-20 00:00:00 (UTC +00:00)
+    uint256 public starttime = 1598560200; // 2020-08-20 00:00:00 (UTC +00:00)
     uint256 public periodFinish = 0;
     uint256 public rewardRate = 0;
     uint256 public lastUpdateTime;
