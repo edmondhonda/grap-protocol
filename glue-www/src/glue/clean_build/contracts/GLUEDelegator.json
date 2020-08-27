@@ -6445,7 +6445,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22450,
+                            "referencedDeclaration": 22472,
                             "src": "11201:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEDelegator_$21271",
@@ -6896,7 +6896,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22450,
+                            "referencedDeclaration": 22472,
                             "src": "11589:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEDelegator_$21271",
@@ -12781,7 +12781,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22450,
+                            "referencedDeclaration": 22472,
                             "src": "11201:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEDelegator_$21271",
@@ -13232,7 +13232,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22450,
+                            "referencedDeclaration": 22472,
                             "src": "11589:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEDelegator_$21271",
@@ -14028,11 +14028,11 @@
       },
       "links": {},
       "address": "0xe12a1E4DA04c8aBcDE6029592F7E3B9458f7d905",
-      "transactionHash": "0xf5b83a129b0d938fad6ab15c627b8a1fcb80b2a12e2e71f46cc4cde2b281d97b"
+      "transactionHash": "0x39c281775c37dff7c1eca89c9ed008e764d52aa1dbed827fc789a12ec34b3ec8"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-24T19:01:37.380Z",
+  "updatedAt": "2020-08-27T00:43:37.106Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
