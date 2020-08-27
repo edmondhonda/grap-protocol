@@ -625,10 +625,10 @@ contract LPTokenWrapper {
 }
 
 contract GLUECRVPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public glue = IERC20(0x65Da9E755a458D9b763b2fA0b950e0E6EC805F64);
-    uint256 public constant DURATION = 5184000; // ~7 1/4 days
+    IERC20 public glue = IERC20(0xe12a1E4DA04c8aBcDE6029592F7E3B9458f7d905);
+    uint256 public constant DURATION = 3600; // ~7 1/4 days
 
-    uint256 public starttime = 1598328000; // 2020-08-20 00:00:00 (UTC +00:00)
+    uint256 public starttime = 1598487640; // 2020-08-20 00:00:00 (UTC +00:00)
     uint256 public periodFinish = 0;
     uint256 public rewardRate = 0;
     uint256 public lastUpdateTime;

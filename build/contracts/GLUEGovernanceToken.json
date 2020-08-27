@@ -1718,7 +1718,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22436,
+                                "referencedDeclaration": 22458,
                                 "src": "1879:4:26",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_GLUEGovernanceToken_$21827",
@@ -9328,7 +9328,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22436,
+                                "referencedDeclaration": 22458,
                                 "src": "1879:4:26",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_GLUEGovernanceToken_$21827",
@@ -16190,7 +16190,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-24T18:50:00.995Z",
+  "updatedAt": "2020-08-27T00:09:07.216Z",
   "devdoc": {
     "methods": {
       "delegate(address)": {
