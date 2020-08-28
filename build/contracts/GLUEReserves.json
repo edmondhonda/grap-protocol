@@ -2466,7 +2466,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22456,
+                                  "referencedDeclaration": 22214,
                                   "src": "2423:4:22",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_GLUEReserves_$19832",
@@ -2950,7 +2950,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22456,
+                            "referencedDeclaration": 22214,
                             "src": "2726:4:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEReserves_$19832",
@@ -5377,7 +5377,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22456,
+                                  "referencedDeclaration": 22214,
                                   "src": "2423:4:22",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_GLUEReserves_$19832",
@@ -5861,7 +5861,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22456,
+                            "referencedDeclaration": 22214,
                             "src": "2726:4:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEReserves_$19832",
@@ -6058,9 +6058,75 @@
     "name": "solc",
     "version": "0.5.17+commit.d19bba13.Linux.g++"
   },
-  "networks": {},
+  "networks": {
+    "42": {
+      "events": {
+        "0x1f14cfc03e486d23acee577b07bc0b3b23f4888c91fcdba5e0fef5a2549d5523": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "oldGov",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "newGov",
+              "type": "address"
+            }
+          ],
+          "name": "NewGov",
+          "type": "event"
+        },
+        "0x6163d5b9efd962645dd649e6e48a61bcb0f9df00997a2398b80d135a9ab0c61e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "oldPendingGov",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "newPendingGov",
+              "type": "address"
+            }
+          ],
+          "name": "NewPendingGov",
+          "type": "event"
+        },
+        "0x51f448520e2183de499e224808a409ee01a1f380edb2e8497572320c15030545": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "oldRebaser",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "newRebaser",
+              "type": "address"
+            }
+          ],
+          "name": "NewRebaser",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x91F8f010bEcF0B91467DD8a3E099BCEA1264a4Ee",
+      "transactionHash": "0xc77ef079479795151306af4108911d2250ed4ba14242fc7a35b01f55763ccfc1"
+    }
+  },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-28T13:16:12.719Z",
+  "updatedAt": "2020-08-28T13:26:58.331Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "_setPendingGov(address)": {

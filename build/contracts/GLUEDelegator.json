@@ -6445,7 +6445,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22472,
+                            "referencedDeclaration": 22230,
                             "src": "11201:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEDelegator_$21271",
@@ -6896,7 +6896,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22472,
+                            "referencedDeclaration": 22230,
                             "src": "11589:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEDelegator_$21271",
@@ -12781,7 +12781,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22472,
+                            "referencedDeclaration": 22230,
                             "src": "11201:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEDelegator_$21271",
@@ -13232,7 +13232,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22472,
+                            "referencedDeclaration": 22230,
                             "src": "11589:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GLUEDelegator_$21271",
@@ -14032,7 +14032,7 @@
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-28T13:19:10.140Z",
+  "updatedAt": "2020-08-28T13:26:58.321Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
