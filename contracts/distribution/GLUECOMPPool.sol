@@ -625,7 +625,7 @@ contract LPTokenWrapper {
 }
 
 contract GLUECOMPPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public glue = IERC20(0xd872DFe1644b168d27B7d13a6f20055Db87c1D9a);
+    IERC20 public glue = IERC20(0xa42598F56930Aba54dD2c185340378D65f656F14);
     uint256 public constant DURATION = 864000; // ~7 1/4 days
 
     uint256 public starttime = 1598560200; // 2020-08-20 00:00:00 (UTC +00:00)

@@ -21,8 +21,8 @@ module.exports = migration;
 async function deployToken(deployer, network) {
   await deployer.deploy(GLUEImplementation);
   await deployer.deploy(GLUEProxy,
-    "Rock Protocol",
-    "Rock",
+    "Sumo Protocol",
+    "RAMEN",
     18,
     "230000000000000000000000",
     GLUEImplementation.address,
