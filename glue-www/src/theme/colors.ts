@@ -6,16 +6,16 @@ export const green = {
 }
 
 export const red = {
-  100: '#DFDFDF',
-  200: '#DFDFDF',
-  500: '#DFDFDF',
+  100: '#c42348',
+  200: '#d91e36',
+  500: '#da344d',
 }
 
 export const grey = {
-  100: '#343434',
+  100: '#2b2d42',
   200: '#2F3061',
   400: '#AA8592',
-  500: '#DFDFDF',
-  600: '#DFDFDF',
-  800: '#DFDFDF',
+  500: '#edf2f4',
+  600: '#8d99ae',
+  800: '#2b2d42',
 }

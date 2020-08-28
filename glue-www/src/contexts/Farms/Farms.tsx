@@ -29,7 +29,7 @@ const ICON_FOR_POOL: { [key: string]: string } = {
   yam_pool: '🍠',
   eth_pool: '🌎',
   crv_pool: '🚜',
-  comp_pool: '💸',
+  comp_pool: '🍲',
   link_pool: '🔗',
   lend_pool: '🏕️',
   snx_pool: '⚔️',
