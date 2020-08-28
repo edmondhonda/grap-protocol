@@ -16190,7 +16190,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-28T13:24:02.728Z",
+  "updatedAt": "2020-08-28T14:34:18.933Z",
   "devdoc": {
     "methods": {
       "delegate(address)": {

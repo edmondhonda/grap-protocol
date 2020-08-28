@@ -22910,7 +22910,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-28T13:24:02.669Z",
+  "updatedAt": "2020-08-28T14:34:18.864Z",
   "devdoc": {
     "methods": {
       "_setIncentivizer(address)": {

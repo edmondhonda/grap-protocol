@@ -49555,12 +49555,12 @@
         }
       },
       "links": {},
-      "address": "0xD7fdE0ec661e867B5B4a1A39dc35AB8477d854FB",
-      "transactionHash": "0x6d1589550beee560be8b19f710cb9e6261ecfb1e2b11678bc676070699edb76a"
+      "address": "0x049aA4913683278aF7AC9D9E6Ad73Ace7427245D",
+      "transactionHash": "0x1d142f23a4b7931f543f2d923f40eda795fedb09dfa47af5f043f0cdab79b7e3"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-28T13:26:58.353Z",
+  "updatedAt": "2020-08-28T14:45:37.634Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
