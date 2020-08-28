@@ -63,7 +63,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
         <CardIcon>🥢</CardIcon>
         <StyledBalance>
           <StyledValue>{displayBalance}</StyledValue>
-          <Label text="GLUE Balance" />
+          <Label text="Ramen Balance" />
         </StyledBalance>
         <StyledBalance>
           <StyledValue>{votes}</StyledValue>
