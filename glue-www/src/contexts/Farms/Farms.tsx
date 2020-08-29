@@ -72,7 +72,7 @@ const Farms: React.FC = ({ children }) => {
             name: NAME_FOR_POOL[poolKey],
             depositToken: tokenKey,
             depositTokenAddress: tokenAddress,
-            earnToken: 'glue',
+            earnToken: 'sumo',
             earnTokenAddress: glueAddress,
             icon: ICON_FOR_POOL[poolKey],
             id: tokenKey
