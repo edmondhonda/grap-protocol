@@ -764,7 +764,7 @@ describe("rebase_tests", () => {
       q = await glue.contracts.uni_router.methods.quote(glue.toBigN(10**18).toString(), r[0], r[1]).call();
       console.log("quote post no rebase", q);
     });
-    test("rebasing with Ramens in reserves", async () => {
+    test("rebasing with Sumos in reserves", async () => {
       await glue.contracts.glue.methods.transfer(glue.contracts.reserves.options.address, glue.toBigN(60000*10**18).toString()).send({from: user});
       await glue.contracts.glue.methods.approve(
         glue.contracts.uni_router.options.address,
