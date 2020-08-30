@@ -93,7 +93,7 @@ const StaticsCard: React.FC<StaticsCardProps> = ({ farm, price }) => {
     const STAKING_POOL = glue.contracts[key];
     const Token = glue.contracts[token];
     const GLUE_TOKEN = glue.contracts.glue;
-    const rewardTokenTicker = "RAMEN"
+    const rewardTokenTicker = "Sumo"
     const stakingTokenTicker = token
     const glueScale = await GLUE_TOKEN.methods.gluesScalingFactor().call() / 1e18;
     const rewardPoolAddr = STAKING_POOL._address
