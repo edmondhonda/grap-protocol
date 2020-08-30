@@ -7,8 +7,8 @@ import useRamen from '../../../hooks/useRamen'
 import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
 import Loader from '../../../components/Loader'
-import useFarms from '../../../hooks/useFarms'
-import { Farm } from '../../../contexts/Farms'
+import useKitchens from '../../../hooks/useKitchens'
+import { Kitchen } from '../../../contexts/Kitchens'
 import { getPoolStartTime } from '../../../ramenUtils'
 import { getDisplayBalance } from '../../../utils/formatBalance'
 import { getStats } from '../../Home/utils'
@@ -22,9 +22,9 @@ export interface RamenContext {
 const ADDRESS = '0x640536B14F186e1ee0358aa50E7320Db6b2faaC3';
 let currentPrice = 0;
 let ramen: any;
-const FarmCards: React.FC = () => {
+const KitchenCards: React.FC = () => {
 
-  const [farms] = useFarms()
+  const [farms] = useKitchens()
   ramen = useRamen()
   const [{
     circSupply,
@@ -75,7 +75,7 @@ const FarmCards: React.FC = () => {
 }
 
 interface StaticsCardProps {
-  farm: Farm,
+  farm: Kitchen,
   price: number,
 }
 let loaded = false;
@@ -328,5 +328,5 @@ const lookUpPrices = async function(id_array: any) {
   return res.json()
 }
 
-export default FarmCards
+export default KitchenCards
 

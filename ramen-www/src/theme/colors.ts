@@ -13,11 +13,11 @@ export const red = {
 }
 
 export const grey = {
-  100: '#a8dadc', // Button Hover
-  200: '#457b9d', // Modal Square
-  300: '#a8dadc', // Ring & Bottom Shadow
+  100: '#14213d', // Button Hover
+  200: '#fca311', // Modal Square
+  300: '#14213d', // Ring & Bottom Shadow
   400: '#f1faee', // Small Text
-  500: '#a8dadc', // Farm Text
-  600: '#e63946', // Rebase Text
-  800: '#717D87', // Bubble
+  500: '#fca311', // Kitchen Text
+  600: '#e5e5e5', // Rebase Text
+  800: '#fca311', // Bubble
 }

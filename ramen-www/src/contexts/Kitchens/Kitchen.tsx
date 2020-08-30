@@ -7,14 +7,14 @@ import useRamen from '../../hooks/useRamen'
 import { getPoolContracts } from '../../ramenUtils'
 
 import Context from './context'
-import { Farm } from './types'
+import { Kitchen } from './types'
 
 const NAME_FOR_POOL: { [key: string]: string } = {
   eth_pool: 'Weth Homestead',
   yam_pool: 'YAM',
   crv_pool: 'Curvy Fields',
-  yfi_pool: 'YFI Farm',
-  yfii_pool: 'YFII Farm',
+  yfi_pool: 'YFI Kitchen',
+  yfii_pool: 'YFII Kitchen',
   comp_pool: 'Compounding Hills',
   link_pool: 'Marine Gardens',
   lend_pool: 'Aave Agriculture',
@@ -37,15 +37,15 @@ const ICON_FOR_POOL: { [key: string]: string } = {
   ycrvUNIV_pool: '🌈',
 }
 
-const Farms: React.FC = ({ children }) => {
+const Kitchens: React.FC = ({ children }) => {
 
-  const [farms, setFarms] = useState<Farm[]>([])
+  const [farms, setKitchens] = useState<Kitchen[]>([])
   const ramen = useRamen()
 
   const fetchPools = useCallback(async () => {
     const pools: { [key: string]: Contract} = await getPoolContracts(ramen)
 
-    const farmsArr: Farm[] = []
+    const farmsArr: Kitchen[] = []
     const poolKeys = Object.keys(pools)
 
     for (let i = 0; i < poolKeys.length; i++) {
@@ -82,8 +82,8 @@ const Farms: React.FC = ({ children }) => {
         }
       }
     }
-    setFarms(farmsArr)
-  }, [ramen, setFarms])
+    setKitchens(farmsArr)
+  }, [ramen, setKitchens])
 
   useEffect(() => {
     if (ramen) {
@@ -98,4 +98,4 @@ const Farms: React.FC = ({ children }) => {
   )
 }
 
-export default Farms
+export default Kitchens

@@ -12,11 +12,11 @@ import Button from '../../components/Button'
 import Page from '../../components/Page'
 import PageHeader from '../../components/PageHeader'
 
-import Farm from '../Farm'
+import Kitchen from '../Kitchen'
 
-import FarmCards from './components/FarmCards'
+import KitchenCards from './components/KitchenCards'
 
-const Farms: React.FC = () => {
+const Kitchens: React.FC = () => {
   const { path } = useRouteMatch()
   const { account, connect } = useWallet()
   return (
@@ -26,14 +26,14 @@ const Farms: React.FC = () => {
         <>
           <Route exact path={path}>
             <PageHeader
-              icon={<img src={farmer} height="96" />}
-              subtitle="Earn Sumo tokens by providing liquidity."
-              title="Select a Dohyō."
+              icon={<img src={farmer} height="125" />}
+              subtitle="Earn Ramen tokens by providing liquidity."
+              title="Select a Kitchen."
             />
-            <FarmCards />
+            <KitchenCards />
           </Route>
           <Route path={`${path}/:farmId`}>
-            <Farm />
+            <Kitchen />
           </Route>
         </>
       ) : (
@@ -55,4 +55,4 @@ const Farms: React.FC = () => {
 }
 
 
-export default Farms
+export default Kitchens

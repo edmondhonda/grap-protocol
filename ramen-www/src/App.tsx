@@ -8,12 +8,12 @@ import { ThemeProvider } from 'styled-components'
 import { UseWalletProvider } from 'use-wallet'
 
 import ProposalsProvider from './contexts/Proposals'
-import FarmsProvider from './contexts/Farms'
+import KitchensProvider from './contexts/Kitchens'
 import ModalsProvider from './contexts/Modals'
 import RamenProvider from './contexts/RamenProvider'
 import TransactionProvider from './contexts/Transactions'
 
-import Farms from './views/Farms'
+import Kitchens from './views/Kitchens'
 import Vote from './views/Vote'
 import Home from './views/Home'
 import Statics from './views/Statics'
@@ -28,7 +28,7 @@ const App: React.FC = () => {
             <Home />
           </Route>
           <Route path="/farms">
-            <Farms />
+            <Kitchens />
           </Route>
           <Route path="/vote">
             <Vote />
@@ -54,11 +54,11 @@ const Providers: React.FC = ({ children }) => {
         <RamenProvider>
           <TransactionProvider>
             <ModalsProvider>
-              <FarmsProvider>
+              <KitchensProvider>
                 <ProposalsProvider>
                   {children}
                 </ProposalsProvider>
-              </FarmsProvider>
+              </KitchensProvider>
             </ModalsProvider>
           </TransactionProvider>
         </RamenProvider>

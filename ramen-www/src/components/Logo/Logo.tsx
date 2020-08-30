@@ -6,8 +6,7 @@ import farmer from '../../assets/img/farmer.png'
 const Logo: React.FC = () => {
   return (
     <StyledLogo>
-      <img src={farmer} height="32" style={{ marginTop: -4 }} />
-      <StyledText>Sumo Trainer |  土俵</StyledText>
+      <StyledText> 相撲プロトコル </StyledText>
     </StyledLogo>
   )
 }

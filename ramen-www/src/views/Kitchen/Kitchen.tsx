@@ -12,14 +12,14 @@ import Button from '../../components/Button'
 import PageHeader from '../../components/PageHeader'
 import Spacer from '../../components/Spacer'
 
-import useFarm from '../../hooks/useFarm'
+import useKitchen from '../../hooks/useKitchen'
 import useRedeem from '../../hooks/useRedeem'
 import { getContract } from '../../utils/erc20'
 
 import Harvest from './components/Harvest'
 import Stake from './components/Stake'
 
-const Farm: React.FC = () => {
+const Kitchen: React.FC = () => {
   const { farmId } = useParams()
   const {
     contract,
@@ -28,7 +28,7 @@ const Farm: React.FC = () => {
     earnToken,
     name,
     icon,
-  } = useFarm(farmId) || {
+  } = useKitchen(farmId) || {
     depositToken: '',
     depositTokenAddress: '',
     earnToken: '',
@@ -70,7 +70,7 @@ const Farm: React.FC = () => {
     if (token != "yam") return ""
     return (
       <YamNotifyView>
-        <p> Farm is good, but don't forget migration your YAM before Migration Deadline. </p>
+        <p> Kitchen is good, but don't forget migration your YAM before Migration Deadline. </p>
         <p>
           <a href='https://yam.finance/'>https://yam.finance/</a>
         </p>
@@ -99,7 +99,7 @@ const Farm: React.FC = () => {
         title={name}
       />
       {YamNotify(depositToken)}
-      <StyledFarm>
+      <StyledKitchen>
         {
           lpPoolTips(depositToken)
         }
@@ -124,12 +124,12 @@ const Farm: React.FC = () => {
           />
         </div>
         <Spacer size="lg" />
-      </StyledFarm>
+      </StyledKitchen>
     </>
   )
 }
 
-const StyledFarm = styled.div`
+const StyledKitchen = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -170,4 +170,4 @@ const YamNotifyView =  styled.div`
 `
 
 
-export default Farm
+export default Kitchen

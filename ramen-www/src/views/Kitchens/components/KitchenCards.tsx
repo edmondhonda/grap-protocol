@@ -8,23 +8,23 @@ import CardContent from '../../../components/CardContent'
 import CardIcon from '../../../components/CardIcon'
 import Loader from '../../../components/Loader'
 
-import useFarms from '../../../hooks/useFarms'
+import useKitchens from '../../../hooks/useKitchens'
 
-import { Farm } from '../../../contexts/Farms'
+import { Kitchen } from '../../../contexts/Kitchens'
 
 import { getPoolStartTime } from '../../../ramenUtils'
 
-const FarmCards: React.FC = () => {
-  const [farms] = useFarms()
+const KitchenCards: React.FC = () => {
+  const [farms] = useKitchens()
 
-  const rows = farms.reduce<Farm[][]>((farmRows, farm) => {
-    const newFarmRows = [...farmRows]
-    if (newFarmRows[newFarmRows.length - 1].length === 3) {
-      newFarmRows.push([farm])
+  const rows = farms.reduce<Kitchen[][]>((farmRows, farm) => {
+    const newKitchenRows = [...farmRows]
+    if (newKitchenRows[newKitchenRows.length - 1].length === 3) {
+      newKitchenRows.push([farm])
     } else {
-      newFarmRows[newFarmRows.length - 1].push(farm)
+      newKitchenRows[newKitchenRows.length - 1].push(farm)
     }
-    return newFarmRows
+    return newKitchenRows
   }, [[]])
 
   return (
@@ -33,7 +33,7 @@ const FarmCards: React.FC = () => {
         <StyledRow key={i}>
           {farmRow.map((farm, j) => (
             <React.Fragment key={j}>
-              <FarmCard farm={farm} />
+              <KitchenCard farm={farm} />
               {(j === 0 || j === 1) && <StyledSpacer />}
             </React.Fragment>
           ))}
@@ -47,11 +47,11 @@ const FarmCards: React.FC = () => {
   )
 }
 
-interface FarmCardProps {
-  farm: Farm,
+interface KitchenCardProps {
+  farm: Kitchen,
 }
 
-const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
+const KitchenCard: React.FC<KitchenCardProps> = ({ farm }) => {
   const [startTime, setStartTime] = useState(0)
 
   const getStartTime = useCallback(async () => {
@@ -187,4 +187,4 @@ const StyledDetail = styled.div`
   color: ${props => props.theme.color.grey[500]};
 `
 
-export default FarmCards
+export default KitchenCards
