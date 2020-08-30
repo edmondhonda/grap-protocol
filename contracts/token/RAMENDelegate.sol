@@ -1,15 +1,15 @@
 pragma solidity 0.5.17;
 
-import "./GLUE.sol";
+import "./RAMEN.sol";
 
-contract GLUEDelegationStorage {
+contract RAMENDelegationStorage {
     /**
      * @notice Implementation address for this contract
      */
     address public implementation;
 }
 
-contract GLUEDelegatorInterface is GLUEDelegationStorage {
+contract RAMENDelegatorInterface is RAMENDelegationStorage {
     /**
      * @notice Emitted when implementation is changed
      */
@@ -24,7 +24,7 @@ contract GLUEDelegatorInterface is GLUEDelegationStorage {
     function _setImplementation(address implementation_, bool allowResign, bytes memory becomeImplementationData) public;
 }
 
-contract GLUEDelegateInterface is GLUEDelegationStorage {
+contract RAMENDelegateInterface is RAMENDelegationStorage {
     /**
      * @notice Called by the delegator on a delegate to initialize it for duty
      * @dev Should revert if any issues arise which make it unfit for delegation
@@ -39,7 +39,7 @@ contract GLUEDelegateInterface is GLUEDelegationStorage {
 }
 
 
-contract GLUEDelegate is GLUE, GLUEDelegateInterface {
+contract RAMENDelegate is RAMEN, RAMENDelegateInterface {
     /**
      * @notice Construct an empty delegate
      */

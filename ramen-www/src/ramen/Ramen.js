@@ -12,7 +12,7 @@ import {
 
 const oneEther = 1000000000000000000;
 
-export class Glue {
+export class Ramen {
   constructor(
     provider,
     networkId,

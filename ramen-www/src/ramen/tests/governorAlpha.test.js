@@ -13,11 +13,11 @@ import {
 const ethUtil = require('ethereumjs-util');
 
 async function enfranchise(actor, amount, user) {
-  await glue.contracts.glue.methods.transfer(actor, amount.toString()).send({from: user});
-  await glue.contracts.glue.methods.delegate(actor).send({from: actor});
+  await ramen.contracts.ramen.methods.transfer(actor, amount.toString()).send({from: user});
+  await ramen.contracts.ramen.methods.delegate(actor).send({from: actor});
 }
 
-export const glue = new Yam(
+export const ramen = new Yam(
   "http://localhost:8545/",
   // "http://127.0.0.1:9545/",
   "1001",
@@ -37,7 +37,7 @@ const oneEther = 10 ** 18;
 const EIP712 = require('./EIP712');
 
 describe("governorAlpha#castVote/2", () => {
-  let name = "GLUE";
+  let name = "RAMEN";
   let chainId = 1001;
   let snapshotId;
   let user;
@@ -57,48 +57,48 @@ describe("governorAlpha#castVote/2", () => {
   const pvk_a3 = "0x752dd9cf65e68cfaba7d60225cbdbc1f4729dd5e5507def72815ed0d8abc6249";
   const pvk_a4 = "0xefb595a0178eb79a8df953f87c5148402a224cdf725e88c0146727c6aceadccd";
   beforeAll(async () => {
-    await glue.testing.resetEVM("0x2");
-    accounts = await glue.web3.eth.getAccounts();
-    glue.addAccount(accounts[0]);
+    await ramen.testing.resetEVM("0x2");
+    accounts = await ramen.web3.eth.getAccounts();
+    ramen.addAccount(accounts[0]);
     user = accounts[0];
     a1 = accounts[1];
     a2 = accounts[2];
     guy = accounts[3];
     a3 = accounts[4];
     a4 = accounts[5];
-    let one_hundred = glue.toBigN(100).times(glue.toBigN(10**18));
-    // await glue.contracts.glue.methods.transfer(guy, one_hundred.toString()).send({from: user});
+    let one_hundred = ramen.toBigN(100).times(ramen.toBigN(10**18));
+    // await ramen.contracts.ramen.methods.transfer(guy, one_hundred.toString()).send({from: user});
 
-    snapshotId = await glue.testing.snapshot();
+    snapshotId = await ramen.testing.snapshot();
 
     targets = [a1];
     values = ["0"];
     signatures = ["getBalanceOf(address)"];
-    callDatas = [glue.web3.eth.abi.encodeParameters(['address'], [a1])];
+    callDatas = [ramen.web3.eth.abi.encodeParameters(['address'], [a1])];
   });
 
   beforeEach(async () => {
-    await glue.testing.resetEVM("0x2");
-    await glue.contracts.glue.methods.delegate(a1).send({from: user, gas: 400000});
-    await glue.contracts.gov.methods.propose(targets, values, signatures, callDatas, "do nothing").send({from: a1, gas: 400000});
-    proposalId = await glue.contracts.gov.methods.latestProposalIds(a1).call();
+    await ramen.testing.resetEVM("0x2");
+    await ramen.contracts.ramen.methods.delegate(a1).send({from: user, gas: 400000});
+    await ramen.contracts.gov.methods.propose(targets, values, signatures, callDatas, "do nothing").send({from: a1, gas: 400000});
+    proposalId = await ramen.contracts.gov.methods.latestProposalIds(a1).call();
   });
 
   describe("We must revert if:", () => {
     it("There does not exist a proposal with matching proposal id where the current block number is between the proposal's start block (exclusive) and end block (inclusive)", async () => {
-      await glue.testing.expectThrow(
-        glue.contracts.gov.methods.castVote(proposalId, true).call(),
+      await ramen.testing.expectThrow(
+        ramen.contracts.gov.methods.castVote(proposalId, true).call(),
         "GovernorAlpha::_castVote: voting is closed"
       );
     });
 
     test("Such proposal already has an entry in its voters set matching the sender", async () => {
-      await glue.testing.mineBlock();
-      await glue.testing.mineBlock();
+      await ramen.testing.mineBlock();
+      await ramen.testing.mineBlock();
 
-      await glue.contracts.gov.methods.castVote(proposalId, true).send({from: accounts[4]});
-      await glue.testing.expectThrow(
-        glue.contracts.gov.methods.castVote(proposalId, true).call({ from: accounts[4] }),
+      await ramen.contracts.gov.methods.castVote(proposalId, true).send({from: accounts[4]});
+      await ramen.testing.expectThrow(
+        ramen.contracts.gov.methods.castVote(proposalId, true).call({ from: accounts[4] }),
         "GovernorAlpha::_castVote: voter already voted"
       );
     });
@@ -106,13 +106,13 @@ describe("governorAlpha#castVote/2", () => {
 
   describe("Otherwise", () => {
     it("we add the sender to the proposal's voters set", async () => {
-      await glue.testing.mineBlock();
-      await glue.testing.mineBlock();
-      let r = await glue.contracts.gov.methods.getReceipt(proposalId, accounts[2]).call();
+      await ramen.testing.mineBlock();
+      await ramen.testing.mineBlock();
+      let r = await ramen.contracts.gov.methods.getReceipt(proposalId, accounts[2]).call();
       expect(r.hasVoted).toBe(false);
 
-      await glue.contracts.gov.methods.castVote(proposalId, true).send({from: accounts[2]});
-      r = await glue.contracts.gov.methods.getReceipt(proposalId, accounts[2]).call();
+      await ramen.contracts.gov.methods.castVote(proposalId, true).send({from: accounts[2]});
+      r = await ramen.contracts.gov.methods.getReceipt(proposalId, accounts[2]).call();
       expect(r.hasVoted).toBe(true);
     });
 
@@ -120,39 +120,39 @@ describe("governorAlpha#castVote/2", () => {
       let actor; // an account that will propose, receive tokens, delegate to self, and vote on own proposal
 
       test("and we add that ForVotes", async () => {
-        await glue.testing.mineBlock();
-        await glue.testing.mineBlock();
+        await ramen.testing.mineBlock();
+        await ramen.testing.mineBlock();
         actor = a2;
-        await enfranchise(actor, glue.toBigN(400001).times(10**18), user);
+        await enfranchise(actor, ramen.toBigN(400001).times(10**18), user);
 
-        await glue.contracts.gov.methods.propose(targets, values, signatures, callDatas, "do nothing").send({from: actor, gas: 400000});
+        await ramen.contracts.gov.methods.propose(targets, values, signatures, callDatas, "do nothing").send({from: actor, gas: 400000});
 
-        proposalId = await glue.contracts.gov.methods.latestProposalIds(actor).call();
+        proposalId = await ramen.contracts.gov.methods.latestProposalIds(actor).call();
 
-        let beforeFors = (await glue.contracts.gov.methods.proposals(proposalId).call()).forVotes;
-        await glue.testing.mineBlock();
-        await glue.contracts.gov.methods.castVote(proposalId, true).send({ from: actor });
+        let beforeFors = (await ramen.contracts.gov.methods.proposals(proposalId).call()).forVotes;
+        await ramen.testing.mineBlock();
+        await ramen.contracts.gov.methods.castVote(proposalId, true).send({ from: actor });
 
-        let afterFors = (await glue.contracts.gov.methods.proposals(proposalId).call()).forVotes;
-        expect(glue.toBigN(afterFors).toString()).toBe(glue.toBigN(beforeFors).plus(glue.toBigN(400001).times(10**24)).toString());
+        let afterFors = (await ramen.contracts.gov.methods.proposals(proposalId).call()).forVotes;
+        expect(ramen.toBigN(afterFors).toString()).toBe(ramen.toBigN(beforeFors).plus(ramen.toBigN(400001).times(10**24)).toString());
       })
 
       test("or AgainstVotes corresponding to the caller's support flag.", async () => {
-        await glue.testing.mineBlock();
-        await glue.testing.mineBlock();
+        await ramen.testing.mineBlock();
+        await ramen.testing.mineBlock();
         actor = accounts[4];
-        await enfranchise(actor, glue.toBigN(400001).times(10**18), user);
+        await enfranchise(actor, ramen.toBigN(400001).times(10**18), user);
 
-        await glue.contracts.gov.methods.propose(targets, values, signatures, callDatas, "do nothing").send({from: actor, gas: 400000});
+        await ramen.contracts.gov.methods.propose(targets, values, signatures, callDatas, "do nothing").send({from: actor, gas: 400000});
 
-        proposalId = await glue.contracts.gov.methods.latestProposalIds(actor).call();
+        proposalId = await ramen.contracts.gov.methods.latestProposalIds(actor).call();
 
-        let beforeFors = (await glue.contracts.gov.methods.proposals(proposalId).call()).againstVotes;
-        await glue.testing.mineBlock();
-        await glue.contracts.gov.methods.castVote(proposalId, false).send({ from: actor });
+        let beforeFors = (await ramen.contracts.gov.methods.proposals(proposalId).call()).againstVotes;
+        await ramen.testing.mineBlock();
+        await ramen.contracts.gov.methods.castVote(proposalId, false).send({ from: actor });
 
-        let afterFors = (await glue.contracts.gov.methods.proposals(proposalId).call()).againstVotes;
-        expect(glue.toBigN(afterFors).toString()).toBe(glue.toBigN(beforeFors).plus(glue.toBigN(400001).times(10**24)).toString());
+        let afterFors = (await ramen.contracts.gov.methods.proposals(proposalId).call()).againstVotes;
+        expect(ramen.toBigN(afterFors).toString()).toBe(ramen.toBigN(beforeFors).plus(ramen.toBigN(400001).times(10**24)).toString());
       });
     });
 
@@ -173,9 +173,9 @@ describe("governorAlpha#castVote/2", () => {
              },
              primaryType: 'Ballot',
              domain: {
-                 name: 'GLUE Governor Alpha',
+                 name: 'RAMEN Governor Alpha',
                  chainId: 1,
-                 verifyingContract: glue.contracts.gov.options.address,
+                 verifyingContract: ramen.contracts.gov.options.address,
              },
              message: {
                  proposalId: proposalId,
@@ -186,8 +186,8 @@ describe("governorAlpha#castVote/2", () => {
         let sigHash = EIP712.encodeTypedData(typedData)
         const sig = ethUtil.ecsign(ethUtil.toBuffer(sigHash, 'hex'), ethUtil.toBuffer(pvk_a1, 'hex'));
 
-        await glue.testing.expectThrow(
-            glue.contracts.gov.methods.castVoteBySig(proposalId, false, 0, '0xbad', '0xbad').send({from: user}),
+        await ramen.testing.expectThrow(
+            ramen.contracts.gov.methods.castVoteBySig(proposalId, false, 0, '0xbad', '0xbad').send({from: user}),
             "GovernorAlpha::castVoteBySig: invalid signature"
         );
       });
@@ -195,9 +195,9 @@ describe("governorAlpha#castVote/2", () => {
       it('casts vote on behalf of the signatory', async () => {
 
 
-        await enfranchise(a4, glue.toBigN(400001).times(10**18), user);
-        await glue.contracts.gov.methods.propose(targets, values, signatures, callDatas, "do nothing").send({ from: a4, gas: 400000 });
-        proposalId = await glue.contracts.gov.methods.latestProposalIds(a4).call();
+        await enfranchise(a4, ramen.toBigN(400001).times(10**18), user);
+        await ramen.contracts.gov.methods.propose(targets, values, signatures, callDatas, "do nothing").send({ from: a4, gas: 400000 });
+        proposalId = await ramen.contracts.gov.methods.latestProposalIds(a4).call();
 
         const typedData = {
              types: {
@@ -213,7 +213,7 @@ describe("governorAlpha#castVote/2", () => {
              },
              primaryType: 'Ballot',
              domain: {
-                 name: 'GLUE Governor Alpha',
+                 name: 'RAMEN Governor Alpha',
                  chainId: 1,
                  verifyingContract: "0x47Ff9D00cDAE31B4E09DEf8081bb3a1282e8061D",
              },
@@ -226,14 +226,14 @@ describe("governorAlpha#castVote/2", () => {
         let sigHash = EIP712.encodeTypedData(typedData)
         const sig = ethUtil.ecsign(ethUtil.toBuffer(sigHash, 'hex'), ethUtil.toBuffer(pvk_a4, 'hex'));
 
-        let beforeFors = (await glue.contracts.gov.methods.proposals(proposalId).call()).forVotes;
-        await glue.testing.mineBlock();
-        const tx = await glue.contracts.gov.methods.castVoteBySig(proposalId, true, sig.v, sig.r, sig.s).send({from: a4, gas: 100000});
+        let beforeFors = (await ramen.contracts.gov.methods.proposals(proposalId).call()).forVotes;
+        await ramen.testing.mineBlock();
+        const tx = await ramen.contracts.gov.methods.castVoteBySig(proposalId, true, sig.v, sig.r, sig.s).send({from: a4, gas: 100000});
         console.log(tx.events)
         expect(tx.gasUsed < 80000);
 
-        let afterFors = (await glue.contracts.gov.methods.proposals(proposalId).call()).forVotes;
-        expect(glue.toBigN(afterFors).toString()).toBe(glue.toBigN(beforeFors).plus(glue.toBigN(400001).times(10**24)).toString());
+        let afterFors = (await ramen.contracts.gov.methods.proposals(proposalId).call()).forVotes;
+        expect(ramen.toBigN(afterFors).toString()).toBe(ramen.toBigN(beforeFors).plus(ramen.toBigN(400001).times(10**24)).toString());
       });
     });
   });

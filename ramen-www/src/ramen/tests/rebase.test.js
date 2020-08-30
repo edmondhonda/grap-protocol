@@ -11,7 +11,7 @@ import {
 } from "../lib/Helpers.js"
 
 
-export const glue = new Yam(
+export const ramen = new Yam(
   "http://localhost:8545/",
   // "http://127.0.0.1:9545/",
   "1001",
@@ -36,53 +36,53 @@ describe("rebase_tests", () => {
   let unlocked_account = "0x681148725731f213b0187a3cbef215c291d85a3e";
 
   beforeAll(async () => {
-    const accounts = await glue.web3.eth.getAccounts();
-    glue.addAccount(accounts[0]);
+    const accounts = await ramen.web3.eth.getAccounts();
+    ramen.addAccount(accounts[0]);
     user = accounts[0];
     new_user = accounts[1];
-    snapshotId = await glue.testing.snapshot();
+    snapshotId = await ramen.testing.snapshot();
   });
 
   beforeEach(async () => {
-    await glue.testing.resetEVM("0x2");
-    let a = await glue.contracts.ycrv.methods.transfer(user, "2000000000000000000000000").send({
+    await ramen.testing.resetEVM("0x2");
+    let a = await ramen.contracts.ycrv.methods.transfer(user, "2000000000000000000000000").send({
       from: unlocked_account
     });
   });
 
   describe("rebase", () => {
     test("user has ycrv", async () => {
-      let bal0 = await glue.contracts.ycrv.methods.balanceOf(user).call();
+      let bal0 = await ramen.contracts.ycrv.methods.balanceOf(user).call();
       expect(bal0).toBe("2000000000000000000000000");
     });
     test("create pair", async () => {
-      await glue.contracts.uni_fact.methods.createPair(
-        glue.contracts.ycrv.options.address,
-        glue.contracts.glue.options.address
+      await ramen.contracts.uni_fact.methods.createPair(
+        ramen.contracts.ycrv.options.address,
+        ramen.contracts.ramen.options.address
       ).send({
         from: user,
         gas: 8000000
       })
     });
     test("mint pair", async () => {
-      await glue.contracts.glue.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ramen.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
-      await glue.contracts.ycrv.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ycrv.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
 
-      await glue.contracts.uni_router.methods.addLiquidity(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address,
+      await ramen.contracts.uni_router.methods.addLiquidity(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address,
         10000000,
         10000000,
         10000000,
@@ -93,33 +93,33 @@ describe("rebase_tests", () => {
         from: user,
         gas: 8000000
       });
-      let pair = await glue.contracts.uni_fact.methods.getPair(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address
+      let pair = await ramen.contracts.uni_fact.methods.getPair(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address
       ).call();
-      glue.contracts.uni_pair.options.address = pair;
-      let bal = await glue.contracts.uni_pair.methods.balanceOf(user).call();
-      expect(glue.toBigN(bal).toNumber()).toBeGreaterThan(100)
+      ramen.contracts.uni_pair.options.address = pair;
+      let bal = await ramen.contracts.uni_pair.methods.balanceOf(user).call();
+      expect(ramen.toBigN(bal).toNumber()).toBeGreaterThan(100)
     });
     test("init_twap", async () => {
-      await glue.contracts.glue.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ramen.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
-      await glue.contracts.ycrv.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ycrv.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
 
-      await glue.contracts.uni_router.methods.addLiquidity(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address,
+      await ramen.contracts.uni_router.methods.addLiquidity(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address,
         100000,
         100000,
         100000,
@@ -130,20 +130,20 @@ describe("rebase_tests", () => {
         from: user,
         gas: 8000000
       });
-      let pair = await glue.contracts.uni_fact.methods.getPair(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address
+      let pair = await ramen.contracts.uni_fact.methods.getPair(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address
       ).call();
-      glue.contracts.uni_pair.options.address = pair;
-      let bal = await glue.contracts.uni_pair.methods.balanceOf(user).call();
+      ramen.contracts.uni_pair.options.address = pair;
+      let bal = await ramen.contracts.uni_pair.methods.balanceOf(user).call();
 
       // make a trade to get init values in uniswap
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         1000,
         100,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -152,39 +152,39 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.testing.increaseTime(1000);
+      await ramen.testing.increaseTime(1000);
 
-      await glue.contracts.rebaser.methods.init_twap().send({
+      await ramen.contracts.rebaser.methods.init_twap().send({
         from: user,
         gas: 500000
       });
 
 
 
-      let init_twap = await glue.contracts.rebaser.methods.timeOfTWAPInit().call();
-      let priceCumulativeLast = await glue.contracts.rebaser.methods.priceCumulativeLast().call();
-      expect(glue.toBigN(init_twap).toNumber()).toBeGreaterThan(0);
-      expect(glue.toBigN(priceCumulativeLast).toNumber()).toBeGreaterThan(0);
+      let init_twap = await ramen.contracts.rebaser.methods.timeOfTWAPInit().call();
+      let priceCumulativeLast = await ramen.contracts.rebaser.methods.priceCumulativeLast().call();
+      expect(ramen.toBigN(init_twap).toNumber()).toBeGreaterThan(0);
+      expect(ramen.toBigN(priceCumulativeLast).toNumber()).toBeGreaterThan(0);
     });
     test("activate rebasing", async () => {
-      await glue.contracts.glue.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ramen.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
-      await glue.contracts.ycrv.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ycrv.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
 
-      await glue.contracts.uni_router.methods.addLiquidity(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address,
+      await ramen.contracts.uni_router.methods.addLiquidity(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address,
         100000,
         100000,
         100000,
@@ -195,20 +195,20 @@ describe("rebase_tests", () => {
         from: user,
         gas: 8000000
       });
-      let pair = await glue.contracts.uni_fact.methods.getPair(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address
+      let pair = await ramen.contracts.uni_fact.methods.getPair(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address
       ).call();
-      glue.contracts.uni_pair.options.address = pair;
-      let bal = await glue.contracts.uni_pair.methods.balanceOf(user).call();
+      ramen.contracts.uni_pair.options.address = pair;
+      let bal = await ramen.contracts.uni_pair.methods.balanceOf(user).call();
 
       // make a trade to get init values in uniswap
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         1000,
         100,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -217,46 +217,46 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.testing.increaseTime(1000);
+      await ramen.testing.increaseTime(1000);
 
-      await glue.contracts.rebaser.methods.init_twap().send({
+      await ramen.contracts.rebaser.methods.init_twap().send({
         from: user,
         gas: 500000
       });
 
 
 
-      let init_twap = await glue.contracts.rebaser.methods.timeOfTWAPInit().call();
-      let priceCumulativeLast = await glue.contracts.rebaser.methods.priceCumulativeLast().call();
-      expect(glue.toBigN(init_twap).toNumber()).toBeGreaterThan(0);
-      expect(glue.toBigN(priceCumulativeLast).toNumber()).toBeGreaterThan(0);
+      let init_twap = await ramen.contracts.rebaser.methods.timeOfTWAPInit().call();
+      let priceCumulativeLast = await ramen.contracts.rebaser.methods.priceCumulativeLast().call();
+      expect(ramen.toBigN(init_twap).toNumber()).toBeGreaterThan(0);
+      expect(ramen.toBigN(priceCumulativeLast).toNumber()).toBeGreaterThan(0);
 
-      await glue.testing.increaseTime(12 * 60 * 60);
+      await ramen.testing.increaseTime(12 * 60 * 60);
 
-      await glue.contracts.rebaser.methods.activate_rebasing().send({
+      await ramen.contracts.rebaser.methods.activate_rebasing().send({
         from: user,
         gas: 500000
       });
     });
     test("positive rebasing", async () => {
-      await glue.contracts.glue.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ramen.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
-      await glue.contracts.ycrv.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ycrv.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
 
-      await glue.contracts.uni_router.methods.addLiquidity(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address,
+      await ramen.contracts.uni_router.methods.addLiquidity(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address,
         "1000000000000000000000000",
         "1000000000000000000000000",
         "1000000000000000000000000",
@@ -268,21 +268,21 @@ describe("rebase_tests", () => {
         gas: 8000000
       });
 
-      let pair = await glue.contracts.uni_fact.methods.getPair(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address
+      let pair = await ramen.contracts.uni_fact.methods.getPair(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address
       ).call();
 
-      glue.contracts.uni_pair.options.address = pair;
-      let bal = await glue.contracts.uni_pair.methods.balanceOf(user).call();
+      ramen.contracts.uni_pair.options.address = pair;
+      let bal = await ramen.contracts.uni_pair.methods.balanceOf(user).call();
 
       // make a trade to get init values in uniswap
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -292,12 +292,12 @@ describe("rebase_tests", () => {
       });
 
       // trade back for easier calcs later
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -306,20 +306,20 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.testing.increaseTime(43200);
+      await ramen.testing.increaseTime(43200);
 
-      await glue.contracts.rebaser.methods.init_twap().send({
+      await ramen.contracts.rebaser.methods.init_twap().send({
         from: user,
         gas: 500000
       });
 
 
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -329,18 +329,18 @@ describe("rebase_tests", () => {
       });
 
       // init twap
-      let init_twap = await glue.contracts.rebaser.methods.timeOfTWAPInit().call();
+      let init_twap = await ramen.contracts.rebaser.methods.timeOfTWAPInit().call();
 
       // wait 12 hours
-      await glue.testing.increaseTime(12 * 60 * 60);
+      await ramen.testing.increaseTime(12 * 60 * 60);
 
       // perform trade to change price
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "10000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -350,26 +350,26 @@ describe("rebase_tests", () => {
       });
 
       // activate rebasing
-      await glue.contracts.rebaser.methods.activate_rebasing().send({
+      await ramen.contracts.rebaser.methods.activate_rebasing().send({
         from: user,
         gas: 500000
       });
 
 
-      let res_bal = await glue.contracts.glue.methods.balanceOf(
-          glue.contracts.reserves.options.address
+      let res_bal = await ramen.contracts.ramen.methods.balanceOf(
+          ramen.contracts.reserves.options.address
       ).call();
 
       expect(res_bal).toBe("0");
 
-      bal = await glue.contracts.glue.methods.balanceOf(user).call();
+      bal = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let a = await glue.web3.eth.getBlock('latest');
+      let a = await ramen.web3.eth.getBlock('latest');
 
-      let offset = await glue.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
-      offset = glue.toBigN(offset).toNumber();
-      let interval = await glue.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
-      interval = glue.toBigN(interval).toNumber();
+      let offset = await ramen.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
+      offset = ramen.toBigN(offset).toNumber();
+      let interval = await ramen.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
+      interval = ramen.toBigN(interval).toNumber();
 
       let i;
       if (a["timestamp"] % interval > offset) {
@@ -378,13 +378,13 @@ describe("rebase_tests", () => {
         i = offset - (a["timestamp"] % interval);
       }
 
-      await glue.testing.increaseTime(i);
+      await ramen.testing.increaseTime(i);
 
-      let r = await glue.contracts.uni_pair.methods.getReserves().call();
-      let q = await glue.contracts.uni_router.methods.quote(glue.toBigN(10**18).toString(), r[0], r[1]).call();
+      let r = await ramen.contracts.uni_pair.methods.getReserves().call();
+      let q = await ramen.contracts.uni_router.methods.quote(ramen.toBigN(10**18).toString(), r[0], r[1]).call();
       console.log("quote pre positive rebase", q);
 
-      let b = await glue.contracts.rebaser.methods.rebase().send({
+      let b = await ramen.contracts.rebaser.methods.rebase().send({
         from: user,
         gas: 2500000
       });
@@ -392,47 +392,47 @@ describe("rebase_tests", () => {
       //console.log(b.events)
       console.log("positive rebase gas used:", b["gasUsed"]);
 
-      let bal1 = await glue.contracts.glue.methods.balanceOf(user).call();
+      let bal1 = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let resGLUE = await glue.contracts.glue.methods.balanceOf(glue.contracts.reserves.options.address).call();
+      let resRAMEN = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.reserves.options.address).call();
 
-      let resycrv = await glue.contracts.ycrv.methods.balanceOf(glue.contracts.reserves.options.address).call();
+      let resycrv = await ramen.contracts.ycrv.methods.balanceOf(ramen.contracts.reserves.options.address).call();
 
-      console.log("bal user, bal glue res, bal res crv", bal1, resGLUE, resycrv);
-      r = await glue.contracts.uni_pair.methods.getReserves().call();
-      q = await glue.contracts.uni_router.methods.quote(glue.toBigN(10**18).toString(), r[0], r[1]).call();
+      console.log("bal user, bal ramen res, bal res crv", bal1, resRAMEN, resycrv);
+      r = await ramen.contracts.uni_pair.methods.getReserves().call();
+      q = await ramen.contracts.uni_router.methods.quote(ramen.toBigN(10**18).toString(), r[0], r[1]).call();
       console.log("post positive rebase quote", q);
 
       // new balance > old balance
-      expect(glue.toBigN(bal).toNumber()).toBeLessThan(glue.toBigN(bal1).toNumber());
-      // used full glue reserves
-      expect(glue.toBigN(resGLUE).toNumber()).toBe(0);
+      expect(ramen.toBigN(bal).toNumber()).toBeLessThan(ramen.toBigN(bal1).toNumber());
+      // used full ramen reserves
+      expect(ramen.toBigN(resRAMEN).toNumber()).toBe(0);
       // increases reserves
-      expect(glue.toBigN(resycrv).toNumber()).toBeGreaterThan(0);
+      expect(ramen.toBigN(resycrv).toNumber()).toBeGreaterThan(0);
 
 
       // not below peg
-      expect(glue.toBigN(q).toNumber()).toBeGreaterThan(glue.toBigN(10**18).toNumber());
+      expect(ramen.toBigN(q).toNumber()).toBeGreaterThan(ramen.toBigN(10**18).toNumber());
     });
     test("negative rebasing", async () => {
-      await glue.contracts.glue.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ramen.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
-      await glue.contracts.ycrv.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ycrv.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
 
-      await glue.contracts.uni_router.methods.addLiquidity(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address,
+      await ramen.contracts.uni_router.methods.addLiquidity(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address,
         "1000000000000000000000000",
         "1000000000000000000000000",
         "1000000000000000000000000",
@@ -444,21 +444,21 @@ describe("rebase_tests", () => {
         gas: 8000000
       });
 
-      let pair = await glue.contracts.uni_fact.methods.getPair(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address
+      let pair = await ramen.contracts.uni_fact.methods.getPair(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address
       ).call();
 
-      glue.contracts.uni_pair.options.address = pair;
-      let bal = await glue.contracts.uni_pair.methods.balanceOf(user).call();
+      ramen.contracts.uni_pair.options.address = pair;
+      let bal = await ramen.contracts.uni_pair.methods.balanceOf(user).call();
 
       // make a trade to get init values in uniswap
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -468,12 +468,12 @@ describe("rebase_tests", () => {
       });
 
       // trade back for easier calcs later
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -482,20 +482,20 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.testing.increaseTime(43200);
+      await ramen.testing.increaseTime(43200);
 
-      await glue.contracts.rebaser.methods.init_twap().send({
+      await ramen.contracts.rebaser.methods.init_twap().send({
         from: user,
         gas: 500000
       });
 
 
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "500000000000000000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -505,18 +505,18 @@ describe("rebase_tests", () => {
       });
 
       // init twap
-      let init_twap = await glue.contracts.rebaser.methods.timeOfTWAPInit().call();
+      let init_twap = await ramen.contracts.rebaser.methods.timeOfTWAPInit().call();
 
       // wait 12 hours
-      await glue.testing.increaseTime(12 * 60 * 60);
+      await ramen.testing.increaseTime(12 * 60 * 60);
 
       // perform trade to change price
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "10000000000000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -526,20 +526,20 @@ describe("rebase_tests", () => {
       });
 
       // activate rebasing
-      await glue.contracts.rebaser.methods.activate_rebasing().send({
+      await ramen.contracts.rebaser.methods.activate_rebasing().send({
         from: user,
         gas: 500000
       });
 
 
-      bal = await glue.contracts.glue.methods.balanceOf(user).call();
+      bal = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let a = await glue.web3.eth.getBlock('latest');
+      let a = await ramen.web3.eth.getBlock('latest');
 
-      let offset = await glue.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
-      offset = glue.toBigN(offset).toNumber();
-      let interval = await glue.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
-      interval = glue.toBigN(interval).toNumber();
+      let offset = await ramen.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
+      offset = ramen.toBigN(offset).toNumber();
+      let interval = await ramen.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
+      interval = ramen.toBigN(interval).toNumber();
 
       let i;
       if (a["timestamp"] % interval > offset) {
@@ -548,13 +548,13 @@ describe("rebase_tests", () => {
         i = offset - (a["timestamp"] % interval);
       }
 
-      await glue.testing.increaseTime(i);
+      await ramen.testing.increaseTime(i);
 
-      let r = await glue.contracts.uni_pair.methods.getReserves().call();
-      let q = await glue.contracts.uni_router.methods.quote(glue.toBigN(10**18).toString(), r[0], r[1]).call();
+      let r = await ramen.contracts.uni_pair.methods.getReserves().call();
+      let q = await ramen.contracts.uni_router.methods.quote(ramen.toBigN(10**18).toString(), r[0], r[1]).call();
       console.log("quote pre negative rebase", q);
 
-      let b = await glue.contracts.rebaser.methods.rebase().send({
+      let b = await ramen.contracts.rebaser.methods.rebase().send({
         from: user,
         gas: 2500000
       });
@@ -562,37 +562,37 @@ describe("rebase_tests", () => {
       //console.log(b.events)
       console.log("negative rebase gas used:", b["gasUsed"]);
 
-      let bal1 = await glue.contracts.glue.methods.balanceOf(user).call();
+      let bal1 = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let resGLUE = await glue.contracts.glue.methods.balanceOf(glue.contracts.reserves.options.address).call();
+      let resRAMEN = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.reserves.options.address).call();
 
-      let resycrv = await glue.contracts.ycrv.methods.balanceOf(glue.contracts.reserves.options.address).call();
+      let resycrv = await ramen.contracts.ycrv.methods.balanceOf(ramen.contracts.reserves.options.address).call();
 
       // balance decreases
-      expect(glue.toBigN(bal1).toNumber()).toBeLessThan(glue.toBigN(bal).toNumber());
+      expect(ramen.toBigN(bal1).toNumber()).toBeLessThan(ramen.toBigN(bal).toNumber());
       // no increases to reserves
-      expect(glue.toBigN(resGLUE).toNumber()).toBe(0);
-      expect(glue.toBigN(resycrv).toNumber()).toBe(0);
+      expect(ramen.toBigN(resRAMEN).toNumber()).toBe(0);
+      expect(ramen.toBigN(resycrv).toNumber()).toBe(0);
     });
     test("no rebasing", async () => {
-      await glue.contracts.glue.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ramen.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
-      await glue.contracts.ycrv.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ycrv.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
 
-      await glue.contracts.uni_router.methods.addLiquidity(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address,
+      await ramen.contracts.uni_router.methods.addLiquidity(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address,
         "1000000000000000000000000",
         "1000000000000000000000000",
         "1000000000000000000000000",
@@ -604,21 +604,21 @@ describe("rebase_tests", () => {
         gas: 8000000
       });
 
-      let pair = await glue.contracts.uni_fact.methods.getPair(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address
+      let pair = await ramen.contracts.uni_fact.methods.getPair(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address
       ).call();
 
-      glue.contracts.uni_pair.options.address = pair;
-      let bal = await glue.contracts.uni_pair.methods.balanceOf(user).call();
+      ramen.contracts.uni_pair.options.address = pair;
+      let bal = await ramen.contracts.uni_pair.methods.balanceOf(user).call();
 
       // make a trade to get init values in uniswap
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -628,12 +628,12 @@ describe("rebase_tests", () => {
       });
 
       // trade back for easier calcs later
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -642,20 +642,20 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.testing.increaseTime(43200);
+      await ramen.testing.increaseTime(43200);
 
-      await glue.contracts.rebaser.methods.init_twap().send({
+      await ramen.contracts.rebaser.methods.init_twap().send({
         from: user,
         gas: 500000
       });
 
 
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "10000000000000000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -664,12 +664,12 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "10000000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -679,18 +679,18 @@ describe("rebase_tests", () => {
       });
 
       // init twap
-      let init_twap = await glue.contracts.rebaser.methods.timeOfTWAPInit().call();
+      let init_twap = await ramen.contracts.rebaser.methods.timeOfTWAPInit().call();
 
       // wait 12 hours
-      await glue.testing.increaseTime(12 * 60 * 60);
+      await ramen.testing.increaseTime(12 * 60 * 60);
 
       // perform trade to change price
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "10000000000000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -699,12 +699,12 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "10000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -714,20 +714,20 @@ describe("rebase_tests", () => {
       });
 
       // activate rebasing
-      await glue.contracts.rebaser.methods.activate_rebasing().send({
+      await ramen.contracts.rebaser.methods.activate_rebasing().send({
         from: user,
         gas: 500000
       });
 
 
-      bal = await glue.contracts.glue.methods.balanceOf(user).call();
+      bal = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let a = await glue.web3.eth.getBlock('latest');
+      let a = await ramen.web3.eth.getBlock('latest');
 
-      let offset = await glue.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
-      offset = glue.toBigN(offset).toNumber();
-      let interval = await glue.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
-      interval = glue.toBigN(interval).toNumber();
+      let offset = await ramen.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
+      offset = ramen.toBigN(offset).toNumber();
+      let interval = await ramen.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
+      interval = ramen.toBigN(interval).toNumber();
 
       let i;
       if (a["timestamp"] % interval > offset) {
@@ -736,54 +736,54 @@ describe("rebase_tests", () => {
         i = offset - (a["timestamp"] % interval);
       }
 
-      await glue.testing.increaseTime(i);
+      await ramen.testing.increaseTime(i);
 
-      let r = await glue.contracts.uni_pair.methods.getReserves().call();
+      let r = await ramen.contracts.uni_pair.methods.getReserves().call();
       console.log(r, r[0], r[1]);
-      let q = await glue.contracts.uni_router.methods.quote(glue.toBigN(10**18).toString(), r[0], r[1]).call();
+      let q = await ramen.contracts.uni_router.methods.quote(ramen.toBigN(10**18).toString(), r[0], r[1]).call();
       console.log("quote pre no rebase", q);
-      let b = await glue.contracts.rebaser.methods.rebase().send({
+      let b = await ramen.contracts.rebaser.methods.rebase().send({
         from: user,
         gas: 2500000
       });
 
       console.log("no rebase gas used:", b["gasUsed"]);
 
-      let bal1 = await glue.contracts.glue.methods.balanceOf(user).call();
+      let bal1 = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let resGLUE = await glue.contracts.glue.methods.balanceOf(glue.contracts.reserves.options.address).call();
+      let resRAMEN = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.reserves.options.address).call();
 
-      let resycrv = await glue.contracts.ycrv.methods.balanceOf(glue.contracts.reserves.options.address).call();
+      let resycrv = await ramen.contracts.ycrv.methods.balanceOf(ramen.contracts.reserves.options.address).call();
 
       // no change
-      expect(glue.toBigN(bal1).toNumber()).toBe(glue.toBigN(bal).toNumber());
+      expect(ramen.toBigN(bal1).toNumber()).toBe(ramen.toBigN(bal).toNumber());
       // no increases to reserves
-      expect(glue.toBigN(resGLUE).toNumber()).toBe(0);
-      expect(glue.toBigN(resycrv).toNumber()).toBe(0);
-      r = await glue.contracts.uni_pair.methods.getReserves().call();
-      q = await glue.contracts.uni_router.methods.quote(glue.toBigN(10**18).toString(), r[0], r[1]).call();
+      expect(ramen.toBigN(resRAMEN).toNumber()).toBe(0);
+      expect(ramen.toBigN(resycrv).toNumber()).toBe(0);
+      r = await ramen.contracts.uni_pair.methods.getReserves().call();
+      q = await ramen.contracts.uni_router.methods.quote(ramen.toBigN(10**18).toString(), r[0], r[1]).call();
       console.log("quote post no rebase", q);
     });
     test("rebasing with Sumos in reserves", async () => {
-      await glue.contracts.glue.methods.transfer(glue.contracts.reserves.options.address, glue.toBigN(60000*10**18).toString()).send({from: user});
-      await glue.contracts.glue.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ramen.methods.transfer(ramen.contracts.reserves.options.address, ramen.toBigN(60000*10**18).toString()).send({from: user});
+      await ramen.contracts.ramen.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
-      await glue.contracts.ycrv.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ycrv.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
 
-      await glue.contracts.uni_router.methods.addLiquidity(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address,
+      await ramen.contracts.uni_router.methods.addLiquidity(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address,
         "1000000000000000000000000",
         "1000000000000000000000000",
         "1000000000000000000000000",
@@ -795,21 +795,21 @@ describe("rebase_tests", () => {
         gas: 8000000
       });
 
-      let pair = await glue.contracts.uni_fact.methods.getPair(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address
+      let pair = await ramen.contracts.uni_fact.methods.getPair(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address
       ).call();
 
-      glue.contracts.uni_pair.options.address = pair;
-      let bal = await glue.contracts.uni_pair.methods.balanceOf(user).call();
+      ramen.contracts.uni_pair.options.address = pair;
+      let bal = await ramen.contracts.uni_pair.methods.balanceOf(user).call();
 
       // make a trade to get init values in uniswap
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -819,12 +819,12 @@ describe("rebase_tests", () => {
       });
 
       // trade back for easier calcs later
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -833,20 +833,20 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.testing.increaseTime(43200);
+      await ramen.testing.increaseTime(43200);
 
-      await glue.contracts.rebaser.methods.init_twap().send({
+      await ramen.contracts.rebaser.methods.init_twap().send({
         from: user,
         gas: 500000
       });
 
 
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "500000000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -856,18 +856,18 @@ describe("rebase_tests", () => {
       });
 
       // init twap
-      let init_twap = await glue.contracts.rebaser.methods.timeOfTWAPInit().call();
+      let init_twap = await ramen.contracts.rebaser.methods.timeOfTWAPInit().call();
 
       // wait 12 hours
-      await glue.testing.increaseTime(12 * 60 * 60);
+      await ramen.testing.increaseTime(12 * 60 * 60);
 
       // perform trade to change price
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "10000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -877,20 +877,20 @@ describe("rebase_tests", () => {
       });
 
       // activate rebasing
-      await glue.contracts.rebaser.methods.activate_rebasing().send({
+      await ramen.contracts.rebaser.methods.activate_rebasing().send({
         from: user,
         gas: 500000
       });
 
 
-      bal = await glue.contracts.glue.methods.balanceOf(user).call();
+      bal = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let a = await glue.web3.eth.getBlock('latest');
+      let a = await ramen.web3.eth.getBlock('latest');
 
-      let offset = await glue.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
-      offset = glue.toBigN(offset).toNumber();
-      let interval = await glue.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
-      interval = glue.toBigN(interval).toNumber();
+      let offset = await ramen.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
+      offset = ramen.toBigN(offset).toNumber();
+      let interval = await ramen.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
+      interval = ramen.toBigN(interval).toNumber();
 
       let i;
       if (a["timestamp"] % interval > offset) {
@@ -899,14 +899,14 @@ describe("rebase_tests", () => {
         i = offset - (a["timestamp"] % interval);
       }
 
-      await glue.testing.increaseTime(i);
+      await ramen.testing.increaseTime(i);
 
 
-      let r = await glue.contracts.uni_pair.methods.getReserves().call();
-      let q = await glue.contracts.uni_router.methods.quote(glue.toBigN(10**18).toString(), r[0], r[1]).call();
+      let r = await ramen.contracts.uni_pair.methods.getReserves().call();
+      let q = await ramen.contracts.uni_router.methods.quote(ramen.toBigN(10**18).toString(), r[0], r[1]).call();
       console.log("quote pre pos rebase with reserves", q);
 
-      let b = await glue.contracts.rebaser.methods.rebase().send({
+      let b = await ramen.contracts.rebaser.methods.rebase().send({
         from: user,
         gas: 2500000
       });
@@ -914,55 +914,55 @@ describe("rebase_tests", () => {
 
       console.log("positive  with reserves gas used:", b["gasUsed"]);
 
-      let bal1 = await glue.contracts.glue.methods.balanceOf(user).call();
+      let bal1 = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let resGLUE = await glue.contracts.glue.methods.balanceOf(glue.contracts.reserves.options.address).call();
+      let resRAMEN = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.reserves.options.address).call();
 
-      let resycrv = await glue.contracts.ycrv.methods.balanceOf(glue.contracts.reserves.options.address).call();
+      let resycrv = await ramen.contracts.ycrv.methods.balanceOf(ramen.contracts.reserves.options.address).call();
 
-      console.log(bal, bal1, resGLUE, resycrv);
-      expect(glue.toBigN(bal).toNumber()).toBeLessThan(glue.toBigN(bal1).toNumber());
-      expect(glue.toBigN(resGLUE).toNumber()).toBeGreaterThan(0);
-      expect(glue.toBigN(resycrv).toNumber()).toBeGreaterThan(0);
-      r = await glue.contracts.uni_pair.methods.getReserves().call();
-      q = await glue.contracts.uni_router.methods.quote(glue.toBigN(10**18).toString(), r[0], r[1]).call();
+      console.log(bal, bal1, resRAMEN, resycrv);
+      expect(ramen.toBigN(bal).toNumber()).toBeLessThan(ramen.toBigN(bal1).toNumber());
+      expect(ramen.toBigN(resRAMEN).toNumber()).toBeGreaterThan(0);
+      expect(ramen.toBigN(resycrv).toNumber()).toBeGreaterThan(0);
+      r = await ramen.contracts.uni_pair.methods.getReserves().call();
+      q = await ramen.contracts.uni_router.methods.quote(ramen.toBigN(10**18).toString(), r[0], r[1]).call();
       console.log("quote post rebase w/ reserves", q);
-      expect(glue.toBigN(q).toNumber()).toBeGreaterThan(glue.toBigN(10**18).toNumber());
+      expect(ramen.toBigN(q).toNumber()).toBeGreaterThan(ramen.toBigN(10**18).toNumber());
     });
   });
 
   describe("failing", () => {
     test("unitialized rebasing", async () => {
-      await glue.testing.expectThrow(glue.contracts.rebaser.methods.activate_rebasing().send({
+      await ramen.testing.expectThrow(ramen.contracts.rebaser.methods.activate_rebasing().send({
         from: user,
         gas: 500000
       }), "twap wasnt intitiated, call init_twap()");
     });
     test("no early twap", async () => {
-      await glue.testing.expectThrow(glue.contracts.rebaser.methods.init_twap().send({
+      await ramen.testing.expectThrow(ramen.contracts.rebaser.methods.init_twap().send({
         from: user,
         gas: 500000
       }), "");
     });
     test("too late rebasing", async () => {
-      await glue.contracts.glue.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ramen.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
-      await glue.contracts.ycrv.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ycrv.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
 
-      await glue.contracts.uni_router.methods.addLiquidity(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address,
+      await ramen.contracts.uni_router.methods.addLiquidity(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address,
         "1000000000000000000000000",
         "1000000000000000000000000",
         "1000000000000000000000000",
@@ -974,21 +974,21 @@ describe("rebase_tests", () => {
         gas: 8000000
       });
 
-      let pair = await glue.contracts.uni_fact.methods.getPair(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address
+      let pair = await ramen.contracts.uni_fact.methods.getPair(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address
       ).call();
 
-      glue.contracts.uni_pair.options.address = pair;
-      let bal = await glue.contracts.uni_pair.methods.balanceOf(user).call();
+      ramen.contracts.uni_pair.options.address = pair;
+      let bal = await ramen.contracts.uni_pair.methods.balanceOf(user).call();
 
       // make a trade to get init values in uniswap
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -998,12 +998,12 @@ describe("rebase_tests", () => {
       });
 
       // trade back for easier calcs later
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -1012,20 +1012,20 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.testing.increaseTime(43200);
+      await ramen.testing.increaseTime(43200);
 
-      await glue.contracts.rebaser.methods.init_twap().send({
+      await ramen.contracts.rebaser.methods.init_twap().send({
         from: user,
         gas: 500000
       });
 
 
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "500000000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -1035,18 +1035,18 @@ describe("rebase_tests", () => {
       });
 
       // init twap
-      let init_twap = await glue.contracts.rebaser.methods.timeOfTWAPInit().call();
+      let init_twap = await ramen.contracts.rebaser.methods.timeOfTWAPInit().call();
 
       // wait 12 hours
-      await glue.testing.increaseTime(12 * 60 * 60);
+      await ramen.testing.increaseTime(12 * 60 * 60);
 
       // perform trade to change price
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "10000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -1056,20 +1056,20 @@ describe("rebase_tests", () => {
       });
 
       // activate rebasing
-      await glue.contracts.rebaser.methods.activate_rebasing().send({
+      await ramen.contracts.rebaser.methods.activate_rebasing().send({
         from: user,
         gas: 500000
       });
 
 
-      bal = await glue.contracts.glue.methods.balanceOf(user).call();
+      bal = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let a = await glue.web3.eth.getBlock('latest');
+      let a = await ramen.web3.eth.getBlock('latest');
 
-      let offset = await glue.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
-      offset = glue.toBigN(offset).toNumber();
-      let interval = await glue.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
-      interval = glue.toBigN(interval).toNumber();
+      let offset = await ramen.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
+      offset = ramen.toBigN(offset).toNumber();
+      let interval = await ramen.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
+      interval = ramen.toBigN(interval).toNumber();
 
       let i;
       if (a["timestamp"] % interval > offset) {
@@ -1078,34 +1078,34 @@ describe("rebase_tests", () => {
         i = offset - (a["timestamp"] % interval);
       }
 
-      let len = await glue.contracts.rebaser.methods.rebaseWindowLengthSec().call();
+      let len = await ramen.contracts.rebaser.methods.rebaseWindowLengthSec().call();
 
-      await glue.testing.increaseTime(i + glue.toBigN(len).toNumber()+1);
+      await ramen.testing.increaseTime(i + ramen.toBigN(len).toNumber()+1);
 
-      let b = await glue.testing.expectThrow(glue.contracts.rebaser.methods.rebase().send({
+      let b = await ramen.testing.expectThrow(ramen.contracts.rebaser.methods.rebase().send({
         from: user,
         gas: 2500000
       }), "too late");
     });
     test("too early rebasing", async () => {
-      await glue.contracts.glue.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ramen.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
-      await glue.contracts.ycrv.methods.approve(
-        glue.contracts.uni_router.options.address,
+      await ramen.contracts.ycrv.methods.approve(
+        ramen.contracts.uni_router.options.address,
         -1
       ).send({
         from: user,
         gas: 80000
       });
 
-      await glue.contracts.uni_router.methods.addLiquidity(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address,
+      await ramen.contracts.uni_router.methods.addLiquidity(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address,
         "1000000000000000000000000",
         "1000000000000000000000000",
         "1000000000000000000000000",
@@ -1117,21 +1117,21 @@ describe("rebase_tests", () => {
         gas: 8000000
       });
 
-      let pair = await glue.contracts.uni_fact.methods.getPair(
-        glue.contracts.glue.options.address,
-        glue.contracts.ycrv.options.address
+      let pair = await ramen.contracts.uni_fact.methods.getPair(
+        ramen.contracts.ramen.options.address,
+        ramen.contracts.ycrv.options.address
       ).call();
 
-      glue.contracts.uni_pair.options.address = pair;
-      let bal = await glue.contracts.uni_pair.methods.balanceOf(user).call();
+      ramen.contracts.uni_pair.options.address = pair;
+      let bal = await ramen.contracts.uni_pair.methods.balanceOf(user).call();
 
       // make a trade to get init values in uniswap
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -1141,12 +1141,12 @@ describe("rebase_tests", () => {
       });
 
       // trade back for easier calcs later
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "100000000000",
         100000,
         [
-          glue.contracts.glue.options.address,
-          glue.contracts.ycrv.options.address
+          ramen.contracts.ramen.options.address,
+          ramen.contracts.ycrv.options.address
         ],
         user,
         1596740361 + 10000000
@@ -1155,20 +1155,20 @@ describe("rebase_tests", () => {
         gas: 1000000
       });
 
-      await glue.testing.increaseTime(43200);
+      await ramen.testing.increaseTime(43200);
 
-      await glue.contracts.rebaser.methods.init_twap().send({
+      await ramen.contracts.rebaser.methods.init_twap().send({
         from: user,
         gas: 500000
       });
 
 
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "500000000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -1178,18 +1178,18 @@ describe("rebase_tests", () => {
       });
 
       // init twap
-      let init_twap = await glue.contracts.rebaser.methods.timeOfTWAPInit().call();
+      let init_twap = await ramen.contracts.rebaser.methods.timeOfTWAPInit().call();
 
       // wait 12 hours
-      await glue.testing.increaseTime(12 * 60 * 60);
+      await ramen.testing.increaseTime(12 * 60 * 60);
 
       // perform trade to change price
-      await glue.contracts.uni_router.methods.swapExactTokensForTokens(
+      await ramen.contracts.uni_router.methods.swapExactTokensForTokens(
         "10000000000000000000",
         100000,
         [
-          glue.contracts.ycrv.options.address,
-          glue.contracts.glue.options.address
+          ramen.contracts.ycrv.options.address,
+          ramen.contracts.ramen.options.address
         ],
         user,
         1596740361 + 10000000
@@ -1199,19 +1199,19 @@ describe("rebase_tests", () => {
       });
 
       // activate rebasing
-      await glue.contracts.rebaser.methods.activate_rebasing().send({
+      await ramen.contracts.rebaser.methods.activate_rebasing().send({
         from: user,
         gas: 500000
       });
 
-      bal = await glue.contracts.glue.methods.balanceOf(user).call();
+      bal = await ramen.contracts.ramen.methods.balanceOf(user).call();
 
-      let a = await glue.web3.eth.getBlock('latest');
+      let a = await ramen.web3.eth.getBlock('latest');
 
-      let offset = await glue.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
-      offset = glue.toBigN(offset).toNumber();
-      let interval = await glue.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
-      interval = glue.toBigN(interval).toNumber();
+      let offset = await ramen.contracts.rebaser.methods.rebaseWindowOffsetSec().call();
+      offset = ramen.toBigN(offset).toNumber();
+      let interval = await ramen.contracts.rebaser.methods.minRebaseTimeIntervalSec().call();
+      interval = ramen.toBigN(interval).toNumber();
 
       let i;
       if (a["timestamp"] % interval > offset) {
@@ -1220,11 +1220,11 @@ describe("rebase_tests", () => {
         i = offset - (a["timestamp"] % interval);
       }
 
-      await glue.testing.increaseTime(i - 1);
+      await ramen.testing.increaseTime(i - 1);
 
 
 
-      let b = await glue.testing.expectThrow(glue.contracts.rebaser.methods.rebase().send({
+      let b = await ramen.testing.expectThrow(ramen.contracts.rebaser.methods.rebase().send({
         from: user,
         gas: 2500000
       }), "too early");

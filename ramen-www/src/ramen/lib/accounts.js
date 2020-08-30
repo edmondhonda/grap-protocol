@@ -15,8 +15,8 @@ export class Account {
     this.walletInfo = {};
   }
 
-  async getGLUEWalletBalance() {
-    this.walletInfo["DAI"] = await this.contracts.glue.methods.balanceOf(this.accountInfo).call();
+  async getRAMENWalletBalance() {
+    this.walletInfo["DAI"] = await this.contracts.ramen.methods.balanceOf(this.accountInfo).call();
     return this.walletInfo["DAI"]
   }
 

@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react'
 
 import { Contract } from "web3-eth-contract"
 
-import { glue as glueAddress } from '../../constants/tokenAddresses'
-import useGlue from '../../hooks/useRamen'
+import { ramen as ramenAddress } from '../../constants/tokenAddresses'
+import useRamen from '../../hooks/useRamen'
 import { getPoolContracts } from '../../ramenUtils'
 
 import Context from './context'
@@ -40,10 +40,10 @@ const ICON_FOR_POOL: { [key: string]: string } = {
 const Farms: React.FC = ({ children }) => {
 
   const [farms, setFarms] = useState<Farm[]>([])
-  const glue = useGlue()
+  const ramen = useRamen()
 
   const fetchPools = useCallback(async () => {
-    const pools: { [key: string]: Contract} = await getPoolContracts(glue)
+    const pools: { [key: string]: Contract} = await getPoolContracts(ramen)
 
     const farmsArr: Farm[] = []
     const poolKeys = Object.keys(pools)
@@ -73,7 +73,7 @@ const Farms: React.FC = ({ children }) => {
             depositToken: tokenKey,
             depositTokenAddress: tokenAddress,
             earnToken: 'sumo',
-            earnTokenAddress: glueAddress,
+            earnTokenAddress: ramenAddress,
             icon: ICON_FOR_POOL[poolKey],
             id: tokenKey
           })
@@ -83,13 +83,13 @@ const Farms: React.FC = ({ children }) => {
       }
     }
     setFarms(farmsArr)
-  }, [glue, setFarms])
+  }, [ramen, setFarms])
 
   useEffect(() => {
-    if (glue) {
+    if (ramen) {
       fetchPools()
     }
-  }, [glue, fetchPools])
+  }, [ramen, fetchPools])
 
   return (
     <Context.Provider value={{ farms }}>

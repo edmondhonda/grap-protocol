@@ -2,8 +2,8 @@
 
 // Token
 // deployed first
-const GLUEImplementation = artifacts.require("GLUEDelegate");
-const GLUEProxy = artifacts.require("GLUEDelegator");
+const RAMENImplementation = artifacts.require("RAMENDelegate");
+const RAMENProxy = artifacts.require("RAMENDelegator");
 
 // ============ Main Migration ============
 
@@ -19,13 +19,13 @@ module.exports = migration;
 
 
 async function deployToken(deployer, network) {
-  await deployer.deploy(GLUEImplementation);
-  await deployer.deploy(GLUEProxy,
+  await deployer.deploy(RAMENImplementation);
+  await deployer.deploy(RAMENProxy,
     "Sumo Protocol",
     "RAMEN",
     18,
     "230000000000000000000000",
-    GLUEImplementation.address,
+    RAMENImplementation.address,
     "0x"
   );
 }

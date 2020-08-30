@@ -5,7 +5,7 @@
 /___/ \_, //_//_/\__//_//_/\__/ \__//_/ /_\_\
      /___/
 
-* Synthetix: GLUERewards.sol
+* Synthetix: RAMENRewards.sol
 *
 * Docs: https://docs.synthetix.io/
 *
@@ -588,8 +588,8 @@ contract IRewardDistributionRecipient is Ownable {
 pragma solidity ^0.5.0;
 
 
-interface GLUE {
-    function gluesScalingFactor() external returns (uint256);
+interface RAMEN {
+    function ramensScalingFactor() external returns (uint256);
 }
 
 
@@ -624,8 +624,8 @@ contract LPTokenWrapper {
     }
 }
 
-contract GLUEMKRPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public glue = IERC20(0x640536B14F186e1ee0358aa50E7320Db6b2faaC3);
+contract RAMENMKRPool is LPTokenWrapper, IRewardDistributionRecipient {
+    IERC20 public ramen = IERC20(0x640536B14F186e1ee0358aa50E7320Db6b2faaC3);
     uint256 public constant DURATION = 5184000; // ~7 1/4 days
 
     uint256 public starttime = 1598630400; // 2020-08-20 00:00:00 (UTC +00:00)
@@ -704,9 +704,9 @@ contract GLUEMKRPool is LPTokenWrapper, IRewardDistributionRecipient {
         uint256 reward = earned(msg.sender);
         if (reward > 0) {
             rewards[msg.sender] = 0;
-            uint256 scalingFactor = GLUE(address(glue)).gluesScalingFactor();
+            uint256 scalingFactor = RAMEN(address(ramen)).ramensScalingFactor();
             uint256 trueReward = reward.mul(scalingFactor).div(10**18);
-            glue.safeTransfer(msg.sender, trueReward);
+            ramen.safeTransfer(msg.sender, trueReward);
             emit RewardPaid(msg.sender, trueReward);
         }
     }

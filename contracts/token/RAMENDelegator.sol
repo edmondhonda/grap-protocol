@@ -1,11 +1,11 @@
 pragma solidity 0.5.17;
 
-import "./GLUETokenInterface.sol";
-import "./GLUEDelegate.sol";
+import "./RAMENTokenInterface.sol";
+import "./RAMENDelegate.sol";
 
-contract GLUEDelegator is GLUETokenInterface, GLUEDelegatorInterface {
+contract RAMENDelegator is RAMENTokenInterface, RAMENDelegatorInterface {
     /**
-     * @notice Construct a new GLUE
+     * @notice Construct a new RAMEN
      * @param name_ ERC-20 name of this token
      * @param symbol_ ERC-20 symbol of this token
      * @param decimals_ ERC-20 decimal precision of this token
@@ -53,7 +53,7 @@ contract GLUEDelegator is GLUETokenInterface, GLUEDelegatorInterface {
      * @param becomeImplementationData The encoded bytes data to be passed to _becomeImplementation
      */
     function _setImplementation(address implementation_, bool allowResign, bytes memory becomeImplementationData) public {
-        require(msg.sender == gov, "GLUEDelegator::_setImplementation: Caller must be gov");
+        require(msg.sender == gov, "RAMENDelegator::_setImplementation: Caller must be gov");
 
         if (allowResign) {
             delegateToImplementation(abi.encodeWithSignature("_resignImplementation()"));
@@ -412,7 +412,7 @@ contract GLUEDelegator is GLUETokenInterface, GLUEDelegatorInterface {
      * @dev It returns to the external caller whatever the implementation returns or forwards reverts
      */
     function () external payable {
-        require(msg.value == 0,"GLUEDelegator:fallback: cannot send value to fallback");
+        require(msg.value == 0,"RAMENDelegator:fallback: cannot send value to fallback");
 
         // delegate all other functions to current implementation
         delegateAndReturn();

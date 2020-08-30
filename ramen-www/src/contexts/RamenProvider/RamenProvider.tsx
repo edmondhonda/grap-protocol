@@ -2,29 +2,29 @@ import React, { createContext, useEffect, useState } from 'react'
 
 import { useWallet } from 'use-wallet'
 
-import { Glue } from '../../ramen'
+import { Ramen } from '../../ramen'
 
-export interface GlueContext {
-  glue?: typeof Glue
+export interface RamenContext {
+  ramen?: typeof Ramen
 }
 
-export const Context = createContext<GlueContext>({
-  glue: undefined,
+export const Context = createContext<RamenContext>({
+  ramen: undefined,
 })
 
 declare global {
   interface Window {
-    gluesauce: any
+    ramensauce: any
   }
 }
 
-const GlueProvider: React.FC = ({ children }) => {
+const RamenProvider: React.FC = ({ children }) => {
   const { ethereum } = useWallet()
-  const [glue, setGlue] = useState<any>()
+  const [ramen, setRamen] = useState<any>()
 
   useEffect(() => {
     if (ethereum) {
-      const glueLib = new Glue(
+      const ramenLib = new Ramen(
         ethereum,
         "42",
         false, {
@@ -38,16 +38,16 @@ const GlueProvider: React.FC = ({ children }) => {
           ethereumNodeTimeout: 10000
         }
       )
-      setGlue(glueLib)
-      window.gluesauce = glueLib
+      setRamen(ramenLib)
+      window.ramensauce = ramenLib
     }
   }, [ethereum])
 
   return (
-    <Context.Provider value={{ glue }}>
+    <Context.Provider value={{ ramen }}>
       {children}
     </Context.Provider>
   )
 }
 
-export default GlueProvider
+export default RamenProvider

@@ -12,7 +12,7 @@ import Card from '../../components/Card'
 import CardContent from '../../components/CardContent'
 import Spacer from '../../components/Spacer'
 
-import useGlue from '../../hooks/useRamen'
+import useRamen from '../../hooks/useRamen'
 
 import { getDisplayBalance } from '../../utils/formatBalance'
 
@@ -28,41 +28,41 @@ const ProposalPage: React.FC = () => {
   const [proposal, setProposal] =  useState<Proposal>({} as Proposal)
   const [{forVotes, againstVotes, quorumVotes, totalVotes}, setVotes] = useState({forVotes:0, againstVotes:0, totalVotes:0, quorumVotes:0})
   const { account } = useWallet()
-  const glue = useGlue()
+  const ramen = useRamen()
 
 
   const handleVoteForClick = useCallback(() => {
-    castVote(glue, proposal.id, true, account )
-  }, [account, glue])
+    castVote(ramen, proposal.id, true, account )
+  }, [account, ramen])
 
   const handleVoteAgainstClick = useCallback(() => {
-    castVote(glue, proposal.id, false, account )
-  }, [account, glue])
+    castVote(ramen, proposal.id, false, account )
+  }, [account, ramen])
 
   const fetchProposal = useCallback(async () => {
-    const proposal = await getProposal(glue, proposalId)
+    const proposal = await getProposal(ramen, proposalId)
     setProposal(proposal)
-  }, [glue, setProposal])
+  }, [ramen, setProposal])
 
   const fetchVotes = useCallback(async () => {
-    const proposalStatus:ProposalStatus = await getProposalStatus(glue, proposalId)
+    const proposalStatus:ProposalStatus = await getProposalStatus(ramen, proposalId)
     const forVotes = new BigNumber(proposalStatus.forVotes).div(10**6)
     const againstVotes = new BigNumber(proposalStatus.againstVotes).div(10**6)
-    const quorumCount = await getQuorumVotes(glue)
+    const quorumCount = await getQuorumVotes(ramen)
     setVotes({
       forVotes: Number(getDisplayBalance(forVotes)),
       againstVotes: Number(getDisplayBalance(againstVotes)),
       totalVotes: Number(getDisplayBalance(forVotes.plus(againstVotes))),
       quorumVotes: Number(getDisplayBalance(quorumCount))
     })
-  }, [glue, setVotes])
+  }, [ramen, setVotes])
 
   useEffect(() => {
-    if (glue) {
+    if (ramen) {
       fetchProposal()
       fetchVotes()
     }
-  }, [fetchVotes, glue])
+  }, [fetchVotes, ramen])
 
   return (
     <Card>

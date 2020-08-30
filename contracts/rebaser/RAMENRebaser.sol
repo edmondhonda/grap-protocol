@@ -5,10 +5,10 @@ import "../lib/SafeERC20.sol";
 import "../lib/SafeMath.sol";
 import '../lib/IUniswapV2Pair.sol';
 import "../lib/UniswapV2OracleLibrary.sol";
-import "../token/GLUETokenInterface.sol";
+import "../token/RAMENTokenInterface.sol";
 
 
-contract GLUERebaser {
+contract RAMENRebaser {
 
     using SafeMath for uint256;
 
@@ -24,7 +24,7 @@ contract GLUERebaser {
     }
 
     struct UniVars {
-      uint256 gluesToUni;
+      uint256 ramensToUni;
       uint256 amountFromReserves;
       uint256 mintToReserves;
     }
@@ -52,7 +52,7 @@ contract GLUERebaser {
     /**
      * @notice Sets the reserve contract
      */
-    event TreasuryIncreased(uint256 reservesAdded, uint256 gluesSold, uint256 gluesFromReserves, uint256 gluesToReserves);
+    event TreasuryIncreased(uint256 reservesAdded, uint256 ramensSold, uint256 ramensFromReserves, uint256 ramensToReserves);
 
 
     /**
@@ -116,8 +116,8 @@ contract GLUERebaser {
     /// @notice Time of TWAP initialization
     uint256 public timeOfTWAPInit;
 
-    /// @notice GLUE token address
-    address public glueAddress;
+    /// @notice RAMEN token address
+    address public ramenAddress;
 
     /// @notice reserve token
     address public reserveToken;
@@ -125,7 +125,7 @@ contract GLUERebaser {
     /// @notice Reserves vault contract
     address public reservesContract;
 
-    /// @notice pair for reserveToken <> GLUE
+    /// @notice pair for reserveToken <> RAMEN
     address public uniswap_pair;
 
     /// @notice last TWAP update time
@@ -141,11 +141,11 @@ contract GLUERebaser {
     /// @notice the maximum slippage factor when buying reserve token
     uint256 public maxSlippageFactor;
 
-    /// @notice Whether or not this token is first in uniswap GLUE<>Reserve pair
+    /// @notice Whether or not this token is first in uniswap RAMEN<>Reserve pair
     bool public isToken0;
 
     constructor(
-        address glueAddress_,
+        address ramenAddress_,
         address reserveToken_,
         address uniswap_factory,
         address reservesContract_
@@ -155,15 +155,15 @@ contract GLUERebaser {
           minRebaseTimeIntervalSec = 1 minutes;
           rebaseWindowOffsetSec = 0; // 4PM-5PM UTC+0 rebases
           reservesContract = reservesContract_;
-          (address token0, address token1) = sortTokens(glueAddress_, reserveToken_);
+          (address token0, address token1) = sortTokens(ramenAddress_, reserveToken_);
 
           // used for interacting with uniswap
-          if (token0 == glueAddress_) {
+          if (token0 == ramenAddress_) {
               isToken0 = true;
           } else {
               isToken0 = false;
           }
-          // uniswap GLUE<>Reserve pair
+          // uniswap RAMEN<>Reserve pair
           uniswap_pair = pairFor(uniswap_factory, token0, token1);
 
           // Reserves contract is mutable
@@ -172,7 +172,7 @@ contract GLUERebaser {
           // Reserve token is not mutable. Must deploy a new rebaser to update it
           reserveToken = reserveToken_;
 
-          glueAddress = glueAddress_;
+          ramenAddress = ramenAddress_;
 
           // target 10% slippage
           // 5.4%
@@ -330,14 +330,14 @@ contract GLUERebaser {
         // Apply the Dampening factor.
         indexDelta = indexDelta.div(rebaseLag);
 
-        GLUETokenInterface glue = GLUETokenInterface(glueAddress);
+        RAMENTokenInterface ramen = RAMENTokenInterface(ramenAddress);
 
         if (positive) {
-            require(glue.gluesScalingFactor().mul(uint256(10**18).add(indexDelta)).div(10**18) < glue.maxScalingFactor(), "new scaling factor will be too big");
+            require(ramen.ramensScalingFactor().mul(uint256(10**18).add(indexDelta)).div(10**18) < ramen.maxScalingFactor(), "new scaling factor will be too big");
         }
 
 
-        uint256 currSupply = glue.totalSupply();
+        uint256 currSupply = ramen.totalSupply();
 
         uint256 mintAmount;
         // reduce indexDelta to account for minting
@@ -348,8 +348,8 @@ contract GLUERebaser {
         }
 
         // rebase
-        uint256 supplyAfterRebase = glue.rebase(epoch, indexDelta, positive);
-        assert(glue.gluesScalingFactor() <= glue.maxScalingFactor());
+        uint256 supplyAfterRebase = ramen.rebase(epoch, indexDelta, positive);
+        assert(ramen.ramensScalingFactor() <= ramen.maxScalingFactor());
 
         // perform actions after rebase
         afterRebase(mintAmount, offPegPerc);
@@ -370,33 +370,33 @@ contract GLUERebaser {
         require(sender == address(this), "bad origin");
         (UniVars memory uniVars) = abi.decode(data, (UniVars));
 
-        GLUETokenInterface glue = GLUETokenInterface(glueAddress);
+        RAMENTokenInterface ramen = RAMENTokenInterface(ramenAddress);
 
         if (uniVars.amountFromReserves > 0) {
             // transfer from reserves and mint to uniswap
-            glue.transferFrom(reservesContract, uniswap_pair, uniVars.amountFromReserves);
-            if (uniVars.amountFromReserves < uniVars.gluesToUni) {
-                // if the amount from reserves > gluesToUni, we have fully paid for the yCRV tokens
+            ramen.transferFrom(reservesContract, uniswap_pair, uniVars.amountFromReserves);
+            if (uniVars.amountFromReserves < uniVars.ramensToUni) {
+                // if the amount from reserves > ramensToUni, we have fully paid for the yCRV tokens
                 // thus this number would be 0 so no need to mint
-                glue.mint(uniswap_pair, uniVars.gluesToUni.sub(uniVars.amountFromReserves));
+                ramen.mint(uniswap_pair, uniVars.ramensToUni.sub(uniVars.amountFromReserves));
             }
         } else {
             // mint to uniswap
-            glue.mint(uniswap_pair, uniVars.gluesToUni);
+            ramen.mint(uniswap_pair, uniVars.ramensToUni);
         }
 
         // mint unsold to mintAmount
         if (uniVars.mintToReserves > 0) {
-            glue.mint(reservesContract, uniVars.mintToReserves);
+            ramen.mint(reservesContract, uniVars.mintToReserves);
         }
 
         // transfer reserve token to reserves
         if (isToken0) {
             SafeERC20.safeTransfer(IERC20(reserveToken), reservesContract, amount1);
-            emit TreasuryIncreased(amount1, uniVars.gluesToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
+            emit TreasuryIncreased(amount1, uniVars.ramensToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
         } else {
             SafeERC20.safeTransfer(IERC20(reserveToken), reservesContract, amount0);
-            emit TreasuryIncreased(amount0, uniVars.gluesToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
+            emit TreasuryIncreased(amount0, uniVars.ramensToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
         }
     }
 
@@ -408,21 +408,21 @@ contract GLUERebaser {
     {
         UniswapPair pair = UniswapPair(uniswap_pair);
 
-        GLUETokenInterface glue = GLUETokenInterface(glueAddress);
+        RAMENTokenInterface ramen = RAMENTokenInterface(ramenAddress);
 
         // get reserves
         (uint256 token0Reserves, uint256 token1Reserves, ) = pair.getReserves();
 
-        // check if protocol has excess glue in the reserve
-        uint256 excess = glue.balanceOf(reservesContract);
+        // check if protocol has excess ramen in the reserve
+        uint256 excess = ramen.balanceOf(reservesContract);
 
 
         uint256 tokens_to_max_slippage = uniswapMaxSlippage(token0Reserves, token1Reserves, offPegPerc);
 
         UniVars memory uniVars = UniVars({
-          gluesToUni: tokens_to_max_slippage, // how many glues uniswap needs
-          amountFromReserves: excess, // how much of gluesToUni comes from reserves
-          mintToReserves: 0 // how much glues protocol mints to reserves
+          ramensToUni: tokens_to_max_slippage, // how many ramens uniswap needs
+          amountFromReserves: excess, // how much of ramensToUni comes from reserves
+          mintToReserves: 0 // how much ramens protocol mints to reserves
         });
 
         // tries to sell all mint + excess
@@ -436,7 +436,7 @@ contract GLUERebaser {
 
                 // can handle selling all of reserves and mint
                 uint256 buyTokens = getAmountOut(mintAmount + excess, token0Reserves, token1Reserves);
-                uniVars.gluesToUni = mintAmount + excess;
+                uniVars.ramensToUni = mintAmount + excess;
                 uniVars.amountFromReserves = excess;
                 // call swap using entire mint amount and excess; mint 0 to reserves
                 pair.swap(0, buyTokens, address(this), abi.encode(uniVars));
@@ -445,7 +445,7 @@ contract GLUERebaser {
                     // uniswap can handle entire reserves
                     uint256 buyTokens = getAmountOut(tokens_to_max_slippage, token0Reserves, token1Reserves);
 
-                    // swap up to slippage limit, taking entire glue reserves, and minting part of total
+                    // swap up to slippage limit, taking entire ramen reserves, and minting part of total
                     uniVars.mintToReserves = mintAmount.sub((tokens_to_max_slippage - excess));
                     pair.swap(0, buyTokens, address(this), abi.encode(uniVars));
                 } else {
@@ -462,7 +462,7 @@ contract GLUERebaser {
             if (tokens_to_max_slippage > mintAmount.add(excess)) {
                 // can handle all of reserves and mint
                 uint256 buyTokens = getAmountOut(mintAmount + excess, token1Reserves, token0Reserves);
-                uniVars.gluesToUni = mintAmount + excess;
+                uniVars.ramensToUni = mintAmount + excess;
                 uniVars.amountFromReserves = excess;
                 // call swap using entire mint amount and excess; mint 0 to reserves
                 pair.swap(buyTokens, 0, address(this), abi.encode(uniVars));
@@ -471,9 +471,9 @@ contract GLUERebaser {
                     // uniswap can handle entire reserves
                     uint256 buyTokens = getAmountOut(tokens_to_max_slippage, token1Reserves, token0Reserves);
 
-                    // swap up to slippage limit, taking entire glue reserves, and minting part of total
+                    // swap up to slippage limit, taking entire ramen reserves, and minting part of total
                     uniVars.mintToReserves = mintAmount.sub( (tokens_to_max_slippage - excess));
-                    // swap up to slippage limit, taking entire glue reserves, and minting part of total
+                    // swap up to slippage limit, taking entire ramen reserves, and minting part of total
                     pair.swap(buyTokens, 0, address(this), abi.encode(uniVars));
                 } else {
                     // uniswap cant handle all of excess

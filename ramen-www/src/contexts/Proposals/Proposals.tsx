@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
-import useGlue from '../../hooks/useRamen'
+import useRamen from '../../hooks/useRamen'
 import { getProposals } from '../../ramenUtils'
 
 import Context from './context'
@@ -10,19 +10,19 @@ import { Proposal } from './types'
 const Proposals: React.FC = ({ children }) => {
 
   const [proposals, setProposals] = useState<Proposal[]>([])
-  const glue = useGlue()
+  const ramen = useRamen()
   
   const fetchProposals = useCallback(async () => {
-    const propsArr: Proposal[] = await getProposals(glue)
+    const propsArr: Proposal[] = await getProposals(ramen)
 
     setProposals(propsArr)
-  }, [glue, setProposals])
+  }, [ramen, setProposals])
 
   useEffect(() => {
-    if (glue) {
+    if (ramen) {
       fetchProposals()
     }
-  }, [glue, fetchProposals])
+  }, [ramen, fetchProposals])
 
   return (
     <Context.Provider value={{ proposals }}>

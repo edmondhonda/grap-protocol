@@ -2,11 +2,11 @@ pragma solidity 0.5.17;
 
 import "../lib/IERC20.sol";
 import "../lib/SafeERC20.sol";
-import "../token/GLUETokenInterface.sol";
+import "../token/RAMENTokenInterface.sol";
 
-contract GLUEReserves {
+contract RAMENReserves {
 
-    // Token that serves as a reserve for GLUE
+    // Token that serves as a reserve for RAMEN
     address public reserveToken;
 
     address public gov;
@@ -15,7 +15,7 @@ contract GLUEReserves {
 
     address public rebaser;
 
-    address public glueAddress;
+    address public ramenAddress;
 
     /*** Gov Events ***/
 
@@ -42,12 +42,12 @@ contract GLUEReserves {
 
     constructor(
         address reserveToken_,
-        address glueAddress_
+        address ramenAddress_
     )
         public
     {
         reserveToken = reserveToken_;
-        glueAddress = glueAddress_;
+        ramenAddress = ramenAddress_;
         gov = msg.sender;
     }
 
@@ -56,9 +56,9 @@ contract GLUEReserves {
         onlyGov
     {
         address oldRebaser = rebaser;
-        GLUETokenInterface(glueAddress).decreaseAllowance(oldRebaser, uint256(-1));
+        RAMENTokenInterface(ramenAddress).decreaseAllowance(oldRebaser, uint256(-1));
         rebaser = rebaser_;
-        GLUETokenInterface(glueAddress).approve(rebaser_, uint256(-1));
+        RAMENTokenInterface(ramenAddress).approve(rebaser_, uint256(-1));
         emit NewRebaser(oldRebaser, rebaser_);
     }
 

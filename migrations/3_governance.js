@@ -3,13 +3,13 @@
 
 // Token
 // deployed first
-const GLUEImplementation = artifacts.require("GLUEDelegate");
-const GLUEProxy = artifacts.require("GLUEDelegator");
+const RAMENImplementation = artifacts.require("RAMENDelegate");
+const RAMENProxy = artifacts.require("RAMENDelegator");
 
 // Rs
 // deployed second
-const GLUEReserves = artifacts.require("GLUEReserves");
-const GLUERebaser = artifacts.require("GLUERebaser");
+const RAMENReserves = artifacts.require("RAMENReserves");
+const RAMENRebaser = artifacts.require("RAMENRebaser");
 
 // Governance
 // deployed third
@@ -39,6 +39,6 @@ async function deployGovernance(deployer, network) {
   await deployer.deploy(Timelock);
   await deployer.deploy(Gov,
       Timelock.address,
-      GLUEProxy.address
+      RAMENProxy.address
   );
 }

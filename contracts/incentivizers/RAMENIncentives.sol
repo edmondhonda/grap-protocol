@@ -5,7 +5,7 @@
 /___/ \_, //_//_/\__//_//_/\__/ \__//_/ /_\_\
      /___/
 
-* Synthetix: GLUEIncentives.sol
+* Synthetix: RAMENIncentives.sol
 *
 * Docs: https://docs.synthetix.io/
 *
@@ -624,13 +624,13 @@ contract LPTokenWrapper {
     }
 }
 
-interface GLUE {
-    function gluesScalingFactor() external returns (uint256);
+interface RAMEN {
+    function ramensScalingFactor() external returns (uint256);
     function mint(address to, uint256 amount) external;
 }
 
-contract GLUEIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public glue = IERC20(0x640536B14F186e1ee0358aa50E7320Db6b2faaC3);
+contract RAMENIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
+    IERC20 public ramen = IERC20(0x640536B14F186e1ee0358aa50E7320Db6b2faaC3);
     uint256 public constant DURATION = 2592000;
 
     uint256 public initreward = 15 * 10**3 * 10**18; // 1.5m
@@ -706,9 +706,9 @@ contract GLUEIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
         uint256 reward = earned(msg.sender);
         if (reward > 0) {
             rewards[msg.sender] = 0;
-            uint256 scalingFactor = GLUE(address(glue)).gluesScalingFactor();
+            uint256 scalingFactor = RAMEN(address(ramen)).ramensScalingFactor();
             uint256 trueReward = reward.mul(scalingFactor).div(10**18);
-            glue.safeTransfer(msg.sender, trueReward);
+            ramen.safeTransfer(msg.sender, trueReward);
             emit RewardPaid(msg.sender, trueReward);
         }
     }
@@ -716,9 +716,9 @@ contract GLUEIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
     modifier checkhalve() {
         if (block.timestamp >= periodFinish) {
             initreward = initreward.mul(50).div(100);
-            uint256 scalingFactor = GLUE(address(glue)).gluesScalingFactor();
+            uint256 scalingFactor = RAMEN(address(ramen)).ramensScalingFactor();
             uint256 newRewards = initreward.mul(scalingFactor).div(10**18);
-            glue.mint(address(this), newRewards);
+            ramen.mint(address(this), newRewards);
 
             rewardRate = initreward.div(DURATION);
             periodFinish = block.timestamp.add(DURATION);
@@ -753,8 +753,8 @@ contract GLUEIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
           periodFinish = block.timestamp.add(DURATION);
           emit RewardAdded(reward);
         } else {
-          require(glue.balanceOf(address(this)) == 0, "already initialized");
-          glue.mint(address(this), initreward);
+          require(ramen.balanceOf(address(this)) == 0, "already initialized");
+          ramen.mint(address(this), initreward);
           rewardRate = initreward.div(DURATION);
           lastUpdateTime = starttime;
           periodFinish = starttime.add(DURATION);
@@ -778,7 +778,7 @@ contract GLUEIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
         // cant take staked asset
         require(_token != uni_lp, "uni_lp");
         // cant take reward asset
-        require(_token != glue, "glue");
+        require(_token != ramen, "ramen");
 
         // transfer to
         _token.safeTransfer(to, amount);

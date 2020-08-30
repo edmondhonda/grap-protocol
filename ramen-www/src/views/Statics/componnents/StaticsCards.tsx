@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { ChainId, Token, WETH, Fetcher, Route } from '@uniswap/sdk'
 import Web3 from 'web3';
-import useGlue from '../../../hooks/useRamen'
+import useRamen from '../../../hooks/useRamen'
 
 import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
@@ -13,19 +13,19 @@ import { getPoolStartTime } from '../../../ramenUtils'
 import { getDisplayBalance } from '../../../utils/formatBalance'
 import { getStats } from '../../Home/utils'
 import { OverviewData } from '../../Home/types'
-import { Glue } from '../../../ramen'
+import { Ramen } from '../../../ramen'
 import BigNumber from 'bignumber.js'
-export interface GlueContext {
-  glue?: typeof Glue
+export interface RamenContext {
+  ramen?: typeof Ramen
 }
 
 const ADDRESS = '0x640536B14F186e1ee0358aa50E7320Db6b2faaC3';
 let currentPrice = 0;
-let glue: any;
+let ramen: any;
 const FarmCards: React.FC = () => {
 
   const [farms] = useFarms()
-  glue = useGlue()
+  ramen = useRamen()
   const [{
     circSupply,
     curPrice,
@@ -35,16 +35,16 @@ const FarmCards: React.FC = () => {
   }, setStats] = useState<OverviewData>({})
 
   const fetchStats = useCallback(async () => {
-    const statsData = await getStats(glue)
+    const statsData = await getStats(ramen)
     setStats(statsData)
     currentPrice = parseFloat(getDisplayBalance(new BigNumber(statsData.curPrice)))
-  }, [glue, setStats])
+  }, [ramen, setStats])
 
   useEffect(() => {
-    if (glue) {
+    if (ramen) {
       fetchStats()
     }
-  }, [glue])
+  }, [ramen])
 
 
   const priceBlock = () => {
@@ -85,25 +85,25 @@ const StaticsCard: React.FC<StaticsCardProps> = ({ farm, price }) => {
 
 
   const getData = useCallback(async () => {
-    const selfAddress = glue.web3.currentProvider.selectedAddress;
+    const selfAddress = ramen.web3.currentProvider.selectedAddress;
     const token = farm.depositToken;
     let ah:any = {'weth': 'eth_pool', 'uni_lp': 'ycrvUNIV_pool'};
     let key = ah[token] || `${token}_pool`
 
-    const STAKING_POOL = glue.contracts[key];
-    const Token = glue.contracts[token];
-    const GLUE_TOKEN = glue.contracts.glue;
+    const STAKING_POOL = ramen.contracts[key];
+    const Token = ramen.contracts[token];
+    const RAMEN_TOKEN = ramen.contracts.ramen;
     const rewardTokenTicker = "Sumo"
     const stakingTokenTicker = token
-    const glueScale = await GLUE_TOKEN.methods.gluesScalingFactor().call() / 1e18;
+    const ramenScale = await RAMEN_TOKEN.methods.ramensScalingFactor().call() / 1e18;
     const rewardPoolAddr = STAKING_POOL._address
     const amount = await STAKING_POOL.methods.balanceOf(selfAddress).call() / 1e18;
-    const earned = glueScale * await STAKING_POOL.methods.earned(selfAddress).call() / 1e18;
+    const earned = ramenScale * await STAKING_POOL.methods.earned(selfAddress).call() / 1e18;
     const totalSupply = await Token.methods.totalSupply().call() / 1e18;
     const totalStakedAmount = await Token.methods.balanceOf(rewardPoolAddr).call() / 1e18;
 
 
-    const weekly_reward = (Math.round((await STAKING_POOL.methods.rewardRate().call() * 604800)) * glueScale) / 1e18;
+    const weekly_reward = (Math.round((await STAKING_POOL.methods.rewardRate().call() * 604800)) * ramenScale) / 1e18;
     const rewardPerToken = weekly_reward / totalStakedAmount;
 
 
@@ -128,11 +128,11 @@ const StaticsCard: React.FC<StaticsCardProps> = ({ farm, price }) => {
       // if(token == 'yfi') debugger;
       if(token === 'uni_lp'){
         const UNI_TOKEN_ADDR = "0x4eFdFe92F7528Bd16b95083d7Ba1b247De32F549";
-        const totalyCRVInUniswapPair = await glue.contracts['ycrv'].methods.balanceOf(UNI_TOKEN_ADDR).call() / 1e18;
-        const totalGLUEInUniswapPair = await GLUE_TOKEN.methods.balanceOf(UNI_TOKEN_ADDR).call() / 1e18;
+        const totalyCRVInUniswapPair = await ramen.contracts['ycrv'].methods.balanceOf(UNI_TOKEN_ADDR).call() / 1e18;
+        const totalRAMENInUniswapPair = await RAMEN_TOKEN.methods.balanceOf(UNI_TOKEN_ADDR).call() / 1e18;
         let yCRVPrice = stakingTokenPrice;
-        const totalSupplyOfStakingToken = await glue.contracts['ycrvUNIV'].methods.totalSupply().call() / 1e18;
-        stakingTokenPrice = (yCRVPrice * totalyCRVInUniswapPair + price * totalGLUEInUniswapPair) / totalSupplyOfStakingToken;
+        const totalSupplyOfStakingToken = await ramen.contracts['ycrvUNIV'].methods.totalSupply().call() / 1e18;
+        stakingTokenPrice = (yCRVPrice * totalyCRVInUniswapPair + price * totalRAMENInUniswapPair) / totalSupplyOfStakingToken;
       }
     }
     let weeklyEstimate = rewardPerToken * amount;

@@ -6,7 +6,7 @@ import Countdown from 'react-countdown';
 import Page from '../../components/Page'
 import PageHeader from '../../components/PageHeader'
 
-import useGlue from '../../hooks/useRamen'
+import useRamen from '../../hooks/useRamen'
 
 import Rebase from './components/Rebase'
 import Stats from './components/Stats'
@@ -16,7 +16,7 @@ import { getStats } from './utils'
 
 const Home: React.FC = () => {
 
-  const glue = useGlue()
+  const ramen = useRamen()
   const [{
     circSupply,
     curPrice,
@@ -26,15 +26,15 @@ const Home: React.FC = () => {
   }, setStats] = useState<OverviewData>({})
 
   const fetchStats = useCallback(async () => {
-    const statsData = await getStats(glue)
+    const statsData = await getStats(ramen)
     setStats(statsData)
-  }, [glue, setStats])
+  }, [ramen, setStats])
 
   useEffect(() => {
-    if (glue) {
+    if (ramen) {
       fetchStats()
     }
-  }, [glue])
+  }, [ramen])
 
   const countdownBlock = () => {
     const date = Date.parse("2020-08-20T00:00:00+0000");

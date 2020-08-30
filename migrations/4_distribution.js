@@ -5,30 +5,30 @@ var fs = require('fs')
 
 // Protocol
 // deployed second
-const GLUEImplementation = artifacts.require("GLUEDelegate");
-const GLUEProxy = artifacts.require("GLUEDelegator");
+const RAMENImplementation = artifacts.require("RAMENDelegate");
+const RAMENProxy = artifacts.require("RAMENDelegator");
 
 // deployed third
-const GLUEReserves = artifacts.require("GLUEReserves");
-const GLUERebaser = artifacts.require("GLUERebaser");
+const RAMENReserves = artifacts.require("RAMENReserves");
+const RAMENRebaser = artifacts.require("RAMENRebaser");
 
 const Gov = artifacts.require("GovernorAlpha");
 const Timelock = artifacts.require("Timelock");
 
 // deployed fourth
-const GLUE_ETHPool = artifacts.require("GLUEETHPool");
-const GLUE_YAMPool = artifacts.require("GLUEYAMPool");
-const GLUE_YFIPool = artifacts.require("GLUEYFIPool");
-const GLUE_LINKPool = artifacts.require("GLUELINKPool");
-const GLUE_MKRPool = artifacts.require("GLUEMKRPool");
-const GLUE_LENDPool = artifacts.require("GLUELENDPool");
-const GLUE_COMPPool = artifacts.require("GLUECOMPPool");
-const GLUE_SNXPool = artifacts.require("GLUESNXPool");
-const GLUE_YFIIPool = artifacts.require("GLUEYFIIPool");
-const GLUE_CRVPool = artifacts.require("GLUECRVPool");
+const RAMEN_ETHPool = artifacts.require("RAMENETHPool");
+const RAMEN_YAMPool = artifacts.require("RAMENYAMPool");
+const RAMEN_YFIPool = artifacts.require("RAMENYFIPool");
+const RAMEN_LINKPool = artifacts.require("RAMENLINKPool");
+const RAMEN_MKRPool = artifacts.require("RAMENMKRPool");
+const RAMEN_LENDPool = artifacts.require("RAMENLENDPool");
+const RAMEN_COMPPool = artifacts.require("RAMENCOMPPool");
+const RAMEN_SNXPool = artifacts.require("RAMENSNXPool");
+const RAMEN_YFIIPool = artifacts.require("RAMENYFIIPool");
+const RAMEN_CRVPool = artifacts.require("RAMENCRVPool");
 
 // deployed fifth
-const GLUEIncentivizer = artifacts.require("GLUEIncentivizer");
+const RAMENIncentivizer = artifacts.require("RAMENIncentivizer");
 
 // ============ Main Migration ============
 
@@ -47,35 +47,35 @@ module.exports = migration;
 
 async function deployDistribution(deployer, network, accounts) {
   console.log(network)
-  let glue = await GLUEProxy.deployed();
-  let yReserves = await GLUEReserves.deployed()
-  let yRebaser = await GLUERebaser.deployed()
+  let ramen = await RAMENProxy.deployed();
+  let yReserves = await RAMENReserves.deployed()
+  let yRebaser = await RAMENRebaser.deployed()
   let tl = await Timelock.deployed();
   let gov = await Gov.deployed();
   if (network != "test") {
-    await deployer.deploy(GLUE_ETHPool);
-    await deployer.deploy(GLUE_YAMPool);
-    await deployer.deploy(GLUE_YFIPool);
-    await deployer.deploy(GLUEIncentivizer);
-    await deployer.deploy(GLUE_LINKPool);
-    await deployer.deploy(GLUE_MKRPool);
-    await deployer.deploy(GLUE_LENDPool);
-    await deployer.deploy(GLUE_COMPPool);
-    await deployer.deploy(GLUE_SNXPool);
-    await deployer.deploy(GLUE_YFIIPool);
-    await deployer.deploy(GLUE_CRVPool);
+    await deployer.deploy(RAMEN_ETHPool);
+    await deployer.deploy(RAMEN_YAMPool);
+    await deployer.deploy(RAMEN_YFIPool);
+    await deployer.deploy(RAMENIncentivizer);
+    await deployer.deploy(RAMEN_LINKPool);
+    await deployer.deploy(RAMEN_MKRPool);
+    await deployer.deploy(RAMEN_LENDPool);
+    await deployer.deploy(RAMEN_COMPPool);
+    await deployer.deploy(RAMEN_SNXPool);
+    await deployer.deploy(RAMEN_YFIIPool);
+    await deployer.deploy(RAMEN_CRVPool);
 
-    let eth_pool = new web3.eth.Contract(GLUE_ETHPool.abi, GLUE_ETHPool.address);
-    let yam_pool = new web3.eth.Contract(GLUE_YAMPool.abi, GLUE_YAMPool.address);
-    let yfi_pool = new web3.eth.Contract(GLUE_YFIPool.abi, GLUE_YFIPool.address);
-    let lend_pool = new web3.eth.Contract(GLUE_LENDPool.abi, GLUE_LENDPool.address);
-    let mkr_pool = new web3.eth.Contract(GLUE_MKRPool.abi, GLUE_MKRPool.address);
-    let snx_pool = new web3.eth.Contract(GLUE_SNXPool.abi, GLUE_SNXPool.address);
-    let comp_pool = new web3.eth.Contract(GLUE_COMPPool.abi, GLUE_COMPPool.address);
-    let link_pool = new web3.eth.Contract(GLUE_LINKPool.abi, GLUE_LINKPool.address);
-    let yfii_pool = new web3.eth.Contract(GLUE_YFIIPool.abi, GLUE_YFIIPool.address);
-    let crv_pool = new web3.eth.Contract(GLUE_CRVPool.abi, GLUE_CRVPool.address);
-    let ycrv_pool = new web3.eth.Contract(GLUEIncentivizer.abi, GLUEIncentivizer.address);
+    let eth_pool = new web3.eth.Contract(RAMEN_ETHPool.abi, RAMEN_ETHPool.address);
+    let yam_pool = new web3.eth.Contract(RAMEN_YAMPool.abi, RAMEN_YAMPool.address);
+    let yfi_pool = new web3.eth.Contract(RAMEN_YFIPool.abi, RAMEN_YFIPool.address);
+    let lend_pool = new web3.eth.Contract(RAMEN_LENDPool.abi, RAMEN_LENDPool.address);
+    let mkr_pool = new web3.eth.Contract(RAMEN_MKRPool.abi, RAMEN_MKRPool.address);
+    let snx_pool = new web3.eth.Contract(RAMEN_SNXPool.abi, RAMEN_SNXPool.address);
+    let comp_pool = new web3.eth.Contract(RAMEN_COMPPool.abi, RAMEN_COMPPool.address);
+    let link_pool = new web3.eth.Contract(RAMEN_LINKPool.abi, RAMEN_LINKPool.address);
+    let yfii_pool = new web3.eth.Contract(RAMEN_YFIIPool.abi, RAMEN_YFIIPool.address);
+    let crv_pool = new web3.eth.Contract(RAMEN_CRVPool.abi, RAMEN_CRVPool.address);
+    let ycrv_pool = new web3.eth.Contract(RAMENIncentivizer.abi, RAMENIncentivizer.address);
 
     console.log("setting distributor");
     await Promise.all([
@@ -98,17 +98,17 @@ async function deployDistribution(deployer, network, accounts) {
     console.log("transfering and notifying");
     console.log("eth");
     await Promise.all([
-      glue.transfer(GLUE_ETHPool.address, twenty.toString()),
-      glue.transfer(GLUE_YAMPool.address, twenty.toString()),
-      glue.transfer(GLUE_YFIPool.address, twenty.toString()),
-      glue.transfer(GLUE_LENDPool.address, twenty.toString()),
-      glue.transfer(GLUE_MKRPool.address, twenty.toString()),
-      glue.transfer(GLUE_SNXPool.address, twenty.toString()),
-      glue.transfer(GLUE_COMPPool.address, twenty.toString()),
-      glue.transfer(GLUE_LINKPool.address, twenty.toString()),
-      glue.transfer(GLUE_YFIIPool.address, twenty.toString()),
-      glue.transfer(GLUE_CRVPool.address, twenty.toString()),
-      glue._setIncentivizer(GLUEIncentivizer.address),
+      ramen.transfer(RAMEN_ETHPool.address, twenty.toString()),
+      ramen.transfer(RAMEN_YAMPool.address, twenty.toString()),
+      ramen.transfer(RAMEN_YFIPool.address, twenty.toString()),
+      ramen.transfer(RAMEN_LENDPool.address, twenty.toString()),
+      ramen.transfer(RAMEN_MKRPool.address, twenty.toString()),
+      ramen.transfer(RAMEN_SNXPool.address, twenty.toString()),
+      ramen.transfer(RAMEN_COMPPool.address, twenty.toString()),
+      ramen.transfer(RAMEN_LINKPool.address, twenty.toString()),
+      ramen.transfer(RAMEN_YFIIPool.address, twenty.toString()),
+      ramen.transfer(RAMEN_CRVPool.address, twenty.toString()),
+      ramen._setIncentivizer(RAMENIncentivizer.address),
     ]);
 
     await Promise.all([
@@ -156,14 +156,14 @@ async function deployDistribution(deployer, network, accounts) {
   }
 
   await Promise.all([
-    glue._setPendingGov(Timelock.address),
+    ramen._setPendingGov(Timelock.address),
     yReserves._setPendingGov(Timelock.address),
     yRebaser._setPendingGov(Timelock.address),
   ]);
 
   await Promise.all([
       tl.executeTransaction(
-        GLUEProxy.address,
+        RAMENProxy.address,
         0,
         "_acceptGov()",
         "0x",
@@ -171,7 +171,7 @@ async function deployDistribution(deployer, network, accounts) {
       ),
 
       tl.executeTransaction(
-        GLUEReserves.address,
+        RAMENReserves.address,
         0,
         "_acceptGov()",
         "0x",
@@ -179,7 +179,7 @@ async function deployDistribution(deployer, network, accounts) {
       ),
 
       tl.executeTransaction(
-        GLUERebaser.address,
+        RAMENRebaser.address,
         0,
         "_acceptGov()",
         "0x",

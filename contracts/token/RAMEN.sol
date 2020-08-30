@@ -1,9 +1,9 @@
 pragma solidity 0.5.17;
 
-/* import "./GLUETokenInterface.sol"; */
-import "./GLUEGovernance.sol";
+/* import "./RAMENTokenInterface.sol"; */
+import "./RAMENGovernance.sol";
 
-contract GLUEToken is GLUEGovernanceToken {
+contract RAMENToken is RAMENGovernanceToken {
     // Modifiers
     modifier onlyGov() {
         require(msg.sender == gov);
@@ -33,7 +33,7 @@ contract GLUEToken is GLUEGovernanceToken {
     )
         public
     {
-        require(gluesScalingFactor == 0, "already initialized");
+        require(ramensScalingFactor == 0, "already initialized");
         name = name_;
         symbol = symbol_;
         decimals = decimals_;
@@ -66,8 +66,8 @@ contract GLUEToken is GLUEGovernanceToken {
         view
         returns (uint256)
     {
-        // scaling factor can only go up to 2**256-1 = initSupply * gluesScalingFactor
-        // this is used to check if gluesScalingFactor will be too high to compute balances when rebasing.
+        // scaling factor can only go up to 2**256-1 = initSupply * ramensScalingFactor
+        // this is used to check if ramensScalingFactor will be too high to compute balances when rebasing.
         return uint256(-1) / initSupply;
     }
 
@@ -91,20 +91,20 @@ contract GLUEToken is GLUEGovernanceToken {
       _totalSupply = _totalSupply.add(amount.mul(10**24/ (BASE)));
 
       // get underlying value
-      uint256 glueValue = amount.mul(internalDecimals).div(gluesScalingFactor);
+      uint256 ramenValue = amount.mul(internalDecimals).div(ramensScalingFactor);
 
       // increase initSupply
-      initSupply = initSupply.add(glueValue);
+      initSupply = initSupply.add(ramenValue);
 
       // make sure the mint didnt push maxScalingFactor too low
-      require(gluesScalingFactor <= _maxScalingFactor(), "max scaling factor too low");
+      require(ramensScalingFactor <= _maxScalingFactor(), "max scaling factor too low");
 
       // add balance
-      _glueBalances[to] = _glueBalances[to].add(glueValue);
+      _ramenBalances[to] = _ramenBalances[to].add(ramenValue);
       emit Transfer(address(0), to, amount);
     
       // add delegates to the minter
-      _moveDelegates(address(0), _delegates[to], glueValue);
+      _moveDelegates(address(0), _delegates[to], ramenValue);
       emit Mint(to, amount);
     }
 
@@ -121,22 +121,22 @@ contract GLUEToken is GLUEGovernanceToken {
         validRecipient(to)
         returns (bool)
     {
-        // underlying balance is stored in glues, so divide by current scaling factor
+        // underlying balance is stored in ramens, so divide by current scaling factor
 
         // note, this means as scaling factor grows, dust will be untransferrable.
-        // minimum transfer value == gluesScalingFactor / 1e24;
+        // minimum transfer value == ramensScalingFactor / 1e24;
 
         // get amount in underlying
-        uint256 glueValue = value.mul(internalDecimals).div(gluesScalingFactor);
+        uint256 ramenValue = value.mul(internalDecimals).div(ramensScalingFactor);
 
         // sub from balance of sender
-        _glueBalances[msg.sender] = _glueBalances[msg.sender].sub(glueValue);
+        _ramenBalances[msg.sender] = _ramenBalances[msg.sender].sub(ramenValue);
 
         // add to balance of receiver
-        _glueBalances[to] = _glueBalances[to].add(glueValue);
+        _ramenBalances[to] = _ramenBalances[to].add(ramenValue);
         emit Transfer(msg.sender, to, value);
 
-        _moveDelegates(_delegates[msg.sender], _delegates[to], glueValue);
+        _moveDelegates(_delegates[msg.sender], _delegates[to], ramenValue);
         return true;
     }
 
@@ -154,15 +154,15 @@ contract GLUEToken is GLUEGovernanceToken {
         // decrease allowance
         _allowedFragments[from][msg.sender] = _allowedFragments[from][msg.sender].sub(value);
 
-        // get value in glues
-        uint256 glueValue = value.mul(internalDecimals).div(gluesScalingFactor);
+        // get value in ramens
+        uint256 ramenValue = value.mul(internalDecimals).div(ramensScalingFactor);
 
         // sub from from
-        _glueBalances[from] = _glueBalances[from].sub(glueValue);
-        _glueBalances[to] = _glueBalances[to].add(glueValue);
+        _ramenBalances[from] = _ramenBalances[from].sub(ramenValue);
+        _ramenBalances[to] = _ramenBalances[to].add(ramenValue);
         emit Transfer(from, to, value);
 
-        _moveDelegates(_delegates[from], _delegates[to], glueValue);
+        _moveDelegates(_delegates[from], _delegates[to], ramenValue);
         return true;
     }
 
@@ -175,7 +175,7 @@ contract GLUEToken is GLUEGovernanceToken {
       view
       returns (uint256)
     {
-      return _glueBalances[who].mul(gluesScalingFactor).div(internalDecimals);
+      return _ramenBalances[who].mul(ramensScalingFactor).div(internalDecimals);
     }
 
     /** @notice Currently returns the internal storage amount
@@ -187,7 +187,7 @@ contract GLUEToken is GLUEGovernanceToken {
       view
       returns (uint256)
     {
-      return _glueBalances[who];
+      return _ramenBalances[who];
     }
 
     /**
@@ -331,30 +331,30 @@ contract GLUEToken is GLUEGovernanceToken {
         returns (uint256)
     {
         if (indexDelta == 0) {
-          emit Rebase(epoch, gluesScalingFactor, gluesScalingFactor);
+          emit Rebase(epoch, ramensScalingFactor, ramensScalingFactor);
           return _totalSupply;
         }
 
-        uint256 prevGluesScalingFactor = gluesScalingFactor;
+        uint256 prevRamensScalingFactor = ramensScalingFactor;
 
         if (!positive) {
-           gluesScalingFactor = gluesScalingFactor.mul(BASE.sub(indexDelta)).div(BASE);
+           ramensScalingFactor = ramensScalingFactor.mul(BASE.sub(indexDelta)).div(BASE);
         } else {
-            uint256 newScalingFactor = gluesScalingFactor.mul(BASE.add(indexDelta)).div(BASE);
+            uint256 newScalingFactor = ramensScalingFactor.mul(BASE.add(indexDelta)).div(BASE);
             if (newScalingFactor < _maxScalingFactor()) {
-                gluesScalingFactor = newScalingFactor;
+                ramensScalingFactor = newScalingFactor;
             } else {
-              gluesScalingFactor = _maxScalingFactor();
+              ramensScalingFactor = _maxScalingFactor();
             }
         }
 
-        _totalSupply = initSupply.mul(gluesScalingFactor).div(BASE);
-        emit Rebase(epoch, prevGluesScalingFactor, gluesScalingFactor);
+        _totalSupply = initSupply.mul(ramensScalingFactor).div(BASE);
+        emit Rebase(epoch, prevRamensScalingFactor, ramensScalingFactor);
         return _totalSupply;
     }
 }
 
-contract GLUE is GLUEToken {
+contract RAMEN is RAMENToken {
     /**
      * @notice Initialize the new money market
      * @param name_ ERC-20 name of this token
@@ -376,8 +376,8 @@ contract GLUE is GLUEToken {
 
         initSupply = initSupply_.mul(10**24/ (BASE));
         _totalSupply = initSupply;
-        gluesScalingFactor = BASE;
-        _glueBalances[initial_owner] = initSupply_.mul(10**24 / (BASE));
+        ramensScalingFactor = BASE;
+        _ramenBalances[initial_owner] = initSupply_.mul(10**24 / (BASE));
 
         // owner renounces ownership after deployment as they need to set
         // rebaser and incentivizer

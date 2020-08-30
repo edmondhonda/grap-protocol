@@ -1,19 +1,19 @@
 import { useCallback } from 'react'
 
 import { useWallet } from 'use-wallet'
-import { Glue } from '../ramen'
+import { Ramen } from '../ramen'
 import { rebase } from '../ramenUtils'
 
-import useGlue from './useRamen'
+import useRamen from './useRamen'
 
 const useRebase = () => {
   const { account } = useWallet()
-  const glue = useGlue()
+  const ramen = useRamen()
 
   const handleRebase = useCallback(async () => {
-    const txHash = await rebase(glue, account)
+    const txHash = await rebase(ramen, account)
     console.log(txHash)
-  }, [account, glue])
+  }, [account, ramen])
 
   return { onRebase: handleRebase }
 }

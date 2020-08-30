@@ -6,7 +6,7 @@ BigNumber.config({
   DECIMAL_PLACES: 80,
 });
 
-export { Glue } from './Ramen.js';
+export { Ramen } from './Ramen.js';
 export {
   Web3,
   BigNumber,

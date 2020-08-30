@@ -10,7 +10,7 @@ import { UseWalletProvider } from 'use-wallet'
 import ProposalsProvider from './contexts/Proposals'
 import FarmsProvider from './contexts/Farms'
 import ModalsProvider from './contexts/Modals'
-import GlueProvider from './contexts/RamenProvider'
+import RamenProvider from './contexts/RamenProvider'
 import TransactionProvider from './contexts/Transactions'
 
 import Farms from './views/Farms'
@@ -51,7 +51,7 @@ const Providers: React.FC = ({ children }) => {
           walletconnect: { rpcUrl: 'https://kovan.eth.aragon.network/' },
         }}
       >
-        <GlueProvider>
+        <RamenProvider>
           <TransactionProvider>
             <ModalsProvider>
               <FarmsProvider>
@@ -61,7 +61,7 @@ const Providers: React.FC = ({ children }) => {
               </FarmsProvider>
             </ModalsProvider>
           </TransactionProvider>
-        </GlueProvider>
+        </RamenProvider>
       </UseWalletProvider>
     </ThemeProvider>
   )

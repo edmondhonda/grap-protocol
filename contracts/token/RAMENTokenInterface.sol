@@ -1,9 +1,9 @@
 pragma solidity 0.5.17;
 
-import "./GLUETokenStorage.sol";
-import "./GLUEGovernanceStorage.sol";
+import "./RAMENTokenStorage.sol";
+import "./RAMENGovernanceStorage.sol";
 
-contract GLUETokenInterface is GLUETokenStorage, GLUEGovernanceStorage {
+contract RAMENTokenInterface is RAMENTokenStorage, RAMENGovernanceStorage {
 
     /// @notice An event thats emitted when an account changes its delegate
     event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate);
@@ -14,7 +14,7 @@ contract GLUETokenInterface is GLUETokenStorage, GLUEGovernanceStorage {
     /**
      * @notice Event emitted when tokens are rebased
      */
-    event Rebase(uint256 epoch, uint256 prevGluesScalingFactor, uint256 newGluesScalingFactor);
+    event Rebase(uint256 epoch, uint256 prevRamensScalingFactor, uint256 newRamensScalingFactor);
 
     /*** Gov Events ***/
 

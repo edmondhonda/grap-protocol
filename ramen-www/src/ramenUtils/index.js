@@ -87,53 +87,53 @@ export const approve = async (tokenContract, poolContract, account) => {
     .send({ from: account, gas: 80000 })
 }
 
-export const rebase = async (glue, account) => {
-  return glue.contracts.rebaser.methods.rebase().send({ from: account })
+export const rebase = async (ramen, account) => {
+  return ramen.contracts.rebaser.methods.rebase().send({ from: account })
 }
 
-export const getPoolContracts = async (glue) => {
-  const pools = Object.keys(glue.contracts)
+export const getPoolContracts = async (ramen) => {
+  const pools = Object.keys(ramen.contracts)
     .filter(c => c.indexOf('_pool') !== -1)
     .reduce((acc, cur) => {
       const newAcc = { ...acc }
-      newAcc[cur] = glue.contracts[cur]
+      newAcc[cur] = ramen.contracts[cur]
       return newAcc
     }, {})
   return pools
 }
 
-export const getEarned = async (glue, pool, account) => {
-  const scalingFactor = new BigNumber(await glue.contracts.glue.methods.gluesScalingFactor().call())
+export const getEarned = async (ramen, pool, account) => {
+  const scalingFactor = new BigNumber(await ramen.contracts.ramen.methods.ramensScalingFactor().call())
   const earned = new BigNumber(await pool.methods.earned(account).call())
   return earned.multipliedBy(scalingFactor.dividedBy(new BigNumber(10).pow(18)))
 }
 
-export const getStaked = async (glue, pool, account) => {
-  return glue.toBigN(await pool.methods.balanceOf(account).call())
+export const getStaked = async (ramen, pool, account) => {
+  return ramen.toBigN(await pool.methods.balanceOf(account).call())
 }
 
-export const getCurrentPrice = async (glue) => {
-  // FORBROCK: get current GLUE price
-  return glue.toBigN(await glue.contracts.rebaser.methods.getCurrentTWAP().call())
+export const getCurrentPrice = async (ramen) => {
+  // FORBROCK: get current RAMEN price
+  return ramen.toBigN(await ramen.contracts.rebaser.methods.getCurrentTWAP().call())
 }
 
-export const getTargetPrice = async (glue) => {
-  return glue.toBigN(1).toFixed(2);
+export const getTargetPrice = async (ramen) => {
+  return ramen.toBigN(1).toFixed(2);
 }
 
-export const getCirculatingSupply = async (glue) => {
-  let now = await glue.web3.eth.getBlock('latest');
-  let scalingFactor = glue.toBigN(await glue.contracts.glue.methods.gluesScalingFactor().call());
-  let starttime = glue.toBigN(await glue.contracts.eth_pool.methods.starttime().call()).toNumber();
+export const getCirculatingSupply = async (ramen) => {
+  let now = await ramen.web3.eth.getBlock('latest');
+  let scalingFactor = ramen.toBigN(await ramen.contracts.ramen.methods.ramensScalingFactor().call());
+  let starttime = ramen.toBigN(await ramen.contracts.eth_pool.methods.starttime().call()).toNumber();
   let timePassed = now["timestamp"] - starttime;
   if (timePassed < 0) {
     return 0;
   }
-  let gluesDistributed = glue.toBigN(8 * timePassed * 250000 / 625000); //glues from first 8 pools
-  let starttimePool2 = glue.toBigN(await glue.contracts.ycrvUNIV_pool.methods.starttime().call()).toNumber();
+  let ramensDistributed = ramen.toBigN(8 * timePassed * 250000 / 625000); //ramens from first 8 pools
+  let starttimePool2 = ramen.toBigN(await ramen.contracts.ycrvUNIV_pool.methods.starttime().call()).toNumber();
   timePassed = now["timestamp"] - starttime;
-  let pool2Yams = glue.toBigN(timePassed * 1500000 / 625000); // glues from second pool. note: just accounts for first week
-  let circulating = pool2Yams.plus(gluesDistributed).times(scalingFactor).div(10**36).toFixed(2)
+  let pool2Yams = ramen.toBigN(timePassed * 1500000 / 625000); // ramens from second pool. note: just accounts for first week
+  let circulating = pool2Yams.plus(ramensDistributed).times(scalingFactor).div(10**36).toFixed(2)
   return circulating
 }
 
@@ -170,16 +170,16 @@ export const getNextRebaseTimestamp = async (yam) => {
   }
 }
 
-export const getTotalSupply = async (glue) => {
-  return await glue.contracts.glue.methods.totalSupply().call();
+export const getTotalSupply = async (ramen) => {
+  return await ramen.contracts.ramen.methods.totalSupply().call();
 }
 
-export const getStats = async (glue) => {
-  const curPrice = await getCurrentPrice(glue)
-  const circSupply = await getCirculatingSupply(glue)
-  const nextRebase = await getNextRebaseTimestamp(glue)
-  const targetPrice = await getTargetPrice(glue)
-  const totalSupply = await getTotalSupply(glue)
+export const getStats = async (ramen) => {
+  const curPrice = await getCurrentPrice(ramen)
+  const circSupply = await getCirculatingSupply(ramen)
+  const nextRebase = await getNextRebaseTimestamp(ramen)
+  const targetPrice = await getTargetPrice(ramen)
+  const totalSupply = await getTotalSupply(ramen)
   return {
     circSupply,
     curPrice,
@@ -191,13 +191,13 @@ export const getStats = async (glue) => {
 
 
 // gov
-export const getProposals = async (glue) => {
+export const getProposals = async (ramen) => {
   let proposals = []
   const filter = {
     fromBlock: 0,
     toBlock: 'latest',
   }
-  const events = await glue.contracts.gov.getPastEvents("allEvents", filter)
+  const events = await ramen.contracts.gov.getPastEvents("allEvents", filter)
   for (let i = 0; i < events.length; i++) {
     const event = events[i]
     console.log(event)
@@ -235,33 +235,33 @@ export const getProposals = async (glue) => {
   return proposals
 }
 
-export const getProposal = async (glue, id) => {
-  const proposals = await getProposals(glue)
+export const getProposal = async (ramen, id) => {
+  const proposals = await getProposals(ramen)
   const proposal = proposals.find(p => p.id === id )
   return proposal
 }
 
-export const getProposalStatus = async (glue, id) => {
-  const proposalStatus = (await glue.contracts.gov.methods.proposals(id).call())
+export const getProposalStatus = async (ramen, id) => {
+  const proposalStatus = (await ramen.contracts.gov.methods.proposals(id).call())
   return proposalStatus
 }
 
-export const getQuorumVotes = async (glue) => {
-  return new BigNumber(await glue.contracts.gov.methods.quorumVotes().call()).div(10**6)
+export const getQuorumVotes = async (ramen) => {
+  return new BigNumber(await ramen.contracts.gov.methods.quorumVotes().call()).div(10**6)
 }
 
-export const getProposalThreshold = async (glue) => {
-  return new BigNumber(await glue.contracts.gov.methods.proposalThreshold().call()).div(10**6)
+export const getProposalThreshold = async (ramen) => {
+  return new BigNumber(await ramen.contracts.gov.methods.proposalThreshold().call()).div(10**6)
 }
 
-export const getCurrentVotes = async (glue, account) => {
-  return glue.toBigN(await glue.contracts.glue.methods.getCurrentVotes(account).call()).div(10**6)
+export const getCurrentVotes = async (ramen, account) => {
+  return ramen.toBigN(await ramen.contracts.ramen.methods.getCurrentVotes(account).call()).div(10**6)
 }
 
-export const delegate = async (glue, account, from) => {
-  return glue.contracts.glue.methods.delegate(account).send({from: from, gas: 320000 })
+export const delegate = async (ramen, account, from) => {
+  return ramen.contracts.ramen.methods.delegate(account).send({from: from, gas: 320000 })
 }
 
-export const castVote = async (glue, id, support, from) => {
-  return glue.contracts.gov.methods.castVote(id, support).send({from: from, gas: 320000 })
+export const castVote = async (ramen, id, support, from) => {
+  return ramen.contracts.gov.methods.castVote(id, support).send({from: from, gas: 320000 })
 }

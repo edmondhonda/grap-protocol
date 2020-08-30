@@ -2,13 +2,13 @@
 
 // Token
 // deployed first
-const GLUEImplementation = artifacts.require("GLUEDelegate");
-const GLUEProxy = artifacts.require("GLUEDelegator");
+const RAMENImplementation = artifacts.require("RAMENDelegate");
+const RAMENProxy = artifacts.require("RAMENDelegator");
 
 // Rs
 // deployed second
-const GLUEReserves = artifacts.require("GLUEReserves");
-const GLUERebaser = artifacts.require("GLUERebaser");
+const RAMENReserves = artifacts.require("RAMENReserves");
+const RAMENRebaser = artifacts.require("RAMENRebaser");
 
 // ============ Main Migration ============
 
@@ -26,20 +26,20 @@ module.exports = migration;
 async function deployRs(deployer, network) {
   let reserveToken = "0xdF5e0e81Dff6FAF3A7e52BA697820c5e32D806A8";
   let uniswap_factory = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f";
-  await deployer.deploy(GLUEReserves, reserveToken, GLUEProxy.address);
-  await deployer.deploy(GLUERebaser,
-      GLUEProxy.address,
+  await deployer.deploy(RAMENReserves, reserveToken, RAMENProxy.address);
+  await deployer.deploy(RAMENRebaser,
+      RAMENProxy.address,
       reserveToken,
       uniswap_factory,
-      GLUEReserves.address
+      RAMENReserves.address
   );
-  let rebase = new web3.eth.Contract(GLUERebaser.abi, GLUERebaser.address);
+  let rebase = new web3.eth.Contract(RAMENRebaser.abi, RAMENRebaser.address);
 
   let pair = await rebase.methods.uniswap_pair().call();
-  console.log("GLUEProxy address is " + GLUEProxy.address);
+  console.log("RAMENProxy address is " + RAMENProxy.address);
   console.log("Uniswap pair is " + pair);
-  let glue = await GLUEProxy.deployed();
-  await glue._setRebaser(GLUERebaser.address);
-  let reserves = await GLUEReserves.deployed();
-  await reserves._setRebaser(GLUERebaser.address)
+  let ramen = await RAMENProxy.deployed();
+  await ramen._setRebaser(RAMENRebaser.address);
+  let reserves = await RAMENReserves.deployed();
+  await reserves._setRebaser(RAMENRebaser.address)
 }

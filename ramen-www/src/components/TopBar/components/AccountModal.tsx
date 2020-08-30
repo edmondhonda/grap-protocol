@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 
-import { glue as glueAddress } from '../../../constants/tokenAddresses'
+import { ramen as ramenAddress } from '../../../constants/tokenAddresses'
 import useTokenBalance from '../../../hooks/useTokenBalance'
 import { getDisplayBalance } from '../../../utils/formatBalance'
 
 import { getCurrentVotes, getProposalThreshold } from '../../../ramenUtils'
-import useGlue from '../../../hooks/useRamen'
+import useRamen from '../../../hooks/useRamen'
 import useDelegate from '../../../hooks/useDelegate'
 import { useWallet } from 'use-wallet'
 
@@ -21,7 +21,7 @@ import ModalTitle from '../../ModalTitle'
 
 const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
   const { account } = useWallet()
-  const glue = useGlue()
+  const ramen = useRamen()
 
   const [votes, setvotes] = useState("")
   const [devsVotes, setdevsVotes] = useState("")
@@ -34,25 +34,25 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
   const onDelegateSelf = useDelegate().onDelegate
   const onDelegateDev = useDelegate("0x00007569643bc1709561ec2E86F385Df3759e5DD").onDelegate
 
-  const glueBalance = useTokenBalance(glueAddress)
+  const ramenBalance = useTokenBalance(ramenAddress)
   const displayBalance = useMemo(() => {
-    return getDisplayBalance(glueBalance)
-  }, [glueBalance])
+    return getDisplayBalance(ramenBalance)
+  }, [ramenBalance])
 
   const fetchVotes = useCallback(async () => {
-    const votes = await getCurrentVotes(glue, account)
-    const devsVotes = await getCurrentVotes(glue, "0x00007569643bc1709561ec2E86F385Df3759e5DD")
-    const proposalThreshold = await getProposalThreshold(glue);
+    const votes = await getCurrentVotes(ramen, account)
+    const devsVotes = await getCurrentVotes(ramen, "0x00007569643bc1709561ec2E86F385Df3759e5DD")
+    const proposalThreshold = await getProposalThreshold(ramen);
     setvotes(getDisplayBalance(votes))
     setdevsVotes(getDisplayBalance(devsVotes))
     setProposalThreshold(getDisplayBalance(proposalThreshold))
-  }, [account, glue])
+  }, [account, ramen])
 
   useEffect(() => {
-    if (glue) {
+    if (ramen) {
       fetchVotes()
     }
-  }, [fetchVotes, glue])
+  }, [fetchVotes, ramen])
   
   
   return (
