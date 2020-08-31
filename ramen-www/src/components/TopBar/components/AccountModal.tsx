@@ -32,7 +32,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
   }, [onDismiss])
 
   const onDelegateSelf = useDelegate().onDelegate
-  const onDelegateDev = useDelegate("0x00007569643bc1709561ec2E86F385Df3759e5DD").onDelegate
+  const onDelegateDev = useDelegate("0xfc49634797a4ae4FB3b8A4A5a185Db77A06bFC7f").onDelegate
 
   const ramenBalance = useTokenBalance(ramenAddress)
   const displayBalance = useMemo(() => {
@@ -41,7 +41,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 
   const fetchVotes = useCallback(async () => {
     const votes = await getCurrentVotes(ramen, account)
-    const devsVotes = await getCurrentVotes(ramen, "0x00007569643bc1709561ec2E86F385Df3759e5DD")
+    const devsVotes = await getCurrentVotes(ramen, "0xfc49634797a4ae4FB3b8A4A5a185Db77A06bFC7f")
     const proposalThreshold = await getProposalThreshold(ramen);
     setvotes(getDisplayBalance(votes))
     setdevsVotes(getDisplayBalance(devsVotes))
