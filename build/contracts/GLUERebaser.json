@@ -49555,12 +49555,13 @@
         }
       },
       "links": {},
-      "address": "0xE6C35eb3b3f7dE49087774E31a60cDf2bCeaf4EC",
-      "transactionHash": "0x8fa42c2bc5c0bde99e4a5806cf4e576e0ac3fa0c006e9b523fa0830a809f0ae9"
+      "address": "0xbc154FC1abFBF188709C04b0bA3b35C5C5A406e2",
+      "transactionHash": "0xc4f4edce0215b32fb8ed65e914219ca1da8ed306077fcebd2346a8f9e0e1f2d7"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-03T22:09:25.291Z",
+  "updatedAt": "2020-09-03T23:02:21.790Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "_setPendingGov(address)": {

@@ -14027,12 +14027,13 @@
         }
       },
       "links": {},
-      "address": "0xA228FCAe5Cc1b3B4f4ea84Cc546A61B616b9a528",
-      "transactionHash": "0x5e02efbc44667987e8ae5802547507d0d30edf19071faab82c51b09971744b0c"
+      "address": "0xe52e71FC999Cd86B54850cc7D674e693544d4598",
+      "transactionHash": "0x6003108bc8300f0287ecf3f096ba7c1e68c4fbd494035a4c39f73568ec5ea096"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-03T22:09:25.398Z",
+  "updatedAt": "2020-09-03T23:02:21.758Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "_acceptGov()": {

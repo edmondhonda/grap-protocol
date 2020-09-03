@@ -19,7 +19,7 @@ export interface GlueContext {
   glue?: typeof Glue
 }
 
-const ADDRESS = '0xA228FCAe5Cc1b3B4f4ea84Cc546A61B616b9a528';
+const ADDRESS = '0xe52e71FC999Cd86B54850cc7D674e693544d4598';
 let currentPrice = 0;
 let glue: any;
 const FarmCards: React.FC = () => {

@@ -21,8 +21,8 @@ module.exports = migration;
 async function deployToken(deployer, network) {
   await deployer.deploy(GLUEImplementation);
   await deployer.deploy(GLUEProxy,
-    "tRAM Tesnet",
-    "tRAM",
+    "Floss Coin",
+    "Floss",
     18,
     "175000000000000000000000",
     GLUEImplementation.address,

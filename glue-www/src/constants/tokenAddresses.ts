@@ -1,1 +1,1 @@
-export const glue = '0xA228FCAe5Cc1b3B4f4ea84Cc546A61B616b9a528'
+export const glue = '0xe52e71FC999Cd86B54850cc7D674e693544d4598'

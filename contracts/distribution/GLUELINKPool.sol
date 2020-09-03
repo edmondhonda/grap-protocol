@@ -625,7 +625,7 @@ contract LPTokenWrapper {
 }
 
 contract GLUELINKPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public glue = IERC20(0xA228FCAe5Cc1b3B4f4ea84Cc546A61B616b9a528);
+    IERC20 public glue = IERC20(0xe52e71FC999Cd86B54850cc7D674e693544d4598);
     uint256 public constant DURATION = 5184000; // ~7 1/4 days
 
     uint256 public starttime = 1599166809; // 2020-08-20 00:00:00 (UTC +00:00)

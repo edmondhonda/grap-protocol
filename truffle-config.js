@@ -70,7 +70,7 @@ module.exports = {
       gasPrice: 10000000000, // 10 gwei
       gas: 6900000,
       from: process.env.DEPLOYER_ACCOUNT,
-      timeoutBlocks: 500,
+      timeoutBlocks: 2000,
     },
     dev: {
       host: 'localhost',

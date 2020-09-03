@@ -13283,12 +13283,13 @@
         }
       },
       "links": {},
-      "address": "0xbA9D52Cf80f48C45C44c79BDc81aF3bb9Fb913a0",
-      "transactionHash": "0x19ebbb0923458575b1706bfb5089c23f580ee35d74c20ea997dacd769537b891"
+      "address": "0xAD9ae309C1fF35e28C5e6810Aa9dfd94d17d5FFC",
+      "transactionHash": "0x7419fe5056a4197ab611461b8c95cd9832b0c493fa20a824d3b91986b850521e"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-03T22:09:25.200Z",
+  "updatedAt": "2020-09-03T23:02:21.848Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "setDelay(uint256)": {

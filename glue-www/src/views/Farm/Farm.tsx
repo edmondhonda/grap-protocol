@@ -84,7 +84,7 @@ const Farm: React.FC = () => {
     return (
       <YamNotifyView>
         <p>
-          If you want Add liquidity to Uniswap, please use this <a href='https://app.uniswap.org/#/add/0xA228FCAe5Cc1b3B4f4ea84Cc546A61B616b9a528/0xa36085F69e2889c224210F603D836748e7dC0088'>Uniswap link</a>.
+          If you want Add liquidity to Uniswap, please use this <a href='https://app.uniswap.org/#/add/0xe52e71FC999Cd86B54850cc7D674e693544d4598/0xa36085F69e2889c224210F603D836748e7dC0088'>Uniswap link</a>.
         </p>
       </YamNotifyView>
     )
