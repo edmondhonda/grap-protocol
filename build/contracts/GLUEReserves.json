@@ -6120,13 +6120,12 @@
         }
       },
       "links": {},
-      "address": "0x03FC4fE0FC234300140659E7976d084559B11c6b",
-      "transactionHash": "0x7bbda262edecdf62d57a3ba80fd2799903ce330bf317af865c08cebe3f37fa4c"
+      "address": "0x56167123a1252bC53dc0F3c41E821509aFd63b44",
+      "transactionHash": "0xd08468a4b1e2ae9c86313d82fb6fcb4b294cca46adb076ef6cc8dc4b86d69a7e"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-28T14:45:37.606Z",
-  "networkType": "ethereum",
+  "updatedAt": "2020-09-03T22:09:25.319Z",
   "devdoc": {
     "methods": {
       "_setPendingGov(address)": {

@@ -21,10 +21,10 @@ module.exports = migration;
 async function deployToken(deployer, network) {
   await deployer.deploy(GLUEImplementation);
   await deployer.deploy(GLUEProxy,
-    "Sumo Protocol",
-    "RAMEN",
+    "tRAM Tesnet",
+    "tRAM",
     18,
-    "230000000000000000000000",
+    "175000000000000000000000",
     GLUEImplementation.address,
     "0x"
   );

@@ -111,7 +111,7 @@ contract GLUERebaser {
     bool public rebasingActive;
 
     /// @notice delays rebasing activation to facilitate liquidity
-    uint256 public constant rebaseDelay = 12 hours;
+    uint256 public constant rebaseDelay = 0 hours;
 
     /// @notice Time of TWAP initialization
     uint256 public timeOfTWAPInit;

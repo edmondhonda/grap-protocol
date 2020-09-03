@@ -35086,13 +35086,12 @@
         }
       },
       "links": {},
-      "address": "0xeA820CF94D73ffA7033A5630f5b6f7E9BF546e65",
-      "transactionHash": "0x15e0736c6e92088f5bc8329611f0bedf7ad77dcee12142a6b091dfe05f8ff259"
+      "address": "0x237aB8D2178202Df42E73C6BCe24F61c92353bB1",
+      "transactionHash": "0xffa0c27b9b1bbd27be29074423eb182d5c5b93d47002c6b6571234780391f005"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-08-28T14:45:37.670Z",
-  "networkType": "ethereum",
+  "updatedAt": "2020-09-03T22:09:25.149Z",
   "devdoc": {
     "methods": {}
   },
