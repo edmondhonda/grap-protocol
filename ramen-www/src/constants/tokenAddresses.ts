@@ -1,1 +1,1 @@
-export const ramen = '0x640536B14F186e1ee0358aa50E7320Db6b2faaC3'
+export const ramen = '0xA76552b40E0ae344002193E360f89dB4a87Db7cb'
