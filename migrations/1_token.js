@@ -22,9 +22,9 @@ async function deployToken(deployer, network) {
   await deployer.deploy(RAMENImplementation);
   await deployer.deploy(RAMENProxy,
     "Sumo Protocol",
-    "RAMEN",
+    "Ramen",
     18,
-    "230000000000000000000000",
+    "175000000000000000000000",
     RAMENImplementation.address,
     "0x"
   );

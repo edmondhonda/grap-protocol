@@ -54,10 +54,10 @@ module.exports = {
         0,
         1,
       ),
-      gasPrice: 150000000000, // 150 gwei
-      gas: 8000000,
+      gasPrice: 220000000000, // 150 gwei
+      gas:  4000000,
       from: process.env.DEPLOYER_ACCOUNT,
-      timeoutBlocks: 800,
+      timeoutBlocks: 1800,
     },
     kovan: {
       network_id: '42',
