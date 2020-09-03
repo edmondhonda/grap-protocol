@@ -72,7 +72,7 @@ const Kitchens: React.FC = ({ children }) => {
             name: NAME_FOR_POOL[poolKey],
             depositToken: tokenKey,
             depositTokenAddress: tokenAddress,
-            earnToken: 'sumo',
+            earnToken: 'ramen',
             earnTokenAddress: ramenAddress,
             icon: ICON_FOR_POOL[poolKey],
             id: tokenKey

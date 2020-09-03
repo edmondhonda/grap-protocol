@@ -630,7 +630,7 @@ interface RAMEN {
 }
 
 contract RAMENIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public ramen = IERC20(0x640536B14F186e1ee0358aa50E7320Db6b2faaC3);
+    IERC20 public ramen = IERC20(0xA76552b40E0ae344002193E360f89dB4a87Db7cb);
     uint256 public constant DURATION = 2592000;
 
     uint256 public initreward = 15 * 10**3 * 10**18; // 1.5m

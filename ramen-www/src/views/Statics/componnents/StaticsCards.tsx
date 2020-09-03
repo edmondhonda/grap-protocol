@@ -93,7 +93,7 @@ const StaticsCard: React.FC<StaticsCardProps> = ({ farm, price }) => {
     const STAKING_POOL = ramen.contracts[key];
     const Token = ramen.contracts[token];
     const RAMEN_TOKEN = ramen.contracts.ramen;
-    const rewardTokenTicker = "Sumo"
+    const rewardTokenTicker = "Ramen"
     const stakingTokenTicker = token
     const ramenScale = await RAMEN_TOKEN.methods.ramensScalingFactor().call() / 1e18;
     const rewardPoolAddr = STAKING_POOL._address

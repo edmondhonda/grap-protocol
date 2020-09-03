@@ -47,56 +47,56 @@ describe("post-deployment", () => {
 
     test("owner balance", async () => {
       let balance = await ramen.contracts.ramen.methods.balanceOf(user).call();
-      expect(balance).toBe(ramen.toBigN(7000000).times(ramen.toBigN(10**18)).toString())
+      expect(balance).toBe(ramen.toBigN(275000).times(ramen.toBigN(10**18)).toString())
     });
 
     test("pool balances", async () => {
       let ycrv_balance = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.ycrv_pool.options.address).call();
 
-      expect(ycrv_balance).toBe(ramen.toBigN(1500000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
+      expect(ycrv_balance).toBe(ramen.toBigN(150000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
 
       let yfi_balance = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.yfi_pool.options.address).call();
 
-      expect(yfi_balance).toBe(ramen.toBigN(250000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
+      expect(yfi_balance).toBe(ramen.toBigN(15000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
 
       let ampl_balance = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.ampl_pool.options.address).call();
 
-      expect(ampl_balance).toBe(ramen.toBigN(250000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
+      expect(ampl_balance).toBe(ramen.toBigN(15000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
 
       let eth_balance = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.eth_pool.options.address).call();
 
-      expect(eth_balance).toBe(ramen.toBigN(250000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
+      expect(eth_balance).toBe(ramen.toBigN(15000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
 
       let snx_balance = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.snx_pool.options.address).call();
 
-      expect(snx_balance).toBe(ramen.toBigN(250000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
+      expect(snx_balance).toBe(ramen.toBigN(15000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
 
       let comp_balance = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.comp_pool.options.address).call();
 
-      expect(comp_balance).toBe(ramen.toBigN(250000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
+      expect(comp_balance).toBe(ramen.toBigN(15000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
 
       let lend_balance = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.lend_pool.options.address).call();
 
-      expect(lend_balance).toBe(ramen.toBigN(250000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
+      expect(lend_balance).toBe(ramen.toBigN(15000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
 
       let link_balance = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.link_pool.options.address).call();
 
-      expect(link_balance).toBe(ramen.toBigN(250000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
+      expect(link_balance).toBe(ramen.toBigN(15000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
 
       let mkr_balance = await ramen.contracts.ramen.methods.balanceOf(ramen.contracts.mkr_pool.options.address).call();
 
-      expect(mkr_balance).toBe(ramen.toBigN(250000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
+      expect(mkr_balance).toBe(ramen.toBigN(15000).times(ramen.toBigN(10**18)).times(ramen.toBigN(1)).toString())
 
     });
 
     test("total supply", async () => {
       let ts = await ramen.contracts.ramen.methods.totalSupply().call();
-      expect(ts).toBe("10500000000000000000000000")
+      expect(ts).toBe("275000000000000000000000")
     });
 
     test("init supply", async () => {
       let init_s = await ramen.contracts.ramen.methods.initSupply().call();
-      expect(init_s).toBe("10500000000000000000000000000000")
+      expect(init_s).toBe("175000000000000000000000")
     });
   });
 

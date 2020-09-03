@@ -625,7 +625,7 @@ contract LPTokenWrapper {
 }
 
 contract RAMENCRVPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public ramen = IERC20(0x640536B14F186e1ee0358aa50E7320Db6b2faaC3);
+    IERC20 public ramen = IERC20(0xA76552b40E0ae344002193E360f89dB4a87Db7cb);
     uint256 public constant DURATION = 5184000; // ~7 1/4 days
 
     uint256 public starttime = 1598630400; // 2020-08-20 00:00:00 (UTC +00:00)

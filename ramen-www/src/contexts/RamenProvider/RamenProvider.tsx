@@ -26,7 +26,7 @@ const RamenProvider: React.FC = ({ children }) => {
     if (ethereum) {
       const ramenLib = new Ramen(
         ethereum,
-        "42",
+        "1",
         false, {
           defaultAccount: "",
           defaultConfirmations: 1,

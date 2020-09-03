@@ -764,7 +764,7 @@ describe("rebase_tests", () => {
       q = await ramen.contracts.uni_router.methods.quote(ramen.toBigN(10**18).toString(), r[0], r[1]).call();
       console.log("quote post no rebase", q);
     });
-    test("rebasing with Sumos in reserves", async () => {
+    test("rebasing with Ramens in reserves", async () => {
       await ramen.contracts.ramen.methods.transfer(ramen.contracts.reserves.options.address, ramen.toBigN(60000*10**18).toString()).send({from: user});
       await ramen.contracts.ramen.methods.approve(
         ramen.contracts.uni_router.options.address,
