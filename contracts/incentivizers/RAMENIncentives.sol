@@ -597,7 +597,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public uni_lp = IERC20(0x5a08047612De940F1e6Da5CE2A718D17260f6944);
+    IERC20 public uni_lp = IERC20(0xe687DDE3655b4C1706A3Ebea8847348c4d1b76bD);
 
     uint256 private _totalSupply;
 
@@ -631,7 +631,7 @@ interface RAMEN {
 
 contract RAMENIncentivizer is LPTokenWrapper, IRewardDistributionRecipient {
     IERC20 public ramen = IERC20(0xA76552b40E0ae344002193E360f89dB4a87Db7cb);
-    uint256 public constant DURATION = 2592000;
+    uint256 public constant DURATION = 7776000;
 
     uint256 public initreward = 15 * 10**3 * 10**18; // 1.5m
     uint256 public starttime = 1599494400 + 12 hours; // 2020-08-20 12:00:00 (UTC +00:00)
