@@ -109,7 +109,7 @@ const StaticsCard: React.FC<StaticsCardProps> = ({ farm, price }) => {
 
     let hash: any = {
       yfi: ["yearn-finance"],
-      yfii: ["yfii-finance"],
+      based: ["based-finance"],
       crv: ["curve-dao-token"],
       weth: ["ethereum"],
       link: ["chainlink"],

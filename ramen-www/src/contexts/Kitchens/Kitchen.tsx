@@ -11,10 +11,10 @@ import { Kitchen } from './types'
 
 const NAME_FOR_POOL: { [key: string]: string } = {
   eth_pool: 'Weth Homestead',
-  yam_pool: 'YAM',
+  sushi_pool: 'Sushi',
   crv_pool: 'Curvy Fields',
   yfi_pool: 'YFI Kitchen',
-  yfii_pool: 'YFII Kitchen',
+  based_pool: 'BASED Kitchen',
   comp_pool: 'Compounding Hills',
   link_pool: 'Marine Gardens',
   lend_pool: 'Aave Agriculture',
@@ -25,8 +25,8 @@ const NAME_FOR_POOL: { [key: string]: string } = {
 
 const ICON_FOR_POOL: { [key: string]: string } = {
   yfi_pool: '🐋',
-  yfii_pool: '🦈',
-  yam_pool: '🍠',
+  based_pool: '🦈',
+  sushi_pool: '🍣',
   eth_pool: '🌎',
   crv_pool: '🚜',
   comp_pool: '🍲',

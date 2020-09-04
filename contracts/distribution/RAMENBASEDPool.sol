@@ -598,7 +598,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public yfii = IERC20(0xa36085F69e2889c224210F603D836748e7dC0088);
+    IERC20 public based = IERC20(0x68A118Ef45063051Eac49c7e647CE5Ace48a68a5);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -614,17 +614,17 @@ contract LPTokenWrapper {
     function stake(uint256 amount) public {
         _totalSupply = _totalSupply.add(amount);
         _balances[msg.sender] = _balances[msg.sender].add(amount);
-        yfii.safeTransferFrom(msg.sender, address(this), amount);
+        based.safeTransferFrom(msg.sender, address(this), amount);
     }
 
     function withdraw(uint256 amount) public {
         _totalSupply = _totalSupply.sub(amount);
         _balances[msg.sender] = _balances[msg.sender].sub(amount);
-        yfii.safeTransfer(msg.sender, amount);
+        based.safeTransfer(msg.sender, amount);
     }
 }
 
-contract RAMENYFIIPool is LPTokenWrapper, IRewardDistributionRecipient {
+contract RAMENBASEDPool is LPTokenWrapper, IRewardDistributionRecipient {
     IERC20 public ramen = IERC20(0xA76552b40E0ae344002193E360f89dB4a87Db7cb);
     uint256 public constant DURATION = 5184000; // ~7 1/4 days
 
