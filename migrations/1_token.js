@@ -21,8 +21,8 @@ module.exports = migration;
 async function deployToken(deployer, network) {
   await deployer.deploy(RAMENImplementation);
   await deployer.deploy(RAMENProxy,
-    "Sumo Testnet",
-    "TRams",
+    "SUMOT",
+    "SUMOT",
     18,
     "175000000000000000000000",
     RAMENImplementation.address,

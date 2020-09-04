@@ -13112,6 +13112,15 @@
   },
   "networks": {
     "1": {
+      "links": [
+        [
+          {}
+        ]
+      ],
+      "address": "0x8f9F38Ed8b0476AD31aA27E5aF4F7352df634092",
+      "transactionHash": "0xbd848f344469393cb541cec85ae0f72327886b4cc42a205a352c5da8c9d3890f"
+    },
+    "42": {
       "events": {
         "0x2fffc091a501fd91bfbff27141450d3acb40fb8e6d8382b243ec7a812a3aaf87": {
           "anonymous": false,
@@ -13283,12 +13292,13 @@
         }
       },
       "links": {},
-      "address": "0x8f9F38Ed8b0476AD31aA27E5aF4F7352df634092",
-      "transactionHash": "0xbd848f344469393cb541cec85ae0f72327886b4cc42a205a352c5da8c9d3890f"
+      "address": "0xbFdAAfB98c9383252315E32D250F69aC338c84Ec",
+      "transactionHash": "0xa4285910bc40c19c7b707ba0d9c4f2f2c8226cd02214d8bd9973e0c6f4c07504"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T22:09:23.109Z",
+  "updatedAt": "2020-09-04T23:39:49.223Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "setDelay(uint256)": {

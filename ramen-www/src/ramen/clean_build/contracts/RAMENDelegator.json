@@ -13785,6 +13785,15 @@
   },
   "networks": {
     "1": {
+      "links": [
+        [
+          {}
+        ]
+      ],
+      "address": "0xA76552b40E0ae344002193E360f89dB4a87Db7cb",
+      "transactionHash": "0x854e6e948e78127f8751247d1c59dec1b0ce6d7f2907d203ff7cf4e94d0ce2ab"
+    },
+    "42": {
       "events": {
         "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
           "anonymous": false,
@@ -14027,12 +14036,13 @@
         }
       },
       "links": {},
-      "address": "0xA76552b40E0ae344002193E360f89dB4a87Db7cb",
-      "transactionHash": "0x854e6e948e78127f8751247d1c59dec1b0ce6d7f2907d203ff7cf4e94d0ce2ab"
+      "address": "0x8a6D34DC9721eE0695Ab9A758036a2ebA6a748a9",
+      "transactionHash": "0x346e7af5ab881f021d716bc05ea4d79aea279538ccb757a054c745434d3d5ba4"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T22:09:23.300Z",
+  "updatedAt": "2020-09-04T23:39:49.137Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "_acceptGov()": {

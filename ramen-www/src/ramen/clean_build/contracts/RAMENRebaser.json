@@ -49382,6 +49382,15 @@
   },
   "networks": {
     "1": {
+      "links": [
+        [
+          {}
+        ]
+      ],
+      "address": "0x0BA476AAc2855Ab82e731A93c2132Ef357D7C7EB",
+      "transactionHash": "0xf2c02f6939be89fddb8229be65e41cb98faee7aab7439484635a7e5a437e374c"
+    },
+    "42": {
       "events": {
         "0x2a5cda4d16fba415b52d90b59ee30d4cb16494da9fd1ee51c4d5bac4a1f75bbe": {
           "anonymous": false,
@@ -49555,12 +49564,13 @@
         }
       },
       "links": {},
-      "address": "0x0BA476AAc2855Ab82e731A93c2132Ef357D7C7EB",
-      "transactionHash": "0xf2c02f6939be89fddb8229be65e41cb98faee7aab7439484635a7e5a437e374c"
+      "address": "0xbD7D1D995da8C9964C6e28184544751c8F3C01C7",
+      "transactionHash": "0xa95d20451ec1dbf5a5527c026cf1fea4f229b827d470de08e78bcf59c98a581e"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T22:09:23.202Z",
+  "updatedAt": "2020-09-04T23:39:49.169Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "_setPendingGov(address)": {

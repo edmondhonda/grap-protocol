@@ -24,7 +24,7 @@ module.exports = migration;
 
 
 async function deployRs(deployer, network) {
-  let reserveToken = "0x514910771AF9Ca656af840dff83E8264EcF986CA";
+  let reserveToken = "0xa36085F69e2889c224210F603D836748e7dC0088";
   let uniswap_factory = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f";
   await deployer.deploy(RAMENReserves, reserveToken, RAMENProxy.address);
   await deployer.deploy(RAMENRebaser,

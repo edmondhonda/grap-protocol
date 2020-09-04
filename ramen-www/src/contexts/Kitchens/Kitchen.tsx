@@ -63,7 +63,7 @@ const Kitchens: React.FC = ({ children }) => {
         try {
           let tokenAddress = ''
           if (tokenKey === 'uni_lp') {
-            tokenAddress = '0x514910771AF9Ca656af840dff83E8264EcF986CA'
+            tokenAddress = '0xa36085F69e2889c224210F603D836748e7dC0088'
           } else {
             tokenAddress = await method().call()
           }
