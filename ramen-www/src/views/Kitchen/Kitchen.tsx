@@ -72,7 +72,7 @@ const Kitchen: React.FC = () => {
       <YamNotifyView>
         <p> Kitchen is good, but don't forget migration your YAM before Migration Deadline. </p>
         <p>
-          <a href='https://yam.finance/'>https://yam.finance/</a>
+          <a href='https://sumo.finance/'>https://sumo.finance/</a>
         </p>
         {countdownBlock()}
       </YamNotifyView>
