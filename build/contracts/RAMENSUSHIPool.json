@@ -4037,7 +4037,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 22186,
+                    "referencedDeclaration": 22362,
                     "src": "8552:4:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$10928",
@@ -6954,7 +6954,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22192,
+                                "referencedDeclaration": 22368,
                                 "src": "16698:4:8",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_Address_$11182",
@@ -8264,7 +8264,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22194,
+                                        "referencedDeclaration": 22370,
                                         "src": "18396:4:8",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_SafeERC20_$11398",
@@ -8853,7 +8853,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22194,
+                                "referencedDeclaration": 22370,
                                 "src": "18752:4:8",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_SafeERC20_$11398",
@@ -9387,7 +9387,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22194,
+                                "referencedDeclaration": 22370,
                                 "src": "19040:4:8",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_SafeERC20_$11398",
@@ -11817,7 +11817,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22200,
+                            "referencedDeclaration": 22376,
                             "src": "22073:4:8",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LPTokenWrapper_$11549",
@@ -14979,7 +14979,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22203,
+                        "referencedDeclaration": 22379,
                         "src": "24549:5:8",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMENSUSHIPool_$11978",
@@ -15381,7 +15381,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22203,
+                        "referencedDeclaration": 22379,
                         "src": "24759:5:8",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMENSUSHIPool_$11978",
@@ -21723,7 +21723,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 22186,
+                    "referencedDeclaration": 22362,
                     "src": "8552:4:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$10928",
@@ -24640,7 +24640,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22192,
+                                "referencedDeclaration": 22368,
                                 "src": "16698:4:8",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_Address_$11182",
@@ -25950,7 +25950,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22194,
+                                        "referencedDeclaration": 22370,
                                         "src": "18396:4:8",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_SafeERC20_$11398",
@@ -26539,7 +26539,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22194,
+                                "referencedDeclaration": 22370,
                                 "src": "18752:4:8",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_SafeERC20_$11398",
@@ -27073,7 +27073,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22194,
+                                "referencedDeclaration": 22370,
                                 "src": "19040:4:8",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_SafeERC20_$11398",
@@ -29503,7 +29503,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22200,
+                            "referencedDeclaration": 22376,
                             "src": "22073:4:8",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LPTokenWrapper_$11549",
@@ -32665,7 +32665,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22203,
+                        "referencedDeclaration": 22379,
                         "src": "24549:5:8",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMENSUSHIPool_$11978",
@@ -33067,7 +33067,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22203,
+                        "referencedDeclaration": 22379,
                         "src": "24759:5:8",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMENSUSHIPool_$11978",
@@ -35868,11 +35868,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Linux.g++"
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T18:32:27.709Z",
+  "updatedAt": "2020-09-04T22:06:52.397Z",
   "devdoc": {
     "methods": {
       "isOwner()": {

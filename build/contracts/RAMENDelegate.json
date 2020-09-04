@@ -3335,7 +3335,7 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Linux.g++"
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
   },
   "networks": {
     "1": {
@@ -3567,7 +3567,7 @@
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T19:00:40.742Z",
+  "updatedAt": "2020-09-04T22:09:23.285Z",
   "devdoc": {
     "methods": {
       "_becomeImplementation(bytes)": {

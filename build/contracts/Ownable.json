@@ -3631,7 +3631,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 22186,
+                    "referencedDeclaration": 22416,
                     "src": "8555:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$15318",
@@ -6629,7 +6629,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22192,
+                                "referencedDeclaration": 22422,
                                 "src": "16759:4:12",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_Address_$15579",
@@ -7939,7 +7939,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22194,
+                                        "referencedDeclaration": 22424,
                                         "src": "18457:4:12",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_SafeERC20_$15795",
@@ -8528,7 +8528,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22194,
+                                "referencedDeclaration": 22424,
                                 "src": "18813:4:12",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_SafeERC20_$15795",
@@ -9062,7 +9062,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22194,
+                                "referencedDeclaration": 22424,
                                 "src": "19101:4:12",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_SafeERC20_$15795",
@@ -11421,7 +11421,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22198,
+                            "referencedDeclaration": 22428,
                             "src": "22048:4:12",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LPTokenWrapper_$15940",
@@ -14810,7 +14810,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22203,
+                        "referencedDeclaration": 22433,
                         "src": "24633:5:12",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMENIncentivizer_$16537",
@@ -15231,7 +15231,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22203,
+                        "referencedDeclaration": 22433,
                         "src": "24843:5:12",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMENIncentivizer_$16537",
@@ -17177,7 +17177,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22202,
+                                  "referencedDeclaration": 22432,
                                   "src": "25803:4:12",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_RAMENIncentivizer_$16537",
@@ -18019,7 +18019,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22202,
+                                        "referencedDeclaration": 22432,
                                         "src": "26918:4:12",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_RAMENIncentivizer_$16537",
@@ -18211,7 +18211,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22202,
+                                  "referencedDeclaration": 22432,
                                   "src": "26984:4:12",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_RAMENIncentivizer_$16537",
@@ -23711,7 +23711,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 22186,
+                    "referencedDeclaration": 22416,
                     "src": "8555:4:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$15318",
@@ -26709,7 +26709,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22192,
+                                "referencedDeclaration": 22422,
                                 "src": "16759:4:12",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_Address_$15579",
@@ -28019,7 +28019,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22194,
+                                        "referencedDeclaration": 22424,
                                         "src": "18457:4:12",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_SafeERC20_$15795",
@@ -28608,7 +28608,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22194,
+                                "referencedDeclaration": 22424,
                                 "src": "18813:4:12",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_SafeERC20_$15795",
@@ -29142,7 +29142,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22194,
+                                "referencedDeclaration": 22424,
                                 "src": "19101:4:12",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_SafeERC20_$15795",
@@ -31501,7 +31501,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22198,
+                            "referencedDeclaration": 22428,
                             "src": "22048:4:12",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_LPTokenWrapper_$15940",
@@ -34890,7 +34890,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22203,
+                        "referencedDeclaration": 22433,
                         "src": "24633:5:12",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMENIncentivizer_$16537",
@@ -35311,7 +35311,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22203,
+                        "referencedDeclaration": 22433,
                         "src": "24843:5:12",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMENIncentivizer_$16537",
@@ -37257,7 +37257,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22202,
+                                  "referencedDeclaration": 22432,
                                   "src": "25803:4:12",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_RAMENIncentivizer_$16537",
@@ -38099,7 +38099,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22202,
+                                        "referencedDeclaration": 22432,
                                         "src": "26918:4:12",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_RAMENIncentivizer_$16537",
@@ -38291,7 +38291,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22202,
+                                  "referencedDeclaration": 22432,
                                   "src": "26984:4:12",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_RAMENIncentivizer_$16537",
@@ -40250,11 +40250,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Linux.g++"
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T18:47:57.850Z",
+  "updatedAt": "2020-09-04T22:06:52.008Z",
   "devdoc": {
     "details": "Contract module which provides a basic access control mechanism, where there is an account (an owner) that can be granted exclusive access to specific functions. * This module is used through inheritance. It will make available the modifier `onlyOwner`, which can be applied to your functions to restrict their use to the owner.",
     "methods": {
