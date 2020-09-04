@@ -2466,7 +2466,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22214,
+                                  "referencedDeclaration": 22236,
                                   "src": "2434:4:22",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_RAMENReserves_$19832",
@@ -2950,7 +2950,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22214,
+                            "referencedDeclaration": 22236,
                             "src": "2737:4:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_RAMENReserves_$19832",
@@ -5377,7 +5377,7 @@
                                   "name": "this",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 22214,
+                                  "referencedDeclaration": 22236,
                                   "src": "2434:4:22",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_contract$_RAMENReserves_$19832",
@@ -5861,7 +5861,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22214,
+                            "referencedDeclaration": 22236,
                             "src": "2737:4:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_RAMENReserves_$19832",
@@ -6125,8 +6125,7 @@
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T04:52:42.915Z",
-  "networkType": "ethereum",
+  "updatedAt": "2020-09-04T18:32:27.897Z",
   "devdoc": {
     "methods": {
       "_setPendingGov(address)": {

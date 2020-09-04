@@ -624,7 +624,7 @@ contract LPTokenWrapper {
     }
 }
 
-contract RAMENsushiPool is LPTokenWrapper, IRewardDistributionRecipient {
+contract RAMENSUSHIPool is LPTokenWrapper, IRewardDistributionRecipient {
     IERC20 public ramen = IERC20(0xA76552b40E0ae344002193E360f89dB4a87Db7cb);
     uint256 public constant DURATION = 5184000; // ~7 1/4 days
 
