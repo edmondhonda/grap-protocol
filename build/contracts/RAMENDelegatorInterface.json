@@ -2338,7 +2338,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T18:32:27.929Z",
+  "updatedAt": "2020-09-04T19:00:40.750Z",
   "devdoc": {
     "methods": {
       "_setImplementation(address,bool,bytes)": {

@@ -1816,7 +1816,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 22240,
+                              "referencedDeclaration": 22218,
                               "src": "589:4:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_RAMENToken_$20586",
@@ -11227,7 +11227,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22243,
+                        "referencedDeclaration": 22221,
                         "src": "11445:5:23",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMEN_$20652",
@@ -12756,7 +12756,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 22240,
+                              "referencedDeclaration": 22218,
                               "src": "589:4:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_RAMENToken_$20586",
@@ -22167,7 +22167,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 22243,
+                        "referencedDeclaration": 22221,
                         "src": "11445:5:23",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_RAMEN_$20652",
@@ -22875,7 +22875,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T18:32:27.908Z",
+  "updatedAt": "2020-09-04T19:00:40.729Z",
   "devdoc": {
     "methods": {
       "_setIncentivizer(address)": {

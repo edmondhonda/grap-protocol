@@ -1718,7 +1718,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22238,
+                                "referencedDeclaration": 22216,
                                 "src": "1883:4:26",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_RAMENGovernanceToken_$21827",
@@ -9328,7 +9328,7 @@
                                 "name": "this",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 22238,
+                                "referencedDeclaration": 22216,
                                 "src": "1883:4:26",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_RAMENGovernanceToken_$21827",
@@ -16190,7 +16190,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T18:32:27.949Z",
+  "updatedAt": "2020-09-04T19:00:40.771Z",
   "devdoc": {
     "methods": {
       "delegate(address)": {

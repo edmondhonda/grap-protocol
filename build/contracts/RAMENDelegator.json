@@ -6445,7 +6445,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22252,
+                            "referencedDeclaration": 22230,
                             "src": "11208:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_RAMENDelegator_$21271",
@@ -6896,7 +6896,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22252,
+                            "referencedDeclaration": 22230,
                             "src": "11596:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_RAMENDelegator_$21271",
@@ -12781,7 +12781,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22252,
+                            "referencedDeclaration": 22230,
                             "src": "11208:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_RAMENDelegator_$21271",
@@ -13232,7 +13232,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 22252,
+                            "referencedDeclaration": 22230,
                             "src": "11596:4:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_RAMENDelegator_$21271",
@@ -14032,7 +14032,7 @@
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T18:32:27.936Z",
+  "updatedAt": "2020-09-04T19:00:40.758Z",
   "devdoc": {
     "methods": {
       "_acceptGov()": {
