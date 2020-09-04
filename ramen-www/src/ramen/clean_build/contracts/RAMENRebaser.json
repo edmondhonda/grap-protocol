@@ -9006,7 +9006,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 22212,
+                              "referencedDeclaration": 22234,
                               "src": "11362:4:21",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -11943,7 +11943,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22212,
+                                              "referencedDeclaration": 22234,
                                               "src": "17454:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -12451,7 +12451,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22212,
+                                              "referencedDeclaration": 22234,
                                               "src": "16895:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -12987,7 +12987,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22212,
+                                        "referencedDeclaration": 22234,
                                         "src": "16260:4:21",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -13613,7 +13613,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22212,
+                                              "referencedDeclaration": 22234,
                                               "src": "15712:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -14121,7 +14121,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22212,
+                                              "referencedDeclaration": 22234,
                                               "src": "15153:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -14657,7 +14657,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22212,
+                                        "referencedDeclaration": 22234,
                                         "src": "14625:4:21",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -33270,7 +33270,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 22212,
+                              "referencedDeclaration": 22234,
                               "src": "11362:4:21",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -36207,7 +36207,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22212,
+                                              "referencedDeclaration": 22234,
                                               "src": "17454:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -36715,7 +36715,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22212,
+                                              "referencedDeclaration": 22234,
                                               "src": "16895:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -37251,7 +37251,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22212,
+                                        "referencedDeclaration": 22234,
                                         "src": "16260:4:21",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -37877,7 +37877,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22212,
+                                              "referencedDeclaration": 22234,
                                               "src": "15712:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -38385,7 +38385,7 @@
                                               "name": "this",
                                               "nodeType": "Identifier",
                                               "overloadedDeclarations": [],
-                                              "referencedDeclaration": 22212,
+                                              "referencedDeclaration": 22234,
                                               "src": "15153:4:21",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -38921,7 +38921,7 @@
                                         "name": "this",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 22212,
+                                        "referencedDeclaration": 22234,
                                         "src": "14625:4:21",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_RAMENRebaser_$19607",
@@ -49560,8 +49560,7 @@
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-04T03:42:15.398Z",
-  "networkType": "ethereum",
+  "updatedAt": "2020-09-04T18:32:27.875Z",
   "devdoc": {
     "methods": {
       "_setPendingGov(address)": {
