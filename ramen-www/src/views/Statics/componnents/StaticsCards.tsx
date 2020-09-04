@@ -127,7 +127,7 @@ const StaticsCard: React.FC<StaticsCardProps> = ({ farm, price }) => {
       stakingTokenPrice = parseFloat(data.toString());
       // if(token == 'yfi') debugger;
       if(token === 'uni_lp'){
-        const UNI_TOKEN_ADDR = "0x4eFdFe92F7528Bd16b95083d7Ba1b247De32F549";
+        const UNI_TOKEN_ADDR = "0x3ce70Ab0a2337880550Ee58220d44270D95D668E";
         const totalyCRVInUniswapPair = await ramen.contracts['ycrv'].methods.balanceOf(UNI_TOKEN_ADDR).call() / 1e18;
         const totalRAMENInUniswapPair = await RAMEN_TOKEN.methods.balanceOf(UNI_TOKEN_ADDR).call() / 1e18;
         let yCRVPrice = stakingTokenPrice;
