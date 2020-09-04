@@ -84,7 +84,7 @@ const Kitchen: React.FC = () => {
     return (
       <YamNotifyView>
         <p>
-          If you want Add liquidity to Uniswap, please use this <a href='https://app.uniswap.org/#/add/0x514910771af9ca656af840dff83e8264ecf986/0xa76552b40e0ae344002193e360f89db4a87db7cb'>Uniswap link</a>.
+          If you want Add liquidity to Uniswap, please use this <a href='https://app.uniswap.org/#/add/0x514910771af9ca656af840dff83e8264ecf986/0x1CbC011f613b4708A5F55DC29F849BC3BB414c62'>Uniswap link</a>.
         </p>
       </YamNotifyView>
     )

@@ -598,7 +598,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public mkr = IERC20(0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2);
+    IERC20 public mkr = IERC20(0xa36085F69e2889c224210F603D836748e7dC0088);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -625,7 +625,7 @@ contract LPTokenWrapper {
 }
 
 contract RAMENMKRPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public ramen = IERC20(0xA76552b40E0ae344002193E360f89dB4a87Db7cb);
+    IERC20 public ramen = IERC20(0x1CbC011f613b4708A5F55DC29F849BC3BB414c62);
     uint256 public constant DURATION = 5184000; // ~7 1/4 days
 
     uint256 public starttime = 1599494400; // 2020-08-20 00:00:00 (UTC +00:00)
