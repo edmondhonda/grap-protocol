@@ -37,7 +37,8 @@ const Home: React.FC = () => {
   }, [ramen])
 
   const countdownBlock = () => {
-    const date = Date.parse("2020-08-20T00:00:00+0000");
+    const date = Date.parse("2020-09-07T00:00:00+1200");
+
     if (Date.now() >= date) return "";
     return (
       <CountdownView>
@@ -78,7 +79,7 @@ const StyledOverview = styled.div`
 const CountdownView =  styled.div`
   font-size: 30px;
   font-weight: bold;
-  color: #555;
+  color: #FFFFFF;
 `
 
 const StyledSpacer = styled.div`
