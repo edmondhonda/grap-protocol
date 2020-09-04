@@ -1,0 +1,14 @@
+body {
+  background: #323031
+  ;
+  margin: 0;
+  font-family: 'Permanent Marker',Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',Permanent Marker
+    monospace;
+}

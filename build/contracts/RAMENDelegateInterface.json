@@ -1,0 +1,2342 @@
+{
+  "contractName": "RAMENDelegateInterface",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "implementation",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "_becomeImplementation",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "_resignImplementation",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"_becomeImplementation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"_resignImplementation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"implementation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"_becomeImplementation(bytes)\":{\"details\":\"Should revert if any issues arise which make it unfit for delegation\",\"params\":{\"data\":\"The encoded bytes data for any initialization\"}}}},\"userdoc\":{\"methods\":{\"_becomeImplementation(bytes)\":{\"notice\":\"Called by the delegator on a delegate to initialize it for duty\"},\"_resignImplementation()\":{\"notice\":\"Called by the delegator on a delegate to forfeit its responsibility\"}}}},\"settings\":{\"compilationTarget\":{\"/media/aasim/Work/grap-protocol/contracts/token/RAMENDelegate.sol\":\"RAMENDelegateInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":50000},\"remappings\":[]},\"sources\":{\"/media/aasim/Work/grap-protocol/contracts/lib/SafeMath.sol\":{\"keccak256\":\"0xfb72ae2642cad8f5da1644433dbcc12681f8064335dff144623f0514dc7922c6\",\"urls\":[\"bzz-raw://c174cb41d37d772336abf35cfef58015621ff96b834819531a65a67594aec5c4\",\"dweb:/ipfs/Qmdw3SxV2kaqdCoY4NBBXYcbX6baWbvGjJ6XP8jaH9pvyu\"]},\"/media/aasim/Work/grap-protocol/contracts/token/RAMEN.sol\":{\"keccak256\":\"0xd13e3ae566e8612e9a2cc5ba9765f75be9d254729dfa41e561c688c307d22e69\",\"urls\":[\"bzz-raw://ac6ccb2bd01b4b6ed5702da74ec65d2376d1609dfa660149c0a0744cbeda51ce\",\"dweb:/ipfs/QmV3taquEr7B7y4mTd5pkMgh5bgDUe4ZUtwPazsjcCindn\"]},\"/media/aasim/Work/grap-protocol/contracts/token/RAMENDelegate.sol\":{\"keccak256\":\"0x82e229121408202118ffbf09c3a860b32d44cdf51d5be82990a3110948760e95\",\"urls\":[\"bzz-raw://1ec1089d9269c99cae9a7ff43c7ca1be933dae2fb66b4f744a26db94e979cc7c\",\"dweb:/ipfs/QmYX2togUqkijXp5mV7rcumozAPhFTKNq32PL9Ef4Lc3mW\"]},\"/media/aasim/Work/grap-protocol/contracts/token/RAMENGovernance.sol\":{\"keccak256\":\"0xaab0a24b9a5b5273b301fb6dd40e32b5fe0567c2627ab2e419d341061c3c1059\",\"urls\":[\"bzz-raw://d93d0dfd4c56f3acd3f4c9d42d356c383729f95156dd0faad4f2d0feeae18289\",\"dweb:/ipfs/QmWFZmNhwstBMXS9wxbMcgjutqY4gBADXZXruPFZNuGyau\"]},\"/media/aasim/Work/grap-protocol/contracts/token/RAMENGovernanceStorage.sol\":{\"keccak256\":\"0x429eb1cfaf43624dc3bc84ac9ad518a208fc7af719fb09efc013eb4d57ce1cc3\",\"urls\":[\"bzz-raw://19826608f5288b0914174a573058f8466ce5e76b753a621566d4dd7d63550dc9\",\"dweb:/ipfs/QmdJWR1t7LbM6fcPBAQXeanVQNHmfvSTPwdd1io76KyuXc\"]},\"/media/aasim/Work/grap-protocol/contracts/token/RAMENTokenInterface.sol\":{\"keccak256\":\"0x623f576967d65529347edf5326d3a1dc5fb435b57c29cf66f3b1684f3db3ce6f\",\"urls\":[\"bzz-raw://bf4f6326d1f0ae4197c9e4dbb37c606eb6ff5e28b9f5ee736ee6466f968114ef\",\"dweb:/ipfs/QmeEuNYtEvAgTTY3wbZLLefEtGWJpRb4RAu3UrzkdL3E6k\"]},\"/media/aasim/Work/grap-protocol/contracts/token/RAMENTokenStorage.sol\":{\"keccak256\":\"0x3a26797b2e09cb3dd03cf32cfef1273d2f9a3e250e5d1c0f2f6cbaafffcb850f\",\"urls\":[\"bzz-raw://b88527a77af7b4625b752af3f2843be9891b5ecfc9f2139322d4a83a145d8bbd\",\"dweb:/ipfs/QmfTmUN7g3dVanayN5C1Ey1HPr5XSJY4TP6AzpfaRxxTqL\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.5.17;\n\nimport \"./RAMEN.sol\";\n\ncontract RAMENDelegationStorage {\n    /**\n     * @notice Implementation address for this contract\n     */\n    address public implementation;\n}\n\ncontract RAMENDelegatorInterface is RAMENDelegationStorage {\n    /**\n     * @notice Emitted when implementation is changed\n     */\n    event NewImplementation(address oldImplementation, address newImplementation);\n\n    /**\n     * @notice Called by the gov to update the implementation of the delegator\n     * @param implementation_ The address of the new implementation for delegation\n     * @param allowResign Flag to indicate whether to call _resignImplementation on the old implementation\n     * @param becomeImplementationData The encoded bytes data to be passed to _becomeImplementation\n     */\n    function _setImplementation(address implementation_, bool allowResign, bytes memory becomeImplementationData) public;\n}\n\ncontract RAMENDelegateInterface is RAMENDelegationStorage {\n    /**\n     * @notice Called by the delegator on a delegate to initialize it for duty\n     * @dev Should revert if any issues arise which make it unfit for delegation\n     * @param data The encoded bytes data for any initialization\n     */\n    function _becomeImplementation(bytes memory data) public;\n\n    /**\n     * @notice Called by the delegator on a delegate to forfeit its responsibility\n     */\n    function _resignImplementation() public;\n}\n\n\ncontract RAMENDelegate is RAMEN, RAMENDelegateInterface {\n    /**\n     * @notice Construct an empty delegate\n     */\n    constructor() public {}\n\n    /**\n     * @notice Called by the delegator on a delegate to initialize it for duty\n     * @param data The encoded bytes data for any initialization\n     */\n    function _becomeImplementation(bytes memory data) public {\n        // Shh -- currently unused\n        data;\n\n        // Shh -- we don't ever want this hook to be marked pure\n        if (false) {\n            implementation = address(0);\n        }\n\n        require(msg.sender == gov, \"only the gov may call _becomeImplementation\");\n    }\n\n    /**\n     * @notice Called by the delegator on a delegate to forfeit its responsibility\n     */\n    function _resignImplementation() public {\n        // Shh -- we don't ever want this hook to be marked pure\n        if (false) {\n            implementation = address(0);\n        }\n\n        require(msg.sender == gov, \"only the gov may call _resignImplementation\");\n    }\n}\n",
+  "sourcePath": "/media/aasim/Work/grap-protocol/contracts/token/RAMENDelegate.sol",
+  "ast": {
+    "absolutePath": "/media/aasim/Work/grap-protocol/contracts/token/RAMENDelegate.sol",
+    "exportedSymbols": {
+      "RAMENDelegate": [
+        20742
+      ],
+      "RAMENDelegateInterface": [
+        20687
+      ],
+      "RAMENDelegationStorage": [
+        20658
+      ],
+      "RAMENDelegatorInterface": [
+        20676
+      ]
+    },
+    "id": 20743,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 20654,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:24"
+      },
+      {
+        "absolutePath": "/media/aasim/Work/grap-protocol/contracts/token/RAMEN.sol",
+        "file": "./RAMEN.sol",
+        "id": 20655,
+        "nodeType": "ImportDirective",
+        "scope": 20743,
+        "sourceUnit": 20653,
+        "src": "25:21:24",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 20658,
+        "linearizedBaseContracts": [
+          20658
+        ],
+        "name": "RAMENDelegationStorage",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 20657,
+            "name": "implementation",
+            "nodeType": "VariableDeclaration",
+            "scope": 20658,
+            "src": "158:29:24",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 20656,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "158:7:24",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 20743,
+        "src": "48:142:24"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 20659,
+              "name": "RAMENDelegationStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 20658,
+              "src": "228:22:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RAMENDelegationStorage_$20658",
+                "typeString": "contract RAMENDelegationStorage"
+              }
+            },
+            "id": 20660,
+            "nodeType": "InheritanceSpecifier",
+            "src": "228:22:24"
+          }
+        ],
+        "contractDependencies": [
+          20658
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 20676,
+        "linearizedBaseContracts": [
+          20676,
+          20658
+        ],
+        "name": "RAMENDelegatorInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "@notice Emitted when implementation is changed",
+            "id": 20666,
+            "name": "NewImplementation",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 20665,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20662,
+                  "indexed": false,
+                  "name": "oldImplementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20666,
+                  "src": "351:25:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20661,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "351:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20664,
+                  "indexed": false,
+                  "name": "newImplementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20666,
+                  "src": "378:25:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20663,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "378:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "350:54:24"
+            },
+            "src": "327:78:24"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Called by the gov to update the implementation of the delegator\n@param implementation_ The address of the new implementation for delegation\n@param allowResign Flag to indicate whether to call _resignImplementation on the old implementation\n@param becomeImplementationData The encoded bytes data to be passed to _becomeImplementation",
+            "id": 20675,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20673,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20668,
+                  "name": "implementation_",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20675,
+                  "src": "824:23:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20667,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "824:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20670,
+                  "name": "allowResign",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20675,
+                  "src": "849:16:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 20669,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "849:4:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20672,
+                  "name": "becomeImplementationData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20675,
+                  "src": "867:37:24",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 20671,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "867:5:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "823:82:24"
+            },
+            "returnParameters": {
+              "id": 20674,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "912:0:24"
+            },
+            "scope": 20676,
+            "src": "796:117:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 20743,
+        "src": "192:723:24"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 20677,
+              "name": "RAMENDelegationStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 20658,
+              "src": "952:22:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RAMENDelegationStorage_$20658",
+                "typeString": "contract RAMENDelegationStorage"
+              }
+            },
+            "id": 20678,
+            "nodeType": "InheritanceSpecifier",
+            "src": "952:22:24"
+          }
+        ],
+        "contractDependencies": [
+          20658
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 20687,
+        "linearizedBaseContracts": [
+          20687,
+          20658
+        ],
+        "name": "RAMENDelegateInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Called by the delegator on a delegate to initialize it for duty\n@dev Should revert if any issues arise which make it unfit for delegation\n@param data The encoded bytes data for any initialization",
+            "id": 20683,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_becomeImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20681,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20680,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20683,
+                  "src": "1253:17:24",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 20679,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1253:5:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1252:19:24"
+            },
+            "returnParameters": {
+              "id": 20682,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1278:0:24"
+            },
+            "scope": 20687,
+            "src": "1222:57:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Called by the delegator on a delegate to forfeit its responsibility",
+            "id": 20686,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_resignImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20684,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1414:2:24"
+            },
+            "returnParameters": {
+              "id": 20685,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1423:0:24"
+            },
+            "scope": 20687,
+            "src": "1384:40:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 20743,
+        "src": "917:509:24"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 20688,
+              "name": "RAMEN",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 20652,
+              "src": "1455:5:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RAMEN_$20652",
+                "typeString": "contract RAMEN"
+              }
+            },
+            "id": 20689,
+            "nodeType": "InheritanceSpecifier",
+            "src": "1455:5:24"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 20690,
+              "name": "RAMENDelegateInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 20687,
+              "src": "1462:22:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RAMENDelegateInterface_$20687",
+                "typeString": "contract RAMENDelegateInterface"
+              }
+            },
+            "id": 20691,
+            "nodeType": "InheritanceSpecifier",
+            "src": "1462:22:24"
+          }
+        ],
+        "contractDependencies": [
+          20586,
+          20652,
+          20658,
+          20687,
+          21827,
+          21864,
+          22104,
+          22153
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 20742,
+        "linearizedBaseContracts": [
+          20742,
+          20687,
+          20658,
+          20652,
+          20586,
+          21827,
+          22104,
+          21864,
+          22153
+        ],
+        "name": "RAMENDelegate",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 20694,
+              "nodeType": "Block",
+              "src": "1571:2:24",
+              "statements": []
+            },
+            "documentation": "@notice Construct an empty delegate",
+            "id": 20695,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20692,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1561:2:24"
+            },
+            "returnParameters": {
+              "id": 20693,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1571:0:24"
+            },
+            "scope": 20742,
+            "src": "1550:23:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 20719,
+              "nodeType": "Block",
+              "src": "1796:278:24",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 20700,
+                    "name": "data",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 20697,
+                    "src": "1841:4:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_memory_ptr",
+                      "typeString": "bytes memory"
+                    }
+                  },
+                  "id": 20701,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1841:4:24"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "hexValue": "66616c7365",
+                    "id": 20702,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1925:5:24",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "false"
+                  },
+                  "falseBody": null,
+                  "id": 20710,
+                  "nodeType": "IfStatement",
+                  "src": "1921:63:24",
+                  "trueBody": {
+                    "id": 20709,
+                    "nodeType": "Block",
+                    "src": "1932:52:24",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 20707,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "id": 20703,
+                            "name": "implementation",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 20657,
+                            "src": "1946:14:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "hexValue": "30",
+                                "id": 20705,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1971:1:24",
+                                "subdenomination": null,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                },
+                                "value": "0"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                }
+                              ],
+                              "id": 20704,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1963:7:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_address_$",
+                                "typeString": "type(address)"
+                              },
+                              "typeName": "address"
+                            },
+                            "id": 20706,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1963:10:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          },
+                          "src": "1946:27:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "id": 20708,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1946:27:24"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 20715,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 20712,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 22168,
+                            "src": "2002:3:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 20713,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "2002:10:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 20714,
+                          "name": "gov",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 22120,
+                          "src": "2016:3:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "2002:17:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "6f6e6c792074686520676f76206d61792063616c6c205f6265636f6d65496d706c656d656e746174696f6e",
+                        "id": 20716,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2021:45:24",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_87685d43a4a716fc45a02db33f3087a46399d1c639f49af006d2840dd7715172",
+                          "typeString": "literal_string \"only the gov may call _becomeImplementation\""
+                        },
+                        "value": "only the gov may call _becomeImplementation"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_87685d43a4a716fc45a02db33f3087a46399d1c639f49af006d2840dd7715172",
+                          "typeString": "literal_string \"only the gov may call _becomeImplementation\""
+                        }
+                      ],
+                      "id": 20711,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        22171,
+                        22172
+                      ],
+                      "referencedDeclaration": 22172,
+                      "src": "1994:7:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 20717,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1994:73:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 20718,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1994:73:24"
+                }
+              ]
+            },
+            "documentation": "@notice Called by the delegator on a delegate to initialize it for duty\n@param data The encoded bytes data for any initialization",
+            "id": 20720,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_becomeImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20698,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20697,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20720,
+                  "src": "1770:17:24",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 20696,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1770:5:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1769:19:24"
+            },
+            "returnParameters": {
+              "id": 20699,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1796:0:24"
+            },
+            "scope": 20742,
+            "src": "1739:335:24",
+            "stateMutability": "nonpayable",
+            "superFunction": 20683,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 20740,
+              "nodeType": "Block",
+              "src": "2219:228:24",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "hexValue": "66616c7365",
+                    "id": 20723,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "2298:5:24",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "false"
+                  },
+                  "falseBody": null,
+                  "id": 20731,
+                  "nodeType": "IfStatement",
+                  "src": "2294:63:24",
+                  "trueBody": {
+                    "id": 20730,
+                    "nodeType": "Block",
+                    "src": "2305:52:24",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 20728,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "id": 20724,
+                            "name": "implementation",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 20657,
+                            "src": "2319:14:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "hexValue": "30",
+                                "id": 20726,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "2344:1:24",
+                                "subdenomination": null,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                },
+                                "value": "0"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                }
+                              ],
+                              "id": 20725,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "2336:7:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_address_$",
+                                "typeString": "type(address)"
+                              },
+                              "typeName": "address"
+                            },
+                            "id": 20727,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "2336:10:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          },
+                          "src": "2319:27:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "id": 20729,
+                        "nodeType": "ExpressionStatement",
+                        "src": "2319:27:24"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 20736,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 20733,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 22168,
+                            "src": "2375:3:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 20734,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "2375:10:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 20735,
+                          "name": "gov",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 22120,
+                          "src": "2389:3:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "2375:17:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "6f6e6c792074686520676f76206d61792063616c6c205f72657369676e496d706c656d656e746174696f6e",
+                        "id": 20737,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2394:45:24",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_34becc511830092491b9ed5bc1b7ad636216495b19fac8d69f13bac5fa3b5329",
+                          "typeString": "literal_string \"only the gov may call _resignImplementation\""
+                        },
+                        "value": "only the gov may call _resignImplementation"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_34becc511830092491b9ed5bc1b7ad636216495b19fac8d69f13bac5fa3b5329",
+                          "typeString": "literal_string \"only the gov may call _resignImplementation\""
+                        }
+                      ],
+                      "id": 20732,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        22171,
+                        22172
+                      ],
+                      "referencedDeclaration": 22172,
+                      "src": "2367:7:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 20738,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2367:73:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 20739,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2367:73:24"
+                }
+              ]
+            },
+            "documentation": "@notice Called by the delegator on a delegate to forfeit its responsibility",
+            "id": 20741,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_resignImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20721,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2209:2:24"
+            },
+            "returnParameters": {
+              "id": 20722,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2219:0:24"
+            },
+            "scope": 20742,
+            "src": "2179:268:24",
+            "stateMutability": "nonpayable",
+            "superFunction": 20686,
+            "visibility": "public"
+          }
+        ],
+        "scope": 20743,
+        "src": "1429:1020:24"
+      }
+    ],
+    "src": "0:2450:24"
+  },
+  "legacyAST": {
+    "absolutePath": "/media/aasim/Work/grap-protocol/contracts/token/RAMENDelegate.sol",
+    "exportedSymbols": {
+      "RAMENDelegate": [
+        20742
+      ],
+      "RAMENDelegateInterface": [
+        20687
+      ],
+      "RAMENDelegationStorage": [
+        20658
+      ],
+      "RAMENDelegatorInterface": [
+        20676
+      ]
+    },
+    "id": 20743,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 20654,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:24"
+      },
+      {
+        "absolutePath": "/media/aasim/Work/grap-protocol/contracts/token/RAMEN.sol",
+        "file": "./RAMEN.sol",
+        "id": 20655,
+        "nodeType": "ImportDirective",
+        "scope": 20743,
+        "sourceUnit": 20653,
+        "src": "25:21:24",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 20658,
+        "linearizedBaseContracts": [
+          20658
+        ],
+        "name": "RAMENDelegationStorage",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 20657,
+            "name": "implementation",
+            "nodeType": "VariableDeclaration",
+            "scope": 20658,
+            "src": "158:29:24",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 20656,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "158:7:24",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 20743,
+        "src": "48:142:24"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 20659,
+              "name": "RAMENDelegationStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 20658,
+              "src": "228:22:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RAMENDelegationStorage_$20658",
+                "typeString": "contract RAMENDelegationStorage"
+              }
+            },
+            "id": 20660,
+            "nodeType": "InheritanceSpecifier",
+            "src": "228:22:24"
+          }
+        ],
+        "contractDependencies": [
+          20658
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 20676,
+        "linearizedBaseContracts": [
+          20676,
+          20658
+        ],
+        "name": "RAMENDelegatorInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "@notice Emitted when implementation is changed",
+            "id": 20666,
+            "name": "NewImplementation",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 20665,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20662,
+                  "indexed": false,
+                  "name": "oldImplementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20666,
+                  "src": "351:25:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20661,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "351:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20664,
+                  "indexed": false,
+                  "name": "newImplementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20666,
+                  "src": "378:25:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20663,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "378:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "350:54:24"
+            },
+            "src": "327:78:24"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Called by the gov to update the implementation of the delegator\n@param implementation_ The address of the new implementation for delegation\n@param allowResign Flag to indicate whether to call _resignImplementation on the old implementation\n@param becomeImplementationData The encoded bytes data to be passed to _becomeImplementation",
+            "id": 20675,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20673,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20668,
+                  "name": "implementation_",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20675,
+                  "src": "824:23:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20667,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "824:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20670,
+                  "name": "allowResign",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20675,
+                  "src": "849:16:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 20669,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "849:4:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20672,
+                  "name": "becomeImplementationData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20675,
+                  "src": "867:37:24",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 20671,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "867:5:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "823:82:24"
+            },
+            "returnParameters": {
+              "id": 20674,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "912:0:24"
+            },
+            "scope": 20676,
+            "src": "796:117:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 20743,
+        "src": "192:723:24"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 20677,
+              "name": "RAMENDelegationStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 20658,
+              "src": "952:22:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RAMENDelegationStorage_$20658",
+                "typeString": "contract RAMENDelegationStorage"
+              }
+            },
+            "id": 20678,
+            "nodeType": "InheritanceSpecifier",
+            "src": "952:22:24"
+          }
+        ],
+        "contractDependencies": [
+          20658
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 20687,
+        "linearizedBaseContracts": [
+          20687,
+          20658
+        ],
+        "name": "RAMENDelegateInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Called by the delegator on a delegate to initialize it for duty\n@dev Should revert if any issues arise which make it unfit for delegation\n@param data The encoded bytes data for any initialization",
+            "id": 20683,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_becomeImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20681,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20680,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20683,
+                  "src": "1253:17:24",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 20679,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1253:5:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1252:19:24"
+            },
+            "returnParameters": {
+              "id": 20682,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1278:0:24"
+            },
+            "scope": 20687,
+            "src": "1222:57:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Called by the delegator on a delegate to forfeit its responsibility",
+            "id": 20686,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_resignImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20684,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1414:2:24"
+            },
+            "returnParameters": {
+              "id": 20685,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1423:0:24"
+            },
+            "scope": 20687,
+            "src": "1384:40:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 20743,
+        "src": "917:509:24"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 20688,
+              "name": "RAMEN",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 20652,
+              "src": "1455:5:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RAMEN_$20652",
+                "typeString": "contract RAMEN"
+              }
+            },
+            "id": 20689,
+            "nodeType": "InheritanceSpecifier",
+            "src": "1455:5:24"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 20690,
+              "name": "RAMENDelegateInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 20687,
+              "src": "1462:22:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RAMENDelegateInterface_$20687",
+                "typeString": "contract RAMENDelegateInterface"
+              }
+            },
+            "id": 20691,
+            "nodeType": "InheritanceSpecifier",
+            "src": "1462:22:24"
+          }
+        ],
+        "contractDependencies": [
+          20586,
+          20652,
+          20658,
+          20687,
+          21827,
+          21864,
+          22104,
+          22153
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 20742,
+        "linearizedBaseContracts": [
+          20742,
+          20687,
+          20658,
+          20652,
+          20586,
+          21827,
+          22104,
+          21864,
+          22153
+        ],
+        "name": "RAMENDelegate",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 20694,
+              "nodeType": "Block",
+              "src": "1571:2:24",
+              "statements": []
+            },
+            "documentation": "@notice Construct an empty delegate",
+            "id": 20695,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20692,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1561:2:24"
+            },
+            "returnParameters": {
+              "id": 20693,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1571:0:24"
+            },
+            "scope": 20742,
+            "src": "1550:23:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 20719,
+              "nodeType": "Block",
+              "src": "1796:278:24",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 20700,
+                    "name": "data",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 20697,
+                    "src": "1841:4:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_memory_ptr",
+                      "typeString": "bytes memory"
+                    }
+                  },
+                  "id": 20701,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1841:4:24"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "hexValue": "66616c7365",
+                    "id": 20702,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1925:5:24",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "false"
+                  },
+                  "falseBody": null,
+                  "id": 20710,
+                  "nodeType": "IfStatement",
+                  "src": "1921:63:24",
+                  "trueBody": {
+                    "id": 20709,
+                    "nodeType": "Block",
+                    "src": "1932:52:24",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 20707,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "id": 20703,
+                            "name": "implementation",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 20657,
+                            "src": "1946:14:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "hexValue": "30",
+                                "id": 20705,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1971:1:24",
+                                "subdenomination": null,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                },
+                                "value": "0"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                }
+                              ],
+                              "id": 20704,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1963:7:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_address_$",
+                                "typeString": "type(address)"
+                              },
+                              "typeName": "address"
+                            },
+                            "id": 20706,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1963:10:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          },
+                          "src": "1946:27:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "id": 20708,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1946:27:24"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 20715,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 20712,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 22168,
+                            "src": "2002:3:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 20713,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "2002:10:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 20714,
+                          "name": "gov",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 22120,
+                          "src": "2016:3:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "2002:17:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "6f6e6c792074686520676f76206d61792063616c6c205f6265636f6d65496d706c656d656e746174696f6e",
+                        "id": 20716,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2021:45:24",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_87685d43a4a716fc45a02db33f3087a46399d1c639f49af006d2840dd7715172",
+                          "typeString": "literal_string \"only the gov may call _becomeImplementation\""
+                        },
+                        "value": "only the gov may call _becomeImplementation"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_87685d43a4a716fc45a02db33f3087a46399d1c639f49af006d2840dd7715172",
+                          "typeString": "literal_string \"only the gov may call _becomeImplementation\""
+                        }
+                      ],
+                      "id": 20711,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        22171,
+                        22172
+                      ],
+                      "referencedDeclaration": 22172,
+                      "src": "1994:7:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 20717,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1994:73:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 20718,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1994:73:24"
+                }
+              ]
+            },
+            "documentation": "@notice Called by the delegator on a delegate to initialize it for duty\n@param data The encoded bytes data for any initialization",
+            "id": 20720,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_becomeImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20698,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20697,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20720,
+                  "src": "1770:17:24",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 20696,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1770:5:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1769:19:24"
+            },
+            "returnParameters": {
+              "id": 20699,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1796:0:24"
+            },
+            "scope": 20742,
+            "src": "1739:335:24",
+            "stateMutability": "nonpayable",
+            "superFunction": 20683,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 20740,
+              "nodeType": "Block",
+              "src": "2219:228:24",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "hexValue": "66616c7365",
+                    "id": 20723,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "2298:5:24",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "false"
+                  },
+                  "falseBody": null,
+                  "id": 20731,
+                  "nodeType": "IfStatement",
+                  "src": "2294:63:24",
+                  "trueBody": {
+                    "id": 20730,
+                    "nodeType": "Block",
+                    "src": "2305:52:24",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 20728,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "id": 20724,
+                            "name": "implementation",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 20657,
+                            "src": "2319:14:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "hexValue": "30",
+                                "id": 20726,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "2344:1:24",
+                                "subdenomination": null,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                },
+                                "value": "0"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                }
+                              ],
+                              "id": 20725,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "2336:7:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_address_$",
+                                "typeString": "type(address)"
+                              },
+                              "typeName": "address"
+                            },
+                            "id": 20727,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "2336:10:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          },
+                          "src": "2319:27:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "id": 20729,
+                        "nodeType": "ExpressionStatement",
+                        "src": "2319:27:24"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 20736,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 20733,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 22168,
+                            "src": "2375:3:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 20734,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "2375:10:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 20735,
+                          "name": "gov",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 22120,
+                          "src": "2389:3:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "2375:17:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "6f6e6c792074686520676f76206d61792063616c6c205f72657369676e496d706c656d656e746174696f6e",
+                        "id": 20737,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2394:45:24",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_34becc511830092491b9ed5bc1b7ad636216495b19fac8d69f13bac5fa3b5329",
+                          "typeString": "literal_string \"only the gov may call _resignImplementation\""
+                        },
+                        "value": "only the gov may call _resignImplementation"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_34becc511830092491b9ed5bc1b7ad636216495b19fac8d69f13bac5fa3b5329",
+                          "typeString": "literal_string \"only the gov may call _resignImplementation\""
+                        }
+                      ],
+                      "id": 20732,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        22171,
+                        22172
+                      ],
+                      "referencedDeclaration": 22172,
+                      "src": "2367:7:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 20738,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2367:73:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 20739,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2367:73:24"
+                }
+              ]
+            },
+            "documentation": "@notice Called by the delegator on a delegate to forfeit its responsibility",
+            "id": 20741,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_resignImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20721,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2209:2:24"
+            },
+            "returnParameters": {
+              "id": 20722,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2219:0:24"
+            },
+            "scope": 20742,
+            "src": "2179:268:24",
+            "stateMutability": "nonpayable",
+            "superFunction": 20686,
+            "visibility": "public"
+          }
+        ],
+        "scope": 20743,
+        "src": "1429:1020:24"
+      }
+    ],
+    "src": "0:2450:24"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.2.3",
+  "updatedAt": "2020-09-04T19:00:40.746Z",
+  "devdoc": {
+    "methods": {
+      "_becomeImplementation(bytes)": {
+        "details": "Should revert if any issues arise which make it unfit for delegation",
+        "params": {
+          "data": "The encoded bytes data for any initialization"
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "_becomeImplementation(bytes)": {
+        "notice": "Called by the delegator on a delegate to initialize it for duty"
+      },
+      "_resignImplementation()": {
+        "notice": "Called by the delegator on a delegate to forfeit its responsibility"
+      }
+    }
+  }
+}
