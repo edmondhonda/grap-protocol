@@ -19,7 +19,7 @@ export interface RamenContext {
   ramen?: typeof Ramen
 }
 
-const ADDRESS = '0x640536B14F186e1ee0358aa50E7320Db6b2faaC3';
+const ADDRESS = '0xA76552b40E0ae344002193E360f89dB4a87Db7cb';
 let currentPrice = 0;
 let ramen: any;
 const KitchenCards: React.FC = () => {
